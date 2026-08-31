@@ -12,7 +12,7 @@ interface FinalCtaProps {
 
 export function FinalCta({ onOpenContact }: FinalCtaProps) {
   return (
-    <section className="relative py-32 bg-[#07080a] border-t border-white/10 overflow-hidden text-center">
+    <section className="relative py-24 sm:py-32 bg-[#07080a] border-t border-white/10 overflow-hidden text-center defer-render">
       {/* Glow Backdrop */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#d4ff00]/5 blur-[140px] rounded-full pointer-events-none" />
 

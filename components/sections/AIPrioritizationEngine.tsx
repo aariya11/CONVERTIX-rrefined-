@@ -32,7 +32,7 @@ export function AIPrioritizationEngine() {
   const priorityInfo = getPriorityLabel(calculatedScore);
 
   return (
-    <section id="ai-engine" className="relative py-28 bg-[#090b10] border-t border-white/10 overflow-hidden">
+    <section id="ai-engine" className="relative py-20 sm:py-28 bg-[#090b10] border-t border-white/10 overflow-hidden defer-render">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="mb-16">

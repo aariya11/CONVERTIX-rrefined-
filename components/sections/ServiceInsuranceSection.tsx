@@ -61,7 +61,7 @@ export function ServiceInsuranceSection() {
   const [selectedRecord, setSelectedRecord] = useState(VEHICLE_RECORDS[0]);
 
   return (
-    <section id="service-insurance" className="relative py-28 bg-[#07080a] border-t border-white/10 overflow-hidden">
+    <section id="service-insurance" className="relative py-20 sm:py-28 bg-[#07080a] border-t border-white/10 overflow-hidden defer-render">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="mb-14">

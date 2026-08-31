@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Navbar } from "@/components/navigation/Navbar";
 import { MobileMenu } from "@/components/navigation/MobileMenu";
 import { Footer } from "@/components/navigation/Footer";
+import { MobileFloatingBar } from "@/components/navigation/MobileFloatingBar";
 import { ContactModal } from "@/components/ui/ContactModal";
 
 import { HeroSection } from "@/components/hero/HeroSection";
@@ -83,6 +84,9 @@ export default function HomePage() {
 
       {/* Footer */}
       <Footer onOpenContact={() => setContactOpen(true)} />
+
+      {/* Floating Bottom Action Bar for Mobile Conversions */}
+      <MobileFloatingBar onOpenContact={() => setContactOpen(true)} />
 
       {/* VIP Demo & Contact Modal */}
       <ContactModal

@@ -72,7 +72,7 @@ export function ProblemPoster() {
   const [activeProblem, setActiveProblem] = useState<string>("01");
 
   return (
-    <section id="problem" className="relative py-28 bg-[#090a0d] border-t border-b border-white/10 overflow-hidden">
+    <section id="problem" className="relative py-20 sm:py-28 bg-[#090a0d] border-t border-b border-white/10 overflow-hidden defer-render">
       {/* Background Micro Grid */}
       <div className="absolute inset-0 tech-grid opacity-30 pointer-events-none" />
 

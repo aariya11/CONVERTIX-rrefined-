@@ -15,7 +15,6 @@ import {
   Activity,
   Car,
   Clock,
-  ShieldAlert,
 } from "lucide-react";
 import { soundManager } from "../lib/sound";
 
@@ -25,7 +24,7 @@ interface LeadPacket {
   source: string;
   model: string;
   score: number;
-  stage: number; // 0 to 5
+  stage: number;
   timeInStage: number;
   timestamp: string;
 }
@@ -77,10 +76,27 @@ export function DealershipPipelineSim() {
   const [isPlaying, setIsPlaying] = useState(true);
   const [speed, setSpeed] = useState<1 | 2>(1);
   const [selectedPacket, setSelectedPacket] = useState<LeadPacket | null>(INITIAL_PACKETS[0]);
+  const [isInView, setIsInView] = useState(true);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Pause simulation if element scrolls offscreen to save mobile battery & CPU
+  useEffect(() => {
+    if (!containerRef.current || typeof IntersectionObserver === "undefined") return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   // Simulation tick loop
   useEffect(() => {
-    if (!isPlaying) return;
+    if (!isPlaying || !isInView) return;
 
     const interval = setInterval(() => {
       setPackets((prev) =>
@@ -92,7 +108,6 @@ export function DealershipPipelineSim() {
               timeInStage: 0,
             };
           } else {
-            // Recycle packet back to stage 0 with updated randomized customer
             const names = ["Vikram Malhotra", "Sunita Roy", "Karan Mehra", "Deepak Joshi", "Neha Bansal"];
             const models = ["Scorpio-N Z8L", "Harrier Fearless", "Thar Roxx 4x4", "Seltos X-Line", "XUV700 AX7"];
             const sources = ["OEM DMS Direct", "Google Ads Web", "WhatsApp Inbound", "Showroom Walk-in", "CarDekho"];
@@ -118,7 +133,7 @@ export function DealershipPipelineSim() {
     }, 3200 / speed);
 
     return () => clearInterval(interval);
-  }, [isPlaying, speed]);
+  }, [isPlaying, speed, isInView]);
 
   const handleAddSyntheticLead = () => {
     soundManager.playTelemetryNode();
@@ -137,42 +152,45 @@ export function DealershipPipelineSim() {
   };
 
   return (
-    <div className="w-full relative rounded-2xl bg-[#090b10] border border-white/15 p-4 sm:p-6 lg:p-8 shadow-2xl overflow-hidden">
+    <div
+      ref={containerRef}
+      className="w-full relative rounded-2xl sm:rounded-3xl bg-[#090b10] border border-white/15 p-3.5 sm:p-6 lg:p-8 shadow-2xl overflow-hidden"
+    >
       {/* Background Micro Grid */}
-      <div className="absolute inset-0 tech-grid-dense opacity-30 pointer-events-none" />
+      <div className="absolute inset-0 tech-grid-dense opacity-20 pointer-events-none" />
 
       {/* Top Header Control Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-white/10 relative z-10">
-        <div className="flex items-center gap-3">
-          <div className="p-2 rounded-lg bg-[#d4ff00]/10 border border-[#d4ff00]/30 text-[#d4ff00]">
-            <Activity className="w-4 h-4" />
+      <div className="flex flex-wrap items-center justify-between gap-3 pb-4 sm:pb-6 border-b border-white/10 relative z-10">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <div className="p-1.5 sm:p-2 rounded-lg bg-[#d4ff00]/10 border border-[#d4ff00]/30 text-[#d4ff00]">
+            <Activity className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
           </div>
           <div>
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold tracking-widest text-white uppercase">
-                LIVE DEALERSHIP ENGINE TELEMETRY
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <span className="text-[11px] sm:text-xs font-mono font-bold tracking-wider text-white uppercase">
+                DEALERSHIP TELEMETRY
               </span>
-              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#00f58c]/15 text-[#00f58c] text-[10px] font-mono border border-[#00f58c]/30">
+              <span className="inline-flex items-center gap-1 px-1.5 sm:px-2 py-0.5 rounded-full bg-[#00f58c]/15 text-[#00f58c] text-[9px] sm:text-[10px] font-mono border border-[#00f58c]/30">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#00f58c] animate-pulse" />
-                ACTIVE 10-MIN PIPELINE
+                10-MIN SLA
               </span>
             </div>
-            <p className="text-[11px] font-mono text-white/50">
-              Real-time lead orchestration across OEM DMS, Sales Floor & SIM Telephony
+            <p className="text-[10px] sm:text-[11px] font-mono text-white/50 hidden xs:block">
+              Real-time lead orchestration across OEM DMS & SIM Calling
             </p>
           </div>
         </div>
 
-        {/* Simulation Controls */}
-        <div className="flex items-center gap-2">
+        {/* Controls */}
+        <div className="flex items-center gap-1.5 sm:gap-2">
           <button
             type="button"
             onClick={handleAddSyntheticLead}
             data-cursor="INJECT"
-            className="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-[#d4ff00] hover:text-black border border-white/15 text-white text-xs font-mono transition-colors flex items-center gap-1.5"
+            className="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-white/10 hover:bg-[#d4ff00] hover:text-black border border-white/15 text-white text-[10px] sm:text-xs font-mono transition-colors flex items-center gap-1"
           >
-            <Plus className="w-3.5 h-3.5" />
-            <span>Inject Test Lead</span>
+            <Plus className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+            <span>Test Lead</span>
           </button>
 
           <button
@@ -181,10 +199,10 @@ export function DealershipPipelineSim() {
               soundManager.playClick();
               setIsPlaying(!isPlaying);
             }}
-            className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-white/80 transition-colors"
+            className="p-1 sm:p-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-white/80 transition-colors"
             aria-label={isPlaying ? "Pause simulation" : "Resume simulation"}
           >
-            {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 text-[#d4ff00]" />}
+            {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5 text-[#d4ff00]" />}
           </button>
 
           <button
@@ -193,88 +211,87 @@ export function DealershipPipelineSim() {
               soundManager.playClick();
               setSpeed(speed === 1 ? 2 : 1);
             }}
-            className="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-[11px] font-mono text-white/70"
+            className="px-2 sm:px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-[10px] sm:text-[11px] font-mono text-white/70"
           >
-            {speed}x SPEED
+            {speed}x
           </button>
         </div>
       </div>
 
-      {/* Main Multi-Stage Pipeline Track */}
-      <div className="py-8 relative z-10">
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 relative">
+      {/* Multi-Stage Pipeline: Scrollable on Small Mobile, Responsive Grid on Tablet/Desktop */}
+      <div className="py-4 sm:py-6 relative z-10">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3">
           {STAGES.map((stage, idx) => {
             const Icon = stage.icon;
-            const activeCount = packets.filter((p) => p.stage === idx).length;
+            const activePackets = packets.filter((p) => p.stage === idx);
+            const activeCount = activePackets.length;
 
             return (
               <div
                 key={stage.title}
-                className={`relative p-3.5 rounded-xl border transition-all duration-300 ${
+                className={`relative p-2.5 sm:p-3.5 rounded-xl border transition-all duration-300 ${
                   activeCount > 0
                     ? "bg-[#141720] border-[#d4ff00]/40 shadow-lg shadow-[#d4ff00]/5"
                     : "bg-[#0d0f14] border-white/5 opacity-60"
                 }`}
               >
-                {/* Stage Index Header */}
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-[10px] font-mono text-white/40">0{idx + 1}</span>
+                {/* Stage Header */}
+                <div className="flex items-center justify-between mb-1 sm:mb-2">
+                  <span className="text-[9px] sm:text-[10px] font-mono text-white/40">0{idx + 1}</span>
                   <div
-                    className="w-6 h-6 rounded-lg flex items-center justify-center"
+                    className="w-5 h-5 sm:w-6 sm:h-6 rounded-md sm:rounded-lg flex items-center justify-center"
                     style={{ backgroundColor: `${stage.color}15`, color: stage.color }}
                   >
-                    <Icon className="w-3.5 h-3.5" />
+                    <Icon className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                   </div>
                 </div>
 
-                <div className="font-mono font-bold text-xs text-white tracking-tight mb-0.5 truncate">
+                <div className="font-mono font-bold text-[10px] sm:text-xs text-white tracking-tight truncate">
                   {stage.title}
                 </div>
-                <div className="text-[10px] font-mono text-white/50 truncate mb-3">
+                <div className="text-[9px] sm:text-[10px] font-mono text-white/50 truncate mb-2">
                   {stage.subtitle}
                 </div>
 
-                {/* Packet Badges inside this Stage */}
-                <div className="min-h-[52px] flex flex-col gap-1.5">
+                {/* Packet Badges */}
+                <div className="min-h-[44px] sm:min-h-[52px] flex flex-col gap-1 sm:gap-1.5">
                   <AnimatePresence>
-                    {packets
-                      .filter((p) => p.stage === idx)
-                      .map((packet) => (
-                        <motion.div
-                          key={packet.id}
-                          layoutId={packet.id}
-                          initial={{ opacity: 0, scale: 0.8, y: -10 }}
-                          animate={{ opacity: 1, scale: 1, y: 0 }}
-                          exit={{ opacity: 0, scale: 0.8, y: 10 }}
-                          transition={{ type: "spring", stiffness: 350, damping: 25 }}
-                          onClick={() => {
-                            soundManager.playClick();
-                            setSelectedPacket(packet);
-                          }}
-                          data-cursor="INSPECT"
-                          className={`p-2 rounded-lg cursor-pointer border text-left transition-all ${
-                            selectedPacket?.id === packet.id
-                              ? "bg-[#d4ff00] text-black border-[#d4ff00] shadow-md font-semibold"
-                              : "bg-white/10 text-white border-white/10 hover:border-white/30"
-                          }`}
-                        >
-                          <div className="flex items-center justify-between text-[11px] font-mono">
-                            <span className="truncate max-w-[85px]">{packet.name}</span>
-                            <span
-                              className={`text-[9px] px-1 rounded font-bold ${
-                                selectedPacket?.id === packet.id
-                                  ? "bg-black text-[#d4ff00]"
-                                  : "bg-[#00f58c]/20 text-[#00f58c]"
-                              }`}
-                            >
-                              {packet.score}
-                            </span>
-                          </div>
-                          <div className="text-[9px] font-mono opacity-70 truncate mt-0.5">
-                            {packet.model}
-                          </div>
-                        </motion.div>
-                      ))}
+                    {activePackets.map((packet) => (
+                      <motion.div
+                        key={packet.id}
+                        layoutId={packet.id}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.8 }}
+                        transition={{ type: "spring", stiffness: 350, damping: 25 }}
+                        onClick={() => {
+                          soundManager.playClick();
+                          setSelectedPacket(packet);
+                        }}
+                        data-cursor="INSPECT"
+                        className={`p-1.5 sm:p-2 rounded-lg cursor-pointer border text-left transition-all ${
+                          selectedPacket?.id === packet.id
+                            ? "bg-[#d4ff00] text-black border-[#d4ff00] font-semibold"
+                            : "bg-white/10 text-white border-white/10"
+                        }`}
+                      >
+                        <div className="flex items-center justify-between text-[10px] sm:text-[11px] font-mono">
+                          <span className="truncate max-w-[65px] sm:max-w-[85px]">{packet.name}</span>
+                          <span
+                            className={`text-[8px] sm:text-[9px] px-1 rounded font-bold ${
+                              selectedPacket?.id === packet.id
+                                ? "bg-black text-[#d4ff00]"
+                                : "bg-[#00f58c]/20 text-[#00f58c]"
+                            }`}
+                          >
+                            {packet.score}
+                          </span>
+                        </div>
+                        <div className="text-[8px] sm:text-[9px] font-mono opacity-70 truncate mt-0.5">
+                          {packet.model}
+                        </div>
+                      </motion.div>
+                    ))}
                   </AnimatePresence>
                 </div>
               </div>
@@ -283,47 +300,43 @@ export function DealershipPipelineSim() {
         </div>
       </div>
 
-      {/* Real-Time Selected Lead Telemetry Box */}
+      {/* Selected Lead Telemetry Box */}
       {selectedPacket && (
         <motion.div
           layout
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mt-2 p-4 rounded-xl bg-[#12151d] border border-white/10 relative z-10"
+          className="mt-1 p-3 sm:p-4 rounded-xl bg-[#12151d] border border-white/10 relative z-10"
         >
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#d4ff00]">
-                <Car className="w-5 h-5" />
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-4">
+            <div className="flex items-center gap-2.5 sm:gap-3">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#d4ff00] shrink-0">
+                <Car className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
-              <div>
-                <div className="flex items-center gap-2">
-                  <span className="font-display font-bold text-sm text-white">
+              <div className="min-w-0">
+                <div className="flex flex-wrap items-center gap-1.5">
+                  <span className="font-display font-bold text-xs sm:text-sm text-white truncate">
                     {selectedPacket.name}
                   </span>
-                  <span className="text-[11px] font-mono text-[#d4ff00] bg-[#d4ff00]/10 px-2 py-0.5 rounded border border-[#d4ff00]/20">
-                    AI Lead Score: {selectedPacket.score}/100
+                  <span className="text-[10px] font-mono text-[#d4ff00] bg-[#d4ff00]/10 px-1.5 py-0.5 rounded border border-[#d4ff00]/20">
+                    Score: {selectedPacket.score}
                   </span>
-                  <span className="text-[10px] font-mono text-white/50 bg-white/5 px-2 py-0.5 rounded">
+                  <span className="text-[9px] font-mono text-white/50 bg-white/5 px-1.5 py-0.5 rounded">
                     {selectedPacket.id}
                   </span>
                 </div>
-                <div className="text-xs font-mono text-white/60 flex items-center gap-4 mt-0.5">
-                  <span>Interest: <strong className="text-white">{selectedPacket.model}</strong></span>
-                  <span>•</span>
-                  <span>Origin: <strong className="text-white">{selectedPacket.source}</strong></span>
-                  <span>•</span>
-                  <span className="text-[#00f58c]">Response Latency: 11 mins</span>
+                <div className="text-[10px] sm:text-xs font-mono text-white/60 truncate mt-0.5">
+                  <span className="text-white">{selectedPacket.model}</span> • {selectedPacket.source}
                 </div>
               </div>
             </div>
 
-            <div className="flex items-center gap-3 text-xs font-mono">
-              <div className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-white/80 flex items-center gap-2">
-                <Clock className="w-3.5 h-3.5 text-[#00f58c]" />
-                <span>Next Action: Auto-Escalation in 18m</span>
+            <div className="flex items-center gap-2 text-[10px] sm:text-xs font-mono self-start sm:self-auto">
+              <div className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-white/80 flex items-center gap-1.5">
+                <Clock className="w-3 h-3 text-[#00f58c]" />
+                <span>Next SLA: 18m</span>
               </div>
-              <span className="px-3 py-1.5 rounded-lg bg-[#00f58c]/15 text-[#00f58c] border border-[#00f58c]/30 font-bold uppercase text-[10px]">
+              <span className="px-2.5 py-1 rounded-lg bg-[#00f58c]/15 text-[#00f58c] border border-[#00f58c]/30 font-bold uppercase text-[9px] sm:text-[10px]">
                 {STAGES[selectedPacket.stage].title}
               </span>
             </div>

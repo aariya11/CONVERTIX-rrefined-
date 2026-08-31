@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Navbar } from "@/components/navigation/Navbar";
 import { MobileMenu } from "@/components/navigation/MobileMenu";
 import { Footer } from "@/components/navigation/Footer";
+import { MobileFloatingBar } from "@/components/navigation/MobileFloatingBar";
 import { ContactModal } from "@/components/ui/ContactModal";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { Check, Sparkles, Zap, RotateCw, Layers, Phone, ArrowRight, ShieldCheck } from "lucide-react";
@@ -64,7 +65,7 @@ const TIERS = [
   },
 ];
 
-export function PricingContent() {
+export default function PricingPage() {
   const [contactOpen, setContactOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -82,7 +83,7 @@ export function PricingContent() {
       />
 
       {/* Hero */}
-      <section className="relative pt-36 pb-20 border-b border-white/10">
+      <section className="relative pt-32 sm:pt-36 pb-16 sm:pb-20 border-b border-white/10">
         <div className="absolute inset-0 tech-grid opacity-40 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center max-w-3xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#d4ff00]/10 border border-[#d4ff00]/30 text-xs font-mono text-[#d4ff00] mb-6">
@@ -90,7 +91,7 @@ export function PricingContent() {
             <span>TRANSPARENT DEALERSHIP PRICING & EDITIONS</span>
           </div>
 
-          <h1 className="text-5xl sm:text-7xl font-display font-black tracking-tighter text-white uppercase leading-[0.9] mb-6">
+          <h1 className="text-4xl xs:text-5xl sm:text-7xl font-display font-black tracking-tighter text-white uppercase leading-[0.92] sm:leading-[0.9] mb-6 break-words">
             START WITH ONE.
             <br />
             <span className="font-editorial text-white/40 font-normal italic lowercase">
@@ -99,23 +100,23 @@ export function PricingContent() {
             BOTH.
           </h1>
 
-          <p className="text-base sm:text-lg text-white/70 font-normal leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg text-white/70 font-normal leading-relaxed">
             Choose Convertix Lead Management or Convertix Service & Insurance—or deploy the complete unified enterprise suite tailored to your dealership group volume.
           </p>
         </div>
       </section>
 
       {/* Pricing Cards Grid */}
-      <section className="py-24 bg-[#090b10]">
+      <section className="py-20 sm:py-24 bg-[#090b10]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16">
             {TIERS.map((tier) => {
               const Icon = tier.icon;
 
               return (
                 <div
                   key={tier.name}
-                  className="p-8 rounded-3xl bg-[#0e1118] border border-white/12 flex flex-col justify-between shadow-2xl relative"
+                  className="p-6 sm:p-8 rounded-3xl bg-[#0e1118] border border-white/12 flex flex-col justify-between shadow-2xl relative"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-4">
@@ -132,16 +133,16 @@ export function PricingContent() {
                       <Icon className="w-5 h-5" style={{ color: tier.accent }} />
                     </div>
 
-                    <h3 className="text-2xl font-display font-bold text-white mb-1">
+                    <h3 className="text-xl sm:text-2xl font-display font-bold text-white mb-1">
                       {tier.name}
                     </h3>
-                    <p className="text-xs font-mono text-white/50 mb-6">{tier.tagline}</p>
+                    <p className="text-xs font-mono text-white/50 mb-4 sm:mb-6">{tier.tagline}</p>
 
-                    <p className="text-xs sm:text-sm text-white/70 leading-relaxed font-normal mb-8">
+                    <p className="text-xs sm:text-sm text-white/70 leading-relaxed font-normal mb-6 sm:mb-8">
                       {tier.description}
                     </p>
 
-                    <div className="space-y-3 pt-6 border-t border-white/10 mb-8">
+                    <div className="space-y-2.5 sm:space-y-3 pt-4 sm:pt-6 border-t border-white/10 mb-6 sm:mb-8">
                       <span className="text-[11px] font-mono uppercase tracking-widest text-white/40 block">
                         Included Platform Capabilities
                       </span>
@@ -154,7 +155,7 @@ export function PricingContent() {
                     </div>
                   </div>
 
-                  <div className="pt-6 border-t border-white/10">
+                  <div className="pt-4 sm:pt-6 border-t border-white/10">
                     <button
                       type="button"
                       onClick={() => {
@@ -164,7 +165,7 @@ export function PricingContent() {
                       className="w-full py-3.5 px-6 rounded-xl font-mono font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2"
                       style={{
                         backgroundColor: tier.accent,
-                        color: tier.accent === "#ffffff" ? "#000000" : "#000000",
+                        color: "#000000",
                       }}
                     >
                       <span>Request Dealership Quote</span>
@@ -177,13 +178,13 @@ export function PricingContent() {
           </div>
 
           {/* Direct Assistance Card */}
-          <div className="p-8 rounded-3xl bg-[#11141d] border border-white/12 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="p-6 sm:p-8 rounded-3xl bg-[#11141d] border border-white/12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div className="flex items-center gap-4">
               <div className="p-3 rounded-2xl bg-[#00f58c]/15 text-[#00f58c] shrink-0">
                 <Phone className="w-6 h-6" />
               </div>
               <div>
-                <h4 className="font-display font-bold text-lg text-white">
+                <h4 className="font-display font-bold text-base sm:text-lg text-white">
                   Need a custom multi-brand group proposal?
                 </h4>
                 <p className="text-xs font-mono text-white/60">
@@ -194,7 +195,7 @@ export function PricingContent() {
 
             <a
               href="tel:+917888028729"
-              className="px-6 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white font-mono text-xs uppercase tracking-wider font-semibold transition-colors"
+              className="w-full md:w-auto text-center px-6 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white font-mono text-xs uppercase tracking-wider font-semibold transition-colors"
             >
               Direct Dial: +91 7888 028 729
             </a>
@@ -205,6 +206,9 @@ export function PricingContent() {
       {/* Footer */}
       <Footer onOpenContact={() => setContactOpen(true)} />
 
+      {/* Mobile Floating Bar */}
+      <MobileFloatingBar onOpenContact={() => setContactOpen(true)} />
+
       {/* Modal */}
       <ContactModal
         isOpen={contactOpen}
@@ -212,8 +216,4 @@ export function PricingContent() {
       />
     </main>
   );
-}
-
-export default function PricingPage() {
-  return <PricingContent />;
 }

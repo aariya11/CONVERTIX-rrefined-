@@ -77,7 +77,7 @@ export function FollowUpWorkflow() {
   const [activeStep, setActiveStep] = useState<number>(3);
 
   return (
-    <section className="relative py-28 bg-[#090a0e] border-t border-white/10 overflow-hidden">
+    <section className="relative py-20 sm:py-28 bg-[#090a0e] border-t border-white/10 overflow-hidden defer-render">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="mb-16">
