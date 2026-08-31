@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUpRight, Phone } from "lucide-react";
+import { ArrowUpRight, Phone, MessageCircle } from "lucide-react";
 import { soundManager } from "../lib/sound";
 
 interface FooterProps {
@@ -9,6 +9,8 @@ interface FooterProps {
 }
 
 export function Footer({ onOpenContact }: FooterProps) {
+  const whatsappUrl = "https://wa.me/919078019472?text=Hello%20Convertix%20Team%2C%20I%20would%20like%20to%20explore%20Convertix%20for%20our%20dealership.";
+
   return (
     <footer className="relative bg-[#0a0a0a] border-t border-white/10 pt-24 pb-16 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
@@ -24,18 +26,31 @@ export function Footer({ onOpenContact }: FooterProps) {
               </h2>
             </div>
 
-            <button
-              type="button"
-              onClick={() => {
-                soundManager.playChirp();
-                onOpenContact?.();
-              }}
-              data-cursor="TALK"
-              className="inline-flex items-center gap-3 text-sm font-mono uppercase tracking-widest text-[#f3f1ec] hover:text-[#e05a2b] transition-colors self-start lg:self-auto group"
-            >
-              <span>Schedule Dealership Consultation</span>
-              <ArrowUpRight className="w-4 h-4 text-[#e05a2b] group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-            </button>
+            <div className="flex flex-wrap items-center gap-6 self-start lg:self-auto">
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cursor="CHAT"
+                className="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-widest text-[#25D366] hover:text-white transition-colors"
+              >
+                <MessageCircle className="w-4 h-4" />
+                <span>WhatsApp Desk</span>
+              </a>
+
+              <button
+                type="button"
+                onClick={() => {
+                  soundManager.playChirp();
+                  onOpenContact?.();
+                }}
+                data-cursor="TALK"
+                className="inline-flex items-center gap-3 text-sm font-mono uppercase tracking-widest text-[#f3f1ec] hover:text-[#e05a2b] transition-colors group"
+              >
+                <span>Schedule Dealership Consultation</span>
+                <ArrowUpRight className="w-4 h-4 text-[#e05a2b] group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              </button>
+            </div>
           </div>
         </div>
 
@@ -75,14 +90,19 @@ export function Footer({ onOpenContact }: FooterProps) {
           <div className="space-y-3">
             <span className="text-[#e05a2b] uppercase tracking-widest block">Direct Desk</span>
             <a
-              href="tel:+917888028729"
+              href="tel:+919078019472"
               className="font-mono text-sm font-bold text-white hover:text-[#e05a2b] transition-colors block"
             >
-              +91 7888 028 729
+              +91 9078 019 472
             </a>
-            <p className="text-white/40 text-[11px]">
-              Response SLA: &lt;15 Mins
-            </p>
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#25D366] text-[11px] hover:underline block"
+            >
+              Direct WhatsApp Chat →
+            </a>
           </div>
         </div>
 

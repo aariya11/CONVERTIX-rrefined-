@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Playfair_Display, Cormorant_Garamond, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { CustomCursor } from "@/components/ui/CustomCursor";
+import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space",
@@ -81,6 +82,9 @@ export default function RootLayout({
 
         {/* Minimal Luxury Custom Cursor */}
         <CustomCursor />
+
+        {/* Global WhatsApp Chat Desk */}
+        <WhatsAppButton />
 
         {children}
       </body>

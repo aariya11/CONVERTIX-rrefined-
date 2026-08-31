@@ -7,7 +7,7 @@ import { MobileMenu } from "@/components/navigation/MobileMenu";
 import { Footer } from "@/components/navigation/Footer";
 import { MobileFloatingBar } from "@/components/navigation/MobileFloatingBar";
 import { ContactModal } from "@/components/ui/ContactModal";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, MessageCircle, Phone } from "lucide-react";
 import { soundManager } from "@/components/lib/sound";
 
 const TIERS = [
@@ -58,6 +58,7 @@ const TIERS = [
 export default function PricingPage() {
   const [contactOpen, setContactOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const whatsappUrl = "https://wa.me/919078019472?text=Hello%20Convertix%20Team%2C%20I%20would%20like%20to%20explore%20Convertix%20pricing%20for%20our%20dealership.";
 
   return (
     <main className="min-h-screen bg-[#0a0a0a] text-[#f3f1ec] relative overflow-hidden">
@@ -157,16 +158,29 @@ export default function PricingPage() {
                 Multi-Brand Enterprise Dealership Group?
               </h4>
               <p className="text-xs font-mono text-[#b8b5af]">
-                Direct Commercial Desk: +91 7888 028 729
+                Direct Commercial Desk: +91 9078 019 472
               </p>
             </div>
 
-            <a
-              href="tel:+917888028729"
-              className="px-6 py-3 rounded-full bg-[#e05a2b] text-white font-mono text-xs uppercase tracking-widest font-bold hover:bg-white hover:text-black transition-colors"
-            >
-              Direct Dial
-            </a>
+            <div className="flex items-center gap-4">
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3 rounded-full bg-[#25D366]/20 border border-[#25D366]/40 text-[#25D366] font-mono text-xs uppercase tracking-widest font-bold hover:bg-[#25D366] hover:text-black transition-colors inline-flex items-center gap-2"
+              >
+                <MessageCircle className="w-3.5 h-3.5" />
+                <span>WhatsApp Quote</span>
+              </a>
+
+              <a
+                href="tel:+919078019472"
+                className="px-6 py-3 rounded-full bg-[#e05a2b] text-white font-mono text-xs uppercase tracking-widest font-bold hover:bg-white hover:text-black transition-colors inline-flex items-center gap-2"
+              >
+                <Phone className="w-3.5 h-3.5" />
+                <span>Call Us</span>
+              </a>
+            </div>
           </div>
         </div>
       </section>

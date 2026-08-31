@@ -6,13 +6,14 @@ import { Navbar } from "@/components/navigation/Navbar";
 import { MobileMenu } from "@/components/navigation/MobileMenu";
 import { Footer } from "@/components/navigation/Footer";
 import { MobileFloatingBar } from "@/components/navigation/MobileFloatingBar";
-import { ContactModal } from "@/components/ui/ContactModal";
-import { ArrowRight, Phone, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Phone, CheckCircle2, MessageCircle } from "lucide-react";
 import { soundManager } from "@/components/lib/sound";
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const whatsappUrl = "https://wa.me/919078019472?text=Hello%20Convertix%20Team%2C%20I%20would%20like%20to%20explore%20Convertix%20for%20our%20dealership.";
+
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -77,14 +78,26 @@ export default function ContactPage() {
                   COMMERCIAL DESK
                 </span>
                 <a
-                  href="tel:+917888028729"
+                  href="tel:+919078019472"
                   className="text-3xl sm:text-4xl font-display font-bold text-white hover:text-[#e05a2b] transition-colors block"
                 >
-                  +91 7888 028 729
+                  +91 9078 019 472
                 </a>
                 <p className="text-xs font-mono text-[#b8b5af]">
-                  Direct line to our Chief Commercial Officer.
+                  Direct line to our Commercial Director.
                 </p>
+
+                <div className="pt-4">
+                  <a
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 py-3 px-6 rounded-full bg-[#25D366]/15 border border-[#25D366]/40 text-[#25D366] font-mono text-xs uppercase tracking-wider hover:bg-[#25D366] hover:text-black transition-colors"
+                  >
+                    <MessageCircle className="w-4 h-4" />
+                    <span>Chat Directly on WhatsApp →</span>
+                  </a>
+                </div>
               </div>
 
               <div className="space-y-3 pt-6 border-t border-white/10 text-xs font-mono">
@@ -129,7 +142,7 @@ export default function ContactPage() {
                       <input
                         type="tel"
                         required
-                        placeholder="+91 98XXX XXXXX"
+                        placeholder="+91 90XXX XXXXX"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         className="w-full px-4 py-3.5 bg-[#141414] border border-white/10 rounded-xl text-white focus:border-[#e05a2b] focus:outline-none"

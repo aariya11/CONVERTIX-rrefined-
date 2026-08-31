@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ArrowRight, CheckCircle2, Phone } from "lucide-react";
+import { X, ArrowRight, CheckCircle2, Phone, MessageCircle } from "lucide-react";
 import { soundManager } from "../lib/sound";
 
 interface ContactModalProps {
@@ -19,6 +19,8 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
     brand: "Tata Motors",
     outlets: "1–3 Outlets",
   });
+
+  const whatsappUrl = "https://wa.me/919078019472?text=Hello%20Convertix%20Team%2C%20I%20would%20like%20to%20explore%20Convertix%20for%20our%20dealership.";
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -169,13 +171,23 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     <ArrowRight className="w-4 h-4" />
                   </button>
 
-                  <div className="text-center pt-2">
+                  <div className="flex flex-wrap items-center justify-center gap-6 pt-2">
                     <a
-                      href="tel:+917888028729"
-                      className="text-white/40 hover:text-white transition-colors inline-flex items-center gap-1.5"
+                      href="tel:+919078019472"
+                      className="text-white/60 hover:text-white transition-colors inline-flex items-center gap-1.5"
                     >
                       <Phone className="w-3 h-3 text-[#e05a2b]" />
-                      <span>Prefer to call? +91 7888 028 729</span>
+                      <span>Call: +91 9078 019 472</span>
+                    </a>
+
+                    <a
+                      href={whatsappUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#25D366] hover:underline inline-flex items-center gap-1.5"
+                    >
+                      <MessageCircle className="w-3.5 h-3.5" />
+                      <span>Chat on WhatsApp</span>
                     </a>
                   </div>
                 </form>

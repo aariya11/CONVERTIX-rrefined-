@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, MessageCircle, Phone } from "lucide-react";
 import { soundManager } from "../lib/sound";
 
 interface HeroSectionProps {
@@ -9,6 +9,8 @@ interface HeroSectionProps {
 }
 
 export function HeroSection({ onOpenContact }: HeroSectionProps) {
+  const whatsappUrl = "https://wa.me/919078019472?text=Hello%20Convertix%2C%20I%20would%20like%20to%20learn%20more%20about%20the%20Dealership%20OS.";
+
   return (
     <section className="relative min-h-[92vh] sm:min-h-screen pt-32 sm:pt-40 pb-20 flex flex-col justify-between overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 w-full relative z-10">
@@ -96,7 +98,7 @@ export function HeroSection({ onOpenContact }: HeroSectionProps) {
                 AI-powered lead, service and insurance workflows engineered specifically for modern automotive retail networks. Transforming showroom latency into closed momentum.
               </p>
 
-              <div className="flex items-center gap-6 pt-2">
+              <div className="flex flex-wrap items-center gap-4 pt-2">
                 <button
                   type="button"
                   onClick={() => {
@@ -111,10 +113,20 @@ export function HeroSection({ onOpenContact }: HeroSectionProps) {
                 </button>
 
                 <a
-                  href="tel:+917888028729"
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#25D366] hover:text-white transition-colors py-3 px-4 rounded-full border border-[#25D366]/30 hover:border-[#25D366]"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  <span>WhatsApp Chat</span>
+                </a>
+
+                <a
+                  href="tel:+919078019472"
                   className="text-xs font-mono uppercase tracking-widest text-[#b8b5af] hover:text-white transition-colors"
                 >
-                  Talk to Sales →
+                  +91 9078 019 472 →
                 </a>
               </div>
             </div>

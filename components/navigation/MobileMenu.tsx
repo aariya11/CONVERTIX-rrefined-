@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { X, ArrowUpRight, Phone } from "lucide-react";
+import { X, ArrowUpRight, Phone, MessageCircle } from "lucide-react";
 import { soundManager } from "../lib/sound";
 
 interface MobileMenuProps {
@@ -12,6 +12,8 @@ interface MobileMenuProps {
 }
 
 export function MobileMenu({ isOpen, onClose, onOpenContact }: MobileMenuProps) {
+  const whatsappUrl = "https://wa.me/919078019472?text=Hello%20Convertix%20Team%2C%20I%20would%20like%20to%20explore%20Convertix%20for%20our%20dealership.";
+
   const handleLinkClick = () => {
     soundManager.playClick();
     onClose();
@@ -103,13 +105,25 @@ export function MobileMenu({ isOpen, onClose, onOpenContact }: MobileMenuProps) 
 
           {/* Footer Info */}
           <div className="border-t border-white/10 pt-6 space-y-4">
-            <a
-              href="tel:+917888028729"
-              className="flex items-center gap-2 text-xs font-mono text-[#b8b5af] hover:text-white transition-colors"
-            >
-              <Phone className="w-3.5 h-3.5 text-[#e05a2b]" />
-              <span>Direct Enterprise Desk: +91 7888 028 729</span>
-            </a>
+            <div className="flex items-center justify-between gap-4">
+              <a
+                href="tel:+919078019472"
+                className="flex items-center gap-2 text-xs font-mono text-[#b8b5af] hover:text-white transition-colors"
+              >
+                <Phone className="w-3.5 h-3.5 text-[#e05a2b]" />
+                <span>+91 9078 019 472</span>
+              </a>
+
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-xs font-mono text-[#25D366] hover:text-white transition-colors"
+              >
+                <MessageCircle className="w-3.5 h-3.5" />
+                <span>WhatsApp Chat →</span>
+              </a>
+            </div>
 
             <button
               type="button"

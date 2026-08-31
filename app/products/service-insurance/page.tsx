@@ -7,12 +7,13 @@ import { MobileMenu } from "@/components/navigation/MobileMenu";
 import { Footer } from "@/components/navigation/Footer";
 import { MobileFloatingBar } from "@/components/navigation/MobileFloatingBar";
 import { ContactModal } from "@/components/ui/ContactModal";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight, MessageCircle } from "lucide-react";
 import { soundManager } from "@/components/lib/sound";
 
 export default function ServiceInsurancePage() {
   const [contactOpen, setContactOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const whatsappUrl = "https://wa.me/919078019472?text=Hello%20Convertix%20Team%2C%20I%20would%20like%20to%20learn%20more%20about%20the%20Service%20%26%20Insurance%20OS.";
 
   return (
     <main className="min-h-screen bg-[#0a0a0a] text-[#f3f1ec] relative overflow-hidden">
@@ -50,7 +51,7 @@ export default function ServiceInsurancePage() {
             Automated predictive service reminders, mileage extrapolation, enhanced telecall logging, and proactive insurance policy renewal workflows built for dealership workshops.
           </p>
 
-          <div className="flex flex-wrap items-center gap-6">
+          <div className="flex flex-wrap items-center gap-4 sm:gap-6">
             <button
               type="button"
               onClick={() => {
@@ -64,10 +65,20 @@ export default function ServiceInsurancePage() {
             </button>
 
             <a
-              href="tel:+917888028729"
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="py-4 px-6 rounded-full bg-[#25D366]/15 border border-[#25D366]/40 text-[#25D366] font-mono text-xs uppercase tracking-wider hover:bg-[#25D366] hover:text-black transition-colors inline-flex items-center gap-2"
+            >
+              <MessageCircle className="w-4 h-4" />
+              <span>WhatsApp Workshop Desk</span>
+            </a>
+
+            <a
+              href="tel:+919078019472"
               className="text-xs font-mono uppercase tracking-widest text-[#b8b5af] hover:text-white transition-colors"
             >
-              Direct: +91 7888 028 729 →
+              +91 9078 019 472 →
             </a>
           </div>
         </div>
