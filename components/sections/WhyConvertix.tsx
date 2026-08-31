@@ -9,7 +9,7 @@ const MANIFESTO_POINTS = [
   },
   {
     title: "2-Way OEM DMS Protocol",
-    body: "Direct bi-directional sync with Tata, Maruti, Hyundai & Mahindra. No disconnected CSV files, no double data entry, no latency.",
+    body: "Direct bi-directional sync with Tata, Maruti, Hyundai & Mahindra. No disconnected CSV exports, no double data entry, no latency.",
   },
   {
     title: "Predictive Workshop Odometer Engine",
@@ -27,42 +27,42 @@ const MANIFESTO_POINTS = [
 
 export function WhyConvertix() {
   return (
-    <section id="why-convertix" className="relative py-32 sm:py-48 bg-[#0a0a0a] border-t border-white/10 overflow-hidden defer-render">
+    <section id="why-convertix" className="relative py-24 sm:py-36 bg-[#0a0a0a] border-t border-white/10 overflow-hidden defer-render">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
-        {/* Top Eyebrow */}
-        <div className="flex items-center gap-3 mb-8">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#e05a2b]" />
-          <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-[#e05a2b]">
-            BRAND MANIFESTO
+        {/* Eyebrow */}
+        <div className="flex items-center gap-2 mb-6">
+          <span className="w-2 h-2 rounded-full bg-[#e05a2b]" />
+          <span className="text-xs font-sans font-semibold tracking-wider text-[#e05a2b] uppercase">
+            Brand Manifesto
           </span>
         </div>
 
-        {/* Massive Headline */}
-        <div className="mb-20 sm:mb-28">
-          <h2 className="text-5xl xs:text-6xl sm:text-8xl md:text-9xl font-display font-black tracking-[-0.06em] text-[#f3f1ec] uppercase leading-[0.85]">
-            NOT ANOTHER
+        {/* Headline */}
+        <div className="mb-16 sm:mb-24">
+          <h2 className="h2-editorial text-[#f3f1ec]">
+            Not another
             <br />
             <span className="font-editorial text-[#e05a2b] font-normal italic lowercase tracking-tight">
               generic
             </span>{" "}
             CRM<span className="text-[#e05a2b]">.</span>
           </h2>
-          <p className="text-lg sm:text-xl text-[#b8b5af] max-w-3xl mt-8 font-normal leading-relaxed">
+          <p className="body-lead max-w-3xl mt-6">
             Generic SaaS platforms were engineered for software salespeople at desks. Convertix was built on the dealership floor around the real velocity of test drives, vehicle delivery bays, and OEM compliance.
           </p>
         </div>
 
-        {/* Editorial Manifesto Statements */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 sm:gap-16 border-t border-white/10 pt-16">
+        {/* Manifesto Points */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 border-t border-white/10 pt-12">
           {MANIFESTO_POINTS.map((point, i) => (
-            <div key={point.title} className="space-y-3">
-              <span className="text-xs font-mono text-[#e05a2b] uppercase tracking-widest block">
+            <div key={point.title} className="space-y-2.5">
+              <span className="text-xs font-sans font-semibold text-[#e05a2b] block">
                 0{i + 1} //
               </span>
-              <h3 className="text-2xl sm:text-3xl font-display font-bold text-white">
+              <h3 className="text-xl sm:text-2xl font-sans font-bold text-white">
                 {point.title}
               </h3>
-              <p className="text-sm font-mono text-[#b8b5af] leading-relaxed pt-1">
+              <p className="body-standard">
                 {point.body}
               </p>
             </div>

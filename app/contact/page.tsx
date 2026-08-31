@@ -30,7 +30,7 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#0a0a0a] text-[#f3f1ec] relative overflow-hidden">
+    <main className="min-h-screen bg-[#0a0a0a] text-[#f3f1ec] relative overflow-hidden mobile-safe-bottom">
       <Navbar
         onOpenContact={() => {}}
         onOpenMobileMenu={() => setMobileMenuOpen(true)}
@@ -43,132 +43,132 @@ export default function ContactPage() {
       />
 
       {/* Hero */}
-      <section className="relative pt-36 sm:pt-48 pb-20 border-b border-white/10">
+      <section className="relative pt-32 sm:pt-44 pb-20 border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
-          <div className="flex items-center gap-3 mb-8">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#e05a2b]" />
-            <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-[#e05a2b]">
-              ENTERPRISE DESK
+          <div className="flex items-center gap-2 mb-6">
+            <span className="w-2 h-2 rounded-full bg-[#e05a2b]" />
+            <span className="text-xs font-sans font-semibold tracking-wider text-[#e05a2b] uppercase">
+              Enterprise Consultation
             </span>
           </div>
 
-          <h1 className="text-5xl xs:text-6xl sm:text-8xl md:text-9xl font-display font-black tracking-[-0.06em] text-[#f3f1ec] uppercase leading-[0.85] mb-8">
-            TALK TO
+          <h1 className="h1-editorial text-[#f3f1ec] mb-6">
+            Talk to
             <br />
             <span className="font-editorial text-[#b8b5af] font-normal italic lowercase tracking-tight">
               automotive
             </span>{" "}
-            SALES<span className="text-[#e05a2b]">.</span>
+            sales<span className="text-[#e05a2b]">.</span>
           </h1>
 
-          <p className="text-base sm:text-xl text-[#b8b5af] max-w-2xl font-normal leading-relaxed">
+          <p className="body-lead max-w-2xl">
             Schedule a private architectural walkthrough for your showroom and service network. Response SLA is strictly within 15 minutes.
           </p>
         </div>
       </section>
 
-      {/* Main Form Section */}
-      <section className="py-24 bg-[#0a0a0a]">
+      {/* Form Section */}
+      <section className="py-20 sm:py-28 bg-[#0a0a0a]">
         <div className="max-w-7xl mx-auto px-4 sm:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
-            {/* Direct Contact Info */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 sm:gap-16">
+            {/* Left Contact Card */}
             <div className="lg:col-span-5 space-y-8">
-              <div className="space-y-3">
-                <span className="text-xs font-mono uppercase tracking-widest text-[#e05a2b]">
-                  COMMERCIAL DESK
+              <div className="space-y-2">
+                <span className="text-xs font-sans font-semibold uppercase tracking-wider text-[#e05a2b]">
+                  Commercial Desk
                 </span>
                 <a
                   href="tel:+919078019472"
-                  className="text-3xl sm:text-4xl font-display font-bold text-white hover:text-[#e05a2b] transition-colors block"
+                  className="text-2xl sm:text-3xl font-sans font-bold text-white hover:text-[#e05a2b] transition-colors block"
                 >
                   +91 9078 019 472
                 </a>
-                <p className="text-xs font-mono text-[#b8b5af]">
-                  Direct line to our Commercial Director.
+                <p className="body-standard text-xs">
+                  Direct line to our Commercial Solutions Director.
                 </p>
 
-                <div className="pt-4">
+                <div className="pt-3">
                   <a
                     href={whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 py-3 px-6 rounded-full bg-[#25D366]/15 border border-[#25D366]/40 text-[#25D366] font-mono text-xs uppercase tracking-wider hover:bg-[#25D366] hover:text-black transition-colors"
+                    className="min-h-[44px] inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#25D366]/15 border border-[#25D366]/40 text-[#25D366] font-sans text-xs font-semibold uppercase tracking-wider hover:bg-[#25D366] hover:text-black transition-all"
                   >
                     <MessageCircle className="w-4 h-4" />
-                    <span>Chat Directly on WhatsApp →</span>
+                    <span>WhatsApp Direct Chat →</span>
                   </a>
                 </div>
               </div>
 
-              <div className="space-y-3 pt-6 border-t border-white/10 text-xs font-mono">
-                <span className="text-white/40 uppercase tracking-widest block">
-                  PARENT ENTITY
+              <div className="space-y-2 pt-6 border-t border-white/10 text-xs font-sans text-[#b8b5af]">
+                <span className="text-white font-semibold uppercase tracking-wider block">
+                  Parent Entity
                 </span>
                 <p className="text-white font-bold">Selenix Technology</p>
-                <p className="text-[#b8b5af]">Automotive Software & Intelligence Division</p>
-                <p className="text-[#b8b5af]">India</p>
+                <p>Automotive Software & Intelligence Division</p>
+                <p>India</p>
               </div>
             </div>
 
-            {/* Form */}
-            <div className="lg:col-span-7 border border-white/10 rounded-3xl p-8 sm:p-12 bg-[#0e0e0e]">
+            {/* Right Form Card */}
+            <div className="lg:col-span-7 border border-white/10 rounded-3xl p-6 sm:p-10 bg-[#101010]">
               {submitted ? (
-                <div className="py-16 text-center space-y-4">
+                <div className="py-12 text-center space-y-3">
                   <CheckCircle2 className="w-12 h-12 text-[#e05a2b] mx-auto" />
-                  <h3 className="text-3xl font-display font-bold text-white">
+                  <h3 className="text-2xl sm:text-3xl font-sans font-bold text-white">
                     Consultation Request Received.
                   </h3>
-                  <p className="text-sm font-mono text-[#b8b5af]">
+                  <p className="body-standard max-w-sm mx-auto">
                     Our Automotive Specialist will connect with your leadership team within 15 minutes.
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6 text-xs font-mono">
-                  <div className="space-y-2">
-                    <label className="text-white/60 uppercase tracking-wider block">Full Name</label>
+                <form onSubmit={handleSubmit} className="space-y-4 text-xs font-sans">
+                  <div className="space-y-1">
+                    <label className="text-white/70 uppercase tracking-wider block font-medium">Full Name</label>
                     <input
                       type="text"
                       required
                       placeholder="e.g. Anand Mahindra"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3.5 bg-[#141414] border border-white/10 rounded-xl text-white focus:border-[#e05a2b] focus:outline-none"
+                      className="w-full min-h-[48px] px-4 bg-[#161616] border border-white/10 rounded-xl text-white text-sm focus:border-[#e05a2b] focus:outline-none"
                     />
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <label className="text-white/60 uppercase tracking-wider block">Direct Phone / WhatsApp</label>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div className="space-y-1">
+                      <label className="text-white/70 uppercase tracking-wider block font-medium">Direct Mobile / WhatsApp</label>
                       <input
                         type="tel"
                         required
                         placeholder="+91 90XXX XXXXX"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full px-4 py-3.5 bg-[#141414] border border-white/10 rounded-xl text-white focus:border-[#e05a2b] focus:outline-none"
+                        className="w-full min-h-[48px] px-4 bg-[#161616] border border-white/10 rounded-xl text-white text-sm focus:border-[#e05a2b] focus:outline-none"
                       />
                     </div>
 
-                    <div className="space-y-2">
-                      <label className="text-white/60 uppercase tracking-wider block">Dealership Group Name</label>
+                    <div className="space-y-1">
+                      <label className="text-white/70 uppercase tracking-wider block font-medium">Dealership Group Name</label>
                       <input
                         type="text"
                         required
                         placeholder="e.g. Landmark Automotive"
                         value={formData.dealershipName}
                         onChange={(e) => setFormData({ ...formData, dealershipName: e.target.value })}
-                        className="w-full px-4 py-3.5 bg-[#141414] border border-white/10 rounded-xl text-white focus:border-[#e05a2b] focus:outline-none"
+                        className="w-full min-h-[48px] px-4 bg-[#161616] border border-white/10 rounded-xl text-white text-sm focus:border-[#e05a2b] focus:outline-none"
                       />
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <label className="text-white/60 uppercase tracking-wider block">Primary Brand</label>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div className="space-y-1">
+                      <label className="text-white/70 uppercase tracking-wider block font-medium">Primary Brand</label>
                       <select
                         value={formData.brand}
                         onChange={(e) => setFormData({ ...formData, brand: e.target.value })}
-                        className="w-full px-4 py-3.5 bg-[#141414] border border-white/10 rounded-xl text-white focus:border-[#e05a2b] focus:outline-none"
+                        className="w-full min-h-[48px] px-3 bg-[#161616] border border-white/10 rounded-xl text-white text-sm focus:border-[#e05a2b] focus:outline-none"
                       >
                         <option>Tata Motors</option>
                         <option>Maruti Suzuki</option>
@@ -179,12 +179,12 @@ export default function ContactPage() {
                       </select>
                     </div>
 
-                    <div className="space-y-2">
-                      <label className="text-white/60 uppercase tracking-wider block">Showroom Outlets</label>
+                    <div className="space-y-1">
+                      <label className="text-white/70 uppercase tracking-wider block font-medium">Showroom Outlets</label>
                       <select
                         value={formData.outlets}
                         onChange={(e) => setFormData({ ...formData, outlets: e.target.value })}
-                        className="w-full px-4 py-3.5 bg-[#141414] border border-white/10 rounded-xl text-white focus:border-[#e05a2b] focus:outline-none"
+                        className="w-full min-h-[48px] px-3 bg-[#161616] border border-white/10 rounded-xl text-white text-sm focus:border-[#e05a2b] focus:outline-none"
                       >
                         <option>1–3 Outlets (Single Region)</option>
                         <option>4–10 Outlets (Multi-City)</option>
@@ -193,20 +193,20 @@ export default function ContactPage() {
                     </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <label className="text-white/60 uppercase tracking-wider block">Specific Objectives / Notes</label>
+                  <div className="space-y-1">
+                    <label className="text-white/70 uppercase tracking-wider block font-medium">Specific Objectives</label>
                     <textarea
                       rows={3}
-                      placeholder="e.g. We want to cut lead response latency across 6 Tata outlets and automate workshop bay reminders."
+                      placeholder="e.g. We want to cut lead response latency across 6 Tata outlets and automate workshop reminders."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full px-4 py-3 bg-[#141414] border border-white/10 rounded-xl text-white focus:border-[#e05a2b] focus:outline-none resize-none"
+                      className="w-full p-3 bg-[#161616] border border-white/10 rounded-xl text-white text-sm focus:border-[#e05a2b] focus:outline-none resize-none"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full py-4 rounded-full bg-[#e05a2b] text-white font-bold text-xs uppercase tracking-widest hover:bg-white hover:text-black transition-colors flex items-center justify-center gap-2 mt-4"
+                    className="w-full min-h-[48px] rounded-full bg-[#e05a2b] text-white font-sans font-semibold text-sm hover:bg-white hover:text-black transition-all flex items-center justify-center gap-2 mt-2"
                   >
                     <span>Request Executive Consultation</span>
                     <ArrowRight className="w-4 h-4" />

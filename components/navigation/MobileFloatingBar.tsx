@@ -1,65 +1,76 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Phone, ArrowUpRight, Zap, MessageCircle } from "lucide-react";
+import Link from "next/link";
+import { Home, Zap, RotateCw, Calculator, Calendar } from "lucide-react";
 import { soundManager } from "../lib/sound";
 
-interface MobileFloatingBarProps {
+interface MobileBottomNavProps {
   onOpenContact: () => void;
 }
 
-export function MobileFloatingBar({ onOpenContact }: MobileFloatingBarProps) {
-  const [visible, setVisible] = useState(false);
-  const whatsappUrl = "https://wa.me/919078019472?text=Hello%20Convertix%20Team%2C%20I%20would%20like%20to%20explore%20Convertix%20for%20our%20dealership.";
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 350) {
-        setVisible(true);
-      } else {
-        setVisible(false);
-      }
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  if (!visible) return null;
-
+export function MobileFloatingBar({ onOpenContact }: MobileBottomNavProps) {
   return (
-    <div className="md:hidden fixed bottom-4 left-0 right-0 z-40 px-4 pointer-events-none transition-all duration-300">
-      <div className="pointer-events-auto max-w-md mx-auto p-1.5 rounded-full bg-[#0c0e14]/90 backdrop-blur-xl border border-white/20 shadow-2xl flex items-center justify-between gap-1.5">
-        <a
-          href="tel:+919078019472"
-          className="flex items-center gap-1 px-2.5 py-2 rounded-full bg-white/10 text-white font-mono text-[10px] hover:bg-white/20 transition-colors"
+    <nav
+      aria-label="Mobile Navigation"
+      className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#0d0d0d]/95 backdrop-blur-2xl border-t border-white/10"
+      style={{
+        paddingBottom: "max(10px, env(safe-area-inset-bottom, 0px))",
+      }}
+    >
+      <div className="flex items-center justify-around px-2 py-2">
+        {/* Home */}
+        <Link
+          href="/"
+          onClick={() => soundManager.playClick()}
+          className="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] py-1 text-[#b8b5af] hover:text-white transition-colors"
         >
-          <Phone className="w-3 h-3 text-[#e05a2b]" />
-          <span>Call</span>
+          <Home className="w-4 h-4 mb-1" />
+          <span className="text-[11px] font-sans font-medium tracking-tight">Home</span>
+        </Link>
+
+        {/* Leads */}
+        <Link
+          href="/products/lead-management"
+          onClick={() => soundManager.playClick()}
+          className="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] py-1 text-[#b8b5af] hover:text-white transition-colors"
+        >
+          <Zap className="w-4 h-4 mb-1 text-[#e05a2b]" />
+          <span className="text-[11px] font-sans font-medium tracking-tight">Leads</span>
+        </Link>
+
+        {/* Service */}
+        <Link
+          href="/products/service-insurance"
+          onClick={() => soundManager.playClick()}
+          className="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] py-1 text-[#b8b5af] hover:text-white transition-colors"
+        >
+          <RotateCw className="w-4 h-4 mb-1" />
+          <span className="text-[11px] font-sans font-medium tracking-tight">Service</span>
+        </Link>
+
+        {/* ROI Calculator */}
+        <a
+          href="#roi"
+          onClick={() => soundManager.playClick()}
+          className="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] py-1 text-[#b8b5af] hover:text-white transition-colors"
+        >
+          <Calculator className="w-4 h-4 mb-1" />
+          <span className="text-[11px] font-sans font-medium tracking-tight">ROI</span>
         </a>
 
-        <a
-          href={whatsappUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-1 px-2.5 py-2 rounded-full bg-[#25D366]/20 text-[#25D366] border border-[#25D366]/30 font-mono text-[10px] hover:bg-[#25D366] hover:text-black transition-colors"
-        >
-          <MessageCircle className="w-3 h-3" />
-          <span>WhatsApp</span>
-        </a>
-
+        {/* Action: Book Demo */}
         <button
           type="button"
           onClick={() => {
             soundManager.playChirp();
             onOpenContact();
           }}
-          className="flex-1 py-2 px-3 rounded-full bg-[#e05a2b] text-white font-mono font-bold text-[10px] uppercase tracking-wider flex items-center justify-center gap-1 shadow-lg shadow-[#e05a2b]/20"
+          className="flex flex-col items-center justify-center min-w-[62px] min-h-[44px] py-1 px-2.5 rounded-xl bg-[#e05a2b] text-white font-sans font-semibold transition-all active:scale-95 shadow-md shadow-[#e05a2b]/20"
         >
-          <Zap className="w-3 h-3" />
-          <span>Book Demo</span>
-          <ArrowUpRight className="w-3 h-3" />
+          <Calendar className="w-4 h-4 mb-0.5" />
+          <span className="text-[11px] font-sans font-bold tracking-tight">Demo</span>
         </button>
       </div>
-    </div>
+    </nav>
   );
 }

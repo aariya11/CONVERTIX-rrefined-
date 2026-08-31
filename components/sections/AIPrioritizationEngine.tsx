@@ -4,64 +4,64 @@ import { motion } from "framer-motion";
 
 export function AIPrioritizationEngine() {
   return (
-    <section id="ai-engine" className="relative py-32 sm:py-48 bg-[#0a0a0a] border-t border-white/10 overflow-hidden defer-render">
+    <section id="ai-engine" className="relative py-24 sm:py-36 bg-[#0a0a0a] border-t border-white/10 overflow-hidden defer-render">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
-        {/* Top Eyebrow */}
-        <div className="flex items-center gap-3 mb-8">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#e05a2b]" />
-          <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-[#e05a2b]">
-            INTELLIGENCE // ML PROTOCOL
+        {/* Eyebrow */}
+        <div className="flex items-center gap-2 mb-6">
+          <span className="w-2 h-2 rounded-full bg-[#e05a2b]" />
+          <span className="text-xs font-sans font-semibold tracking-wider text-[#e05a2b] uppercase">
+            Machine Learning Protocol
           </span>
         </div>
 
-        {/* Massive Headline */}
-        <div className="mb-20 sm:mb-28">
-          <h2 className="text-5xl xs:text-6xl sm:text-8xl md:text-9xl font-display font-black tracking-[-0.06em] text-[#f3f1ec] uppercase leading-[0.85]">
-            AI THAT KNOWS
+        {/* Headline */}
+        <div className="mb-16 sm:mb-24">
+          <h2 className="h2-editorial text-[#f3f1ec]">
+            AI that knows
             <br />
             <span className="font-editorial text-[#b8b5af] font-normal italic lowercase tracking-tight">
               who
             </span>{" "}
-            MATTERS NOW<span className="text-[#e05a2b]">.</span>
+            matters now<span className="text-[#e05a2b]">.</span>
           </h2>
         </div>
 
-        {/* Pure Typography & Data Layout */}
-        <div className="border border-white/10 rounded-3xl p-8 sm:p-16 bg-[#0e0e0e] grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Left: Giant Score (5 cols) */}
-          <div className="lg:col-span-5 space-y-4">
-            <span className="text-xs font-mono text-white/40 uppercase tracking-widest block">
-              REALTIME INTENT SCORE
+        {/* Data Box */}
+        <div className="border border-white/10 rounded-3xl p-6 sm:p-12 bg-[#101010] grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          {/* Left Score (5 cols) */}
+          <div className="lg:col-span-5 space-y-3">
+            <span className="text-xs font-sans text-[#b8b5af] uppercase tracking-wider block">
+              Real-Time Intent Score
             </span>
-            <div className="text-8xl sm:text-9xl font-display font-black text-[#f3f1ec] leading-none">
+            <div className="text-7xl sm:text-9xl font-sans font-bold text-[#f3f1ec] leading-none">
               97<span className="text-[#e05a2b]">.</span>
             </div>
-            <span className="text-xs font-mono uppercase tracking-widest text-[#e05a2b] font-bold block">
-              HIGH CONVERSION PROBABILITY
+            <span className="text-sm font-sans font-semibold text-[#e05a2b] block">
+              High Conversion Probability
             </span>
           </div>
 
-          {/* Right: Editorial Data Breakdown (7 cols) */}
-          <div className="lg:col-span-7 space-y-8 border-l border-white/10 pl-0 lg:pl-10">
+          {/* Right Insights (7 cols) */}
+          <div className="lg:col-span-7 space-y-6 border-l border-white/10 pl-0 lg:pl-10">
             <div className="space-y-1">
-              <span className="text-[11px] font-mono text-white/40 uppercase tracking-wider block">
-                SIGNAL EVALUATION
+              <span className="text-xs font-sans text-[#b8b5af] uppercase tracking-wider block">
+                Signal Evaluation
               </span>
-              <h3 className="text-2xl font-display font-bold text-white">
+              <h3 className="text-xl sm:text-2xl font-sans font-bold text-white">
                 Vehicle Segment: Premium SUV (₹28.5L Budget)
               </h3>
             </div>
 
             <div className="space-y-1">
-              <span className="text-[11px] font-mono text-white/40 uppercase tracking-wider block">
-                DISPATCH SLA
+              <span className="text-xs font-sans text-[#b8b5af] uppercase tracking-wider block">
+                Dispatch SLA
               </span>
-              <p className="text-sm font-mono text-[#b8b5af]">
-                Immediate Test Drive Requested • Dispatched to Senior Consultant in &lt;15 Seconds
+              <p className="body-standard">
+                Immediate test drive request identified. Automatically routed to the lead sales consultant in under 15 seconds.
               </p>
             </div>
 
-            <div className="pt-4 border-t border-white/10 text-xs font-mono text-white/40">
+            <div className="pt-4 border-t border-white/10 text-xs font-sans text-[#b8b5af]">
               Machine learning models quietly rank hundreds of daily inquiries so consultants always dial ready buyers first.
             </div>
           </div>

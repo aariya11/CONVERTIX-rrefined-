@@ -48,71 +48,67 @@ export function FeatureShowcase() {
   const [hovered, setHovered] = useState<string>("01");
 
   return (
-    <section id="features" className="relative py-32 sm:py-48 bg-[#0a0a0a] border-t border-white/10 overflow-hidden defer-render">
+    <section id="features" className="relative py-24 sm:py-36 bg-[#0a0a0a] border-t border-white/10 overflow-hidden defer-render">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
-        {/* Top Eyebrow */}
-        <div className="flex items-center gap-3 mb-8">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#e05a2b]" />
-          <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-[#e05a2b]">
-            SYSTEM CAPABILITIES
+        {/* Eyebrow */}
+        <div className="flex items-center gap-2 mb-6">
+          <span className="w-2 h-2 rounded-full bg-[#e05a2b]" />
+          <span className="text-xs font-sans font-semibold tracking-wider text-[#e05a2b] uppercase">
+            System Capabilities
           </span>
         </div>
 
-        {/* Massive Headline */}
-        <div className="mb-20 sm:mb-28">
-          <h2 className="text-5xl xs:text-6xl sm:text-8xl md:text-9xl font-display font-black tracking-[-0.06em] text-[#f3f1ec] uppercase leading-[0.85]">
-            ENGINEERED
+        {/* Headline */}
+        <div className="mb-16 sm:mb-24">
+          <h2 className="h2-editorial text-[#f3f1ec]">
+            Engineered
             <br />
             <span className="font-editorial text-[#b8b5af] font-normal italic lowercase tracking-tight">
               for
             </span>{" "}
-            SCALE<span className="text-[#e05a2b]">.</span>
+            scale<span className="text-[#e05a2b]">.</span>
           </h2>
         </div>
 
-        {/* Vertical Editorial Feature Index */}
+        {/* Feature List */}
         <div className="divide-y divide-white/10 border-t border-b border-white/10">
-          {FEATURES.map((item) => {
-            const isHovered = hovered === item.id;
+          {FEATURES.map((item) => (
+            <div
+              key={item.id}
+              onMouseEnter={() => {
+                soundManager.playClick();
+                setHovered(item.id);
+              }}
+              className="py-8 sm:py-12 group cursor-default transition-colors"
+            >
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-baseline">
+                {/* ID + Title */}
+                <div className="lg:col-span-6 flex items-baseline gap-4 sm:gap-6">
+                  <span className="text-xs font-sans font-semibold text-[#e05a2b]">
+                    {item.id}
+                  </span>
+                  <h3 className="text-2xl sm:text-4xl font-sans font-bold text-[#f3f1ec] group-hover:translate-x-2 transition-transform duration-200">
+                    {item.title}
+                  </h3>
+                </div>
 
-            return (
-              <div
-                key={item.id}
-                onMouseEnter={() => {
-                  soundManager.playClick();
-                  setHovered(item.id);
-                }}
-                className="py-10 sm:py-14 group cursor-default transition-colors"
-              >
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-baseline">
-                  {/* ID + Title */}
-                  <div className="lg:col-span-6 flex items-baseline gap-6">
-                    <span className="text-xs font-mono text-white/30 group-hover:text-[#e05a2b] transition-colors">
-                      {item.id} //
-                    </span>
-                    <h3 className="text-3xl sm:text-5xl font-display font-black text-[#f3f1ec] group-hover:translate-x-3 transition-transform duration-300">
-                      {item.title}
-                    </h3>
-                  </div>
+                {/* Tagline & Description */}
+                <div className="lg:col-span-5 space-y-1.5">
+                  <span className="text-xs font-sans font-semibold text-[#e05a2b] block">
+                    {item.tagline}
+                  </span>
+                  <p className="body-standard">
+                    {item.description}
+                  </p>
+                </div>
 
-                  {/* Tagline & Description */}
-                  <div className="lg:col-span-5 space-y-2">
-                    <span className="text-xs font-mono uppercase tracking-wider text-[#e05a2b] block font-semibold">
-                      {item.tagline}
-                    </span>
-                    <p className="text-sm font-mono text-[#b8b5af] leading-relaxed">
-                      {item.description}
-                    </p>
-                  </div>
-
-                  {/* Arrow Indicator */}
-                  <div className="lg:col-span-1 text-right hidden lg:block">
-                    <ArrowUpRight className="w-6 h-6 text-white/20 group-hover:text-[#e05a2b] group-hover:translate-x-1 group-hover:-translate-y-1 transition-all inline-block" />
-                  </div>
+                {/* Arrow Indicator */}
+                <div className="lg:col-span-1 text-right hidden lg:block">
+                  <ArrowUpRight className="w-5 h-5 text-white/30 group-hover:text-[#e05a2b] group-hover:translate-x-1 group-hover:-translate-y-1 transition-all inline-block" />
                 </div>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
       </div>
     </section>

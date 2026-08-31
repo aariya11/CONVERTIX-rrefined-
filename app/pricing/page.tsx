@@ -12,7 +12,7 @@ import { soundManager } from "@/components/lib/sound";
 
 const TIERS = [
   {
-    name: "Leads & Pre-Sales Edition",
+    name: "Lead Management Edition",
     tagline: "Speed-to-lead & showroom execution",
     badge: "Introductory Offer",
     description: "Designed for single and multi-outlet showrooms needing 10-minute response times, SIM calling, and AI lead scoring.",
@@ -61,7 +61,7 @@ export default function PricingPage() {
   const whatsappUrl = "https://wa.me/919078019472?text=Hello%20Convertix%20Team%2C%20I%20would%20like%20to%20explore%20Convertix%20pricing%20for%20our%20dealership.";
 
   return (
-    <main className="min-h-screen bg-[#0a0a0a] text-[#f3f1ec] relative overflow-hidden">
+    <main className="min-h-screen bg-[#0a0a0a] text-[#f3f1ec] relative overflow-hidden mobile-safe-bottom">
       <Navbar
         onOpenContact={() => setContactOpen(true)}
         onOpenMobileMenu={() => setMobileMenuOpen(true)}
@@ -74,59 +74,59 @@ export default function PricingPage() {
       />
 
       {/* Hero */}
-      <section className="relative pt-36 sm:pt-48 pb-20 border-b border-white/10">
+      <section className="relative pt-32 sm:pt-44 pb-20 border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
-          <div className="flex items-center gap-3 mb-8">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#e05a2b]" />
-            <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-[#e05a2b]">
-              EDITIONS & LICENSING
+          <div className="flex items-center gap-2 mb-6">
+            <span className="w-2 h-2 rounded-full bg-[#e05a2b]" />
+            <span className="text-xs font-sans font-semibold tracking-wider text-[#e05a2b] uppercase">
+              Editions & Licensing
             </span>
           </div>
 
-          <h1 className="text-5xl xs:text-6xl sm:text-8xl md:text-9xl font-display font-black tracking-[-0.06em] text-[#f3f1ec] uppercase leading-[0.85] mb-8">
-            START WITH ONE.
+          <h1 className="h1-editorial text-[#f3f1ec] mb-6">
+            Start with one.
             <br />
             <span className="font-editorial text-[#b8b5af] font-normal italic lowercase tracking-tight">
               scale to
             </span>{" "}
-            BOTH<span className="text-[#e05a2b]">.</span>
+            both<span className="text-[#e05a2b]">.</span>
           </h1>
 
-          <p className="text-base sm:text-xl text-[#b8b5af] max-w-2xl font-normal leading-relaxed">
+          <p className="body-lead max-w-2xl">
             Deploy Convertix Lead Management or Convertix Service & Insurance independently—or activate the complete unified enterprise suite.
           </p>
         </div>
       </section>
 
       {/* Pricing Cards Grid */}
-      <section className="py-24 bg-[#0a0a0a]">
+      <section className="py-20 sm:py-28 bg-[#0a0a0a]">
         <div className="max-w-7xl mx-auto px-4 sm:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 mb-16">
             {TIERS.map((tier) => (
               <div
                 key={tier.name}
-                className="p-8 sm:p-10 rounded-3xl bg-[#0e0e0e] border border-white/10 flex flex-col justify-between shadow-2xl relative"
+                className="p-6 sm:p-9 rounded-3xl bg-[#101010] border border-white/10 flex flex-col justify-between shadow-xl relative"
               >
                 <div>
-                  <span className="text-[10px] font-mono font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[#e05a2b] inline-block mb-6">
+                  <span className="text-xs font-sans font-semibold tracking-wider px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[#e05a2b] inline-block mb-5 uppercase">
                     {tier.badge}
                   </span>
 
-                  <h3 className="text-2xl font-display font-bold text-white mb-2">
+                  <h3 className="text-xl sm:text-2xl font-sans font-bold text-white mb-1.5">
                     {tier.name}
                   </h3>
-                  <p className="text-xs font-mono text-[#b8b5af] mb-6">{tier.tagline}</p>
+                  <p className="text-xs font-sans text-[#b8b5af] mb-4">{tier.tagline}</p>
 
-                  <p className="text-xs font-mono text-[#b8b5af] leading-relaxed mb-8">
+                  <p className="body-standard text-xs mb-6">
                     {tier.description}
                   </p>
 
-                  <div className="space-y-3 pt-6 border-t border-white/10 mb-8">
-                    <span className="text-[11px] font-mono uppercase tracking-widest text-white/40 block">
-                      INCLUDED CAPABILITIES
+                  <div className="space-y-2.5 pt-5 border-t border-white/10 mb-6">
+                    <span className="text-xs font-sans font-semibold uppercase tracking-wider text-[#b8b5af] block">
+                      Included Capabilities
                     </span>
                     {tier.features.map((feature, i) => (
-                      <div key={i} className="flex items-start gap-2.5 text-xs font-mono text-white/80">
+                      <div key={i} className="flex items-start gap-2.5 text-xs font-sans text-white/90">
                         <Check className="w-3.5 h-3.5 text-[#e05a2b] shrink-0 mt-0.5" />
                         <span>{feature}</span>
                       </div>
@@ -134,14 +134,14 @@ export default function PricingPage() {
                   </div>
                 </div>
 
-                <div className="pt-6 border-t border-white/10">
+                <div className="pt-5 border-t border-white/10">
                   <button
                     type="button"
                     onClick={() => {
                       soundManager.playChirp();
                       setContactOpen(true);
                     }}
-                    className="w-full py-4 px-6 rounded-full bg-[#f3f1ec] text-black font-mono font-bold text-xs uppercase tracking-widest hover:bg-[#e05a2b] hover:text-white transition-colors flex items-center justify-center gap-2"
+                    className="w-full min-h-[48px] px-6 rounded-full bg-[#f3f1ec] text-black font-sans font-semibold text-xs uppercase tracking-wider hover:bg-[#e05a2b] hover:text-white transition-all flex items-center justify-center gap-2"
                   >
                     <span>Request Proposal</span>
                     <ArrowRight className="w-4 h-4" />
@@ -152,30 +152,30 @@ export default function PricingPage() {
           </div>
 
           {/* Direct Support */}
-          <div className="p-8 rounded-3xl bg-[#111111] border border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+          <div className="p-6 sm:p-8 rounded-3xl bg-[#121212] border border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
             <div>
-              <h4 className="font-display font-bold text-lg text-white">
+              <h4 className="font-sans font-bold text-base sm:text-lg text-white">
                 Multi-Brand Enterprise Dealership Group?
               </h4>
-              <p className="text-xs font-mono text-[#b8b5af]">
+              <p className="text-xs font-sans text-[#b8b5af]">
                 Direct Commercial Desk: +91 9078 019 472
               </p>
             </div>
 
-            <div className="flex items-center gap-4">
+            <div className="flex flex-wrap items-center gap-3">
               <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 rounded-full bg-[#25D366]/20 border border-[#25D366]/40 text-[#25D366] font-mono text-xs uppercase tracking-widest font-bold hover:bg-[#25D366] hover:text-black transition-colors inline-flex items-center gap-2"
+                className="min-h-[44px] px-5 py-2.5 rounded-full bg-[#25D366]/20 border border-[#25D366]/40 text-[#25D366] font-sans text-xs font-semibold uppercase tracking-wider hover:bg-[#25D366] hover:text-black transition-all inline-flex items-center gap-2"
               >
-                <MessageCircle className="w-3.5 h-3.5" />
+                <MessageCircle className="w-4 h-4" />
                 <span>WhatsApp Quote</span>
               </a>
 
               <a
                 href="tel:+919078019472"
-                className="px-6 py-3 rounded-full bg-[#e05a2b] text-white font-mono text-xs uppercase tracking-widest font-bold hover:bg-white hover:text-black transition-colors inline-flex items-center gap-2"
+                className="min-h-[44px] px-5 py-2.5 rounded-full bg-[#e05a2b] text-white font-sans text-xs font-semibold uppercase tracking-wider hover:bg-white hover:text-black transition-all inline-flex items-center gap-2"
               >
                 <Phone className="w-3.5 h-3.5" />
                 <span>Call Us</span>

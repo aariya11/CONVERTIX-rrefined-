@@ -5,28 +5,37 @@
     --bg-primary: #0a0a0a;
     --bg-secondary: #111111;
     --bg-card: #141414;
+    --bg-elevated: #1a1a1a;
     --text-primary: #f3f1ec;
     --text-secondary: #b8b5af;
-    --text-muted: #6e6b66;
+    --text-muted: #787570;
     --accent: #e05a2b;
     --border: rgba(243, 241, 236, 0.1);
-    --border-hover: rgba(243, 241, 236, 0.25);
+    --border-hover: rgba(243, 241, 236, 0.22);
+    
+    /* Dynamic Mobile Nav Height Token */
+    --mobile-nav-height: 64px;
   }
 
   * {
     border-color: var(--border);
     -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
   }
 
   html {
     scroll-behavior: smooth;
     background-color: var(--bg-primary);
     color: var(--text-primary);
+    font-family: var(--font-manrope), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
     background-color: var(--bg-primary);
     color: var(--text-primary);
+    font-family: var(--font-manrope), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -34,6 +43,8 @@
     overflow-x: hidden;
     width: 100%;
     min-height: 100vh;
+    letter-spacing: normal;
+    line-height: 1.6;
   }
 
   ::selection {
@@ -42,7 +53,7 @@
   }
 }
 
-/* Atmospheric Editorial Grain */
+/* Atmospheric Subtle Grain */
 .editorial-grain {
   position: fixed;
   top: 0;
@@ -51,7 +62,7 @@
   height: 100vh;
   pointer-events: none;
   z-index: 999;
-  opacity: 0.032;
+  opacity: 0.024;
   will-change: opacity;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
@@ -77,17 +88,62 @@
 }
 
 /* Typography Classes */
-.font-display {
-  font-family: var(--font-space), var(--font-geist-sans), sans-serif;
-  letter-spacing: -0.04em;
+.font-sans, .font-display {
+  font-family: var(--font-manrope), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  letter-spacing: -0.02em;
 }
 
 .font-editorial {
   font-family: var(--font-serif), Georgia, serif;
 }
 
-.font-cormorant {
-  font-family: var(--font-cormorant), Garamond, serif;
+/* Responsive Fluid Typography Utilities */
+.h1-editorial {
+  font-family: var(--font-manrope), sans-serif;
+  font-size: clamp(2.5rem, 7.5vw, 6.8rem);
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+  font-weight: 700;
+}
+
+.h2-editorial {
+  font-family: var(--font-manrope), sans-serif;
+  font-size: clamp(2rem, 4.5vw, 4.2rem);
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+  font-weight: 700;
+}
+
+.body-lead {
+  font-size: clamp(1rem, 1.3vw, 1.2rem);
+  line-height: 1.65;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+.body-standard {
+  font-size: clamp(0.9375rem, 1.05vw, 1.0625rem);
+  line-height: 1.6;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+.label-subtle {
+  font-size: clamp(0.75rem, 0.85vw, 0.875rem);
+  letter-spacing: 0.04em;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+/* Mobile Safe Bottom Padding on Page Main Wrapper */
+.mobile-safe-bottom {
+  padding-bottom: calc(var(--mobile-nav-height) + env(safe-area-inset-bottom, 0px) + 24px);
+}
+
+@media (min-width: 768px) {
+  .mobile-safe-bottom {
+    padding-bottom: 0px;
+  }
 }
 
 /* Luxury Editorial Image Reveal & Hover */
@@ -97,29 +153,11 @@
 }
 .luxury-image-wrapper img,
 .luxury-image-wrapper .image-target {
-  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-  filter: grayscale(80%) contrast(110%);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .luxury-image-wrapper:hover img,
 .luxury-image-wrapper:hover .image-target {
-  transform: scale(1.04);
-  filter: grayscale(20%) contrast(115%);
-}
-
-/* Hairline Dividers */
-.hairline-b {
-  border-bottom: 1px solid rgba(243, 241, 236, 0.08);
-}
-.hairline-t {
-  border-top: 1px solid rgba(243, 241, 236, 0.08);
-}
-
-/* Custom Micro Interaction */
-.btn-luxury {
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.btn-luxury:hover {
-  letter-spacing: 0.1em;
+  transform: scale(1.03);
 }
 
 @media (prefers-reduced-motion: reduce) {

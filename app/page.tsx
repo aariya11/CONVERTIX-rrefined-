@@ -26,13 +26,14 @@ export default function HomePage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <main className="min-h-screen bg-[#0a0a0a] text-[#f3f1ec] relative overflow-hidden">
-      {/* Editorial Navigation */}
+    <main className="min-h-screen bg-[#0a0a0a] text-[#f3f1ec] relative overflow-hidden mobile-safe-bottom">
+      {/* Top Editorial Navigation */}
       <Navbar
         onOpenContact={() => setContactOpen(true)}
         onOpenMobileMenu={() => setMobileMenuOpen(true)}
       />
 
+      {/* Mobile Drawer Menu */}
       <MobileMenu
         isOpen={mobileMenuOpen}
         onClose={() => setMobileMenuOpen(false)}
@@ -42,49 +43,49 @@ export default function HomePage() {
       {/* 01. Magazine Cover Hero */}
       <HeroSection onOpenContact={() => setContactOpen(true)} />
 
-      {/* 02. Problem Poster: EVERY MINUTE COSTS A LEAD */}
+      {/* 02. Problem Statement: Every Minute Costs a Lead */}
       <ProblemPoster />
 
-      {/* 03. Paradigm Shift: CHAOS INTO CONTROL */}
+      {/* 03. Operational Paradigm: Chaos into Control */}
       <ChaosToControl />
 
-      {/* 04. Suite 01: LEADS DON'T WAIT */}
+      {/* 04. Suite 01: Leads Don't Wait */}
       <LeadManagementSection />
 
-      {/* 05. Speed-to-Lead Benchmark: THE ADVANTAGE OF SPEED */}
+      {/* 05. Speed Benchmark: The Advantage of Speed */}
       <ResponseTimeScrubber />
 
-      {/* 06. Suite 02: KEEP THEM COMING BACK */}
+      {/* 06. Suite 02: Keep Them Coming Back */}
       <ServiceInsuranceSection />
 
-      {/* 07. Intelligence: AI THAT KNOWS WHO MATTERS NOW */}
+      {/* 07. Intelligence: AI That Knows Who Matters Now */}
       <AIPrioritizationEngine />
 
-      {/* 08. Nodal Graphic: THE CONNECTED DEALERSHIP ECOSYSTEM */}
+      {/* 08. Topology: The Connected Dealership Ecosystem */}
       <DealershipEcosystem />
 
-      {/* 09. System Capabilities: Vertical Feature Index */}
+      {/* 09. Capabilities: Vertical Feature Index */}
       <FeatureShowcase />
 
-      {/* 10. Master Product View: THE COCKPIT OF RECORD */}
+      {/* 10. Master Showcase: The Cockpit of Record */}
       <DashboardShowcase />
 
-      {/* 11. Automotive Manifesto: NOT ANOTHER CRM */}
+      {/* 11. Manifesto: Not Another Generic CRM */}
       <WhyConvertix />
 
-      {/* 12. Financial Model: WHAT DOES SLOW RESPONSE COST YOU? */}
+      {/* 12. Financial Model: What Does Slow Response Cost You? */}
       <DealershipRoiCalculator onOpenContact={() => setContactOpen(true)} />
 
-      {/* 13. Dramatic Ending: READY TO MOVE FASTER? */}
+      {/* 13. Closing: Ready to Move Faster? */}
       <FinalCta onOpenContact={() => setContactOpen(true)} />
 
       {/* Luxury Footer */}
       <Footer onOpenContact={() => setContactOpen(true)} />
 
-      {/* Subtle Mobile Quick Bar */}
+      {/* Fixed Mobile Bottom Navigation Bar (Respecting Safe Area) */}
       <MobileFloatingBar onOpenContact={() => setContactOpen(true)} />
 
-      {/* Executive Consultation Modal */}
+      {/* Executive Walkthrough Modal */}
       <ContactModal
         isOpen={contactOpen}
         onClose={() => setContactOpen(false)}

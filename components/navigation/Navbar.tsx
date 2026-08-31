@@ -2,8 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { ArrowUpRight, Menu } from "lucide-react";
 import { soundManager } from "../lib/sound";
 
 interface NavbarProps {
@@ -16,7 +15,7 @@ export function Navbar({ onOpenContact, onOpenMobileMenu }: NavbarProps) {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
+      if (window.scrollY > 40) {
         setScrolled(true);
       } else {
         setScrolled(false);
@@ -27,12 +26,12 @@ export function Navbar({ onOpenContact, onOpenMobileMenu }: NavbarProps) {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 pointer-events-none transition-all duration-500">
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 pt-6 sm:pt-8">
+    <header className="fixed top-0 left-0 right-0 z-50 pointer-events-none transition-all duration-300">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 pt-4 sm:pt-6">
         <nav
-          className={`pointer-events-auto transition-all duration-500 flex items-center justify-between ${
+          className={`pointer-events-auto transition-all duration-300 flex items-center justify-between ${
             scrolled
-              ? "bg-[#0a0a0a]/90 backdrop-blur-xl border border-white/10 rounded-full py-3 px-6 shadow-2xl mx-auto max-w-4xl"
+              ? "bg-[#0a0a0a]/90 backdrop-blur-xl border border-white/10 rounded-full py-2.5 px-6 shadow-xl mx-auto max-w-4xl"
               : "bg-transparent py-2 px-0"
           }`}
         >
@@ -41,53 +40,53 @@ export function Navbar({ onOpenContact, onOpenMobileMenu }: NavbarProps) {
             href="/"
             onClick={() => soundManager.playClick()}
             data-cursor="CONVERTIX"
-            className="flex items-center gap-2 group"
+            className="flex items-center gap-1 group"
           >
-            <span className="font-display font-black text-lg sm:text-xl tracking-[-0.05em] text-[#f3f1ec]">
-              CONVERTIX<span className="text-[#e05a2b]">.</span>
+            <span className="font-sans font-extrabold text-xl sm:text-2xl tracking-tight text-[#f3f1ec]">
+              Convertix<span className="text-[#e05a2b]">.</span>
             </span>
           </Link>
 
           {/* Center Links (Desktop) */}
-          <div className="hidden md:flex items-center gap-8 text-xs font-mono tracking-widest text-[#b8b5af]">
+          <div className="hidden md:flex items-center gap-7 text-[13px] font-sans font-medium text-[#b8b5af]">
             <Link
               href="/products/lead-management"
-              className="hover:text-white transition-colors uppercase"
+              className="hover:text-white transition-colors"
               onClick={() => soundManager.playClick()}
             >
               Leads
             </Link>
             <Link
               href="/products/service-insurance"
-              className="hover:text-white transition-colors uppercase"
+              className="hover:text-white transition-colors"
               onClick={() => soundManager.playClick()}
             >
               Service & Insurance
             </Link>
             <a
               href="#ecosystem"
-              className="hover:text-white transition-colors uppercase"
+              className="hover:text-white transition-colors"
               onClick={() => soundManager.playClick()}
             >
               Ecosystem
             </a>
             <a
               href="#roi"
-              className="hover:text-white transition-colors uppercase"
+              className="hover:text-white transition-colors"
               onClick={() => soundManager.playClick()}
             >
               ROI Impact
             </a>
             <Link
               href="/pricing"
-              className="hover:text-white transition-colors uppercase"
+              className="hover:text-white transition-colors"
               onClick={() => soundManager.playClick()}
             >
               Editions
             </Link>
             <Link
               href="/about"
-              className="hover:text-white transition-colors uppercase"
+              className="hover:text-white transition-colors"
               onClick={() => soundManager.playClick()}
             >
               About
@@ -103,10 +102,10 @@ export function Navbar({ onOpenContact, onOpenMobileMenu }: NavbarProps) {
                 onOpenContact();
               }}
               data-cursor="TALK"
-              className="hidden sm:inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#f3f1ec] hover:text-[#e05a2b] transition-colors group"
+              className="hidden sm:inline-flex items-center gap-2 text-xs font-sans font-semibold text-[#f3f1ec] bg-white/10 hover:bg-[#e05a2b] hover:text-white px-4 py-2 rounded-full transition-all group"
             >
               <span>Talk to Sales</span>
-              <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-[#e05a2b]" />
+              <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </button>
 
             {/* Mobile Trigger */}
@@ -114,7 +113,7 @@ export function Navbar({ onOpenContact, onOpenMobileMenu }: NavbarProps) {
               type="button"
               onClick={onOpenMobileMenu}
               aria-label="Open Navigation"
-              className="md:hidden p-2 text-[#f3f1ec] hover:text-[#e05a2b] transition-colors"
+              className="md:hidden p-2.5 text-[#f3f1ec] hover:text-[#e05a2b] transition-colors"
             >
               <Menu className="w-5 h-5" />
             </button>

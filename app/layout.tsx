@@ -1,36 +1,22 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Playfair_Display, Cormorant_Garamond, Geist, Geist_Mono } from "next/font/google";
+import { Manrope, Instrument_Serif, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { CustomCursor } from "@/components/ui/CustomCursor";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
   display: "swap",
   weight: ["400", "500", "600", "700"],
 });
 
-const playfair = Playfair_Display({
+const instrumentSerif = Instrument_Serif({
   variable: "--font-serif",
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: ["400"],
   style: ["normal", "italic"],
-});
-
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
-});
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-  display: "swap",
 });
 
 const geistMono = Geist_Mono({
@@ -40,9 +26,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CONVERTIX — The Dealership Operating System | Luxury Automotive Retail Technology",
+  title: "CONVERTIX — The Dealership Operating System | Automotive Retail Technology",
   description:
-    "A new standard for automotive retail. Convertix unifies lead response, service retention, and insurance workflows into an intelligent operating system built for modern dealerships.",
+    "An intelligent operating system for automotive dealerships. Convertix unifies showroom lead response, workshop service retention, and proactive insurance workflows into one cohesive platform.",
   keywords: [
     "automotive dealership software",
     "dealer CRM",
@@ -74,16 +60,16 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${playfair.variable} ${cormorant.variable} ${geistSans.variable} ${geistMono.variable} dark antialiased scroll-smooth`}
+      className={`${manrope.variable} ${instrumentSerif.variable} ${geistMono.variable} dark antialiased scroll-smooth`}
     >
       <body className="bg-[#0a0a0a] text-[#f3f1ec] min-h-screen relative font-sans selection:bg-[#e05a2b] selection:text-white">
         {/* Subtle Editorial Grain */}
         <div className="editorial-grain pointer-events-none" />
 
-        {/* Minimal Luxury Custom Cursor */}
+        {/* Minimal Custom Cursor (Desktop Only) */}
         <CustomCursor />
 
-        {/* Global WhatsApp Chat Desk */}
+        {/* Global Floating WhatsApp Desk */}
         <WhatsAppButton />
 
         {children}
