@@ -18,8 +18,6 @@ export default function ContactPage() {
     name: "",
     phone: "",
     dealershipName: "",
-    brand: "Tata Motors",
-    outlets: "1–3 Outlets",
     message: "",
   });
 
@@ -162,42 +160,11 @@ export default function ContactPage() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div className="space-y-1">
-                      <label className="text-white/70 uppercase tracking-wider block font-medium">Primary Brand</label>
-                      <select
-                        value={formData.brand}
-                        onChange={(e) => setFormData({ ...formData, brand: e.target.value })}
-                        className="w-full min-h-[48px] px-3 bg-[#161616] border border-white/10 rounded-xl text-white text-sm focus:border-[#e05a2b] focus:outline-none"
-                      >
-                        <option>Tata Motors</option>
-                        <option>Maruti Suzuki</option>
-                        <option>Hyundai Motor</option>
-                        <option>Mahindra & Mahindra</option>
-                        <option>Kia Motors</option>
-                        <option>Multi-Brand Dealer Group</option>
-                      </select>
-                    </div>
-
-                    <div className="space-y-1">
-                      <label className="text-white/70 uppercase tracking-wider block font-medium">Showroom Outlets</label>
-                      <select
-                        value={formData.outlets}
-                        onChange={(e) => setFormData({ ...formData, outlets: e.target.value })}
-                        className="w-full min-h-[48px] px-3 bg-[#161616] border border-white/10 rounded-xl text-white text-sm focus:border-[#e05a2b] focus:outline-none"
-                      >
-                        <option>1–3 Outlets (Single Region)</option>
-                        <option>4–10 Outlets (Multi-City)</option>
-                        <option>10+ Outlets (Large Enterprise Group)</option>
-                      </select>
-                    </div>
-                  </div>
-
                   <div className="space-y-1">
-                    <label className="text-white/70 uppercase tracking-wider block font-medium">Specific Objectives</label>
+                    <label className="text-white/70 uppercase tracking-wider block font-medium">Specific Objectives / Notes</label>
                     <textarea
                       rows={3}
-                      placeholder="e.g. We want to cut lead response latency across 6 Tata outlets and automate workshop reminders."
+                      placeholder="e.g. We want to cut lead response latency across our outlets and automate workshop service reminders."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       className="w-full p-3 bg-[#161616] border border-white/10 rounded-xl text-white text-sm focus:border-[#e05a2b] focus:outline-none resize-none"
