@@ -1,8 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import { soundManager } from "../lib/sound";
 
-export function LeadManagementSection() {
+interface LeadManagementSectionProps {
+  onOpenContact?: () => void;
+}
+
+export function LeadManagementSection({ onOpenContact }: LeadManagementSectionProps) {
   return (
     <section id="services" className="relative py-24 sm:py-36 bg-[#0a0a0a] border-t border-white/10 overflow-hidden defer-render">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
@@ -65,6 +71,22 @@ export function LeadManagementSection() {
                 Zero bloated plugins. Handcrafted with clean Next.js 16, TypeScript, and Tailwind CSS for instant sub-second rendering across all devices.
               </p>
             </div>
+
+            {onOpenContact && (
+              <div className="pt-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    soundManager.playChirp();
+                    onOpenContact();
+                  }}
+                  className="min-h-[48px] px-6 py-3 rounded-full bg-[#e05a2b] text-white font-sans font-semibold text-xs uppercase tracking-wider hover:bg-white hover:text-black transition-all inline-flex items-center gap-2"
+                >
+                  <span>Explore Web Architecture</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+            )}
           </div>
 
           {/* Right Showcase Card (6 cols) */}
@@ -77,10 +99,10 @@ export function LeadManagementSection() {
             <div className="space-y-1">
               <span className="text-xs font-sans text-[#b8b5af] block">Client Profile</span>
               <h3 className="text-2xl sm:text-3xl font-sans font-bold text-white">
-                Apex Automotive Group
+                Apex Luxury Services
               </h3>
               <p className="body-standard text-[#e05a2b]">
-                Luxury Dealership & Service Network
+                Premium Service & Consulting Network
               </p>
             </div>
 

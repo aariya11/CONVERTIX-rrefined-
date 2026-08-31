@@ -5,6 +5,10 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { soundManager } from "../lib/sound";
 
+interface FeatureShowcaseProps {
+  onOpenContact?: () => void;
+}
+
 const FEATURES = [
   {
     id: "01",
@@ -44,7 +48,7 @@ const FEATURES = [
   },
 ];
 
-export function FeatureShowcase() {
+export function FeatureShowcase({ onOpenContact }: FeatureShowcaseProps) {
   const [hovered, setHovered] = useState<string>("01");
 
   return (
@@ -59,7 +63,7 @@ export function FeatureShowcase() {
         </div>
 
         {/* Headline */}
-        <div className="mb-16 sm:mb-24">
+        <div className="mb-16 sm:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <h2 className="h2-editorial text-[#f3f1ec]">
             Crafted
             <br />
@@ -68,6 +72,20 @@ export function FeatureShowcase() {
             </span>{" "}
             measurable impact<span className="text-[#e05a2b]">.</span>
           </h2>
+
+          {onOpenContact && (
+            <button
+              type="button"
+              onClick={() => {
+                soundManager.playChirp();
+                onOpenContact();
+              }}
+              className="min-h-[44px] px-6 py-2.5 rounded-full border border-white/20 hover:border-[#e05a2b] text-white hover:text-[#e05a2b] font-sans text-xs font-semibold uppercase tracking-wider transition-all self-start md:self-auto inline-flex items-center gap-2"
+            >
+              <span>Consult with Our Studio</span>
+              <ArrowUpRight className="w-4 h-4" />
+            </button>
+          )}
         </div>
 
         {/* Feature List */}
@@ -75,11 +93,16 @@ export function FeatureShowcase() {
           {FEATURES.map((item) => (
             <div
               key={item.id}
+              onClick={() => {
+                soundManager.playClick();
+                setHovered(item.id);
+                onOpenContact?.();
+              }}
               onMouseEnter={() => {
                 soundManager.playClick();
                 setHovered(item.id);
               }}
-              className="py-8 sm:py-12 group cursor-default transition-colors"
+              className="py-8 sm:py-12 group cursor-pointer transition-colors hover:bg-white/[0.02]"
             >
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-baseline">
                 {/* ID + Title */}

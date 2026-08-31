@@ -1,8 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import { soundManager } from "../lib/sound";
 
-export function AIPrioritizationEngine() {
+interface AIPrioritizationEngineProps {
+  onOpenContact?: () => void;
+}
+
+export function AIPrioritizationEngine({ onOpenContact }: AIPrioritizationEngineProps) {
   return (
     <section id="ai-engine" className="relative py-24 sm:py-36 bg-[#0a0a0a] border-t border-white/10 overflow-hidden defer-render">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
@@ -29,7 +35,7 @@ export function AIPrioritizationEngine() {
         {/* Data Box */}
         <div className="border border-white/10 rounded-3xl p-6 sm:p-12 bg-[#101010] grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           {/* Left Score (5 cols) */}
-          <div className="lg:col-span-5 space-y-3">
+          <div className="lg:col-span-5 space-y-4">
             <span className="text-xs font-sans text-[#b8b5af] uppercase tracking-wider block">
               Google Core Web Vitals
             </span>
@@ -39,6 +45,20 @@ export function AIPrioritizationEngine() {
             <span className="text-sm font-sans font-semibold text-[#e05a2b] block">
               Perfect Desktop & Mobile Performance
             </span>
+
+            {onOpenContact && (
+              <button
+                type="button"
+                onClick={() => {
+                  soundManager.playChirp();
+                  onOpenContact();
+                }}
+                className="min-h-[44px] px-5 py-2.5 rounded-full border border-white/20 text-white hover:bg-white hover:text-black font-sans text-xs font-semibold uppercase tracking-wider transition-all inline-flex items-center gap-2"
+              >
+                <span>Audit Your Current Website</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            )}
           </div>
 
           {/* Right Insights (7 cols) */}

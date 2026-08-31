@@ -1,24 +1,46 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import { soundManager } from "../lib/sound";
 
-export function DashboardShowcase() {
+interface DashboardShowcaseProps {
+  onOpenContact?: () => void;
+}
+
+export function DashboardShowcase({ onOpenContact }: DashboardShowcaseProps) {
   return (
     <section className="relative py-24 sm:py-36 bg-[#0a0a0a] border-t border-white/10 overflow-hidden defer-render">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         {/* Header */}
-        <div className="mb-16 sm:mb-24">
-          <span className="text-xs font-sans font-semibold tracking-wider text-[#e05a2b] uppercase block mb-3">
-            Client Impact Benchmark
-          </span>
-          <h2 className="h2-editorial text-[#f3f1ec]">
-            The performance
-            <br />
-            <span className="font-editorial text-[#b8b5af] font-normal italic lowercase tracking-tight">
-              we
-            </span>{" "}
-            deliver<span className="text-[#e05a2b]">.</span>
-          </h2>
+        <div className="mb-16 sm:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div>
+            <span className="text-xs font-sans font-semibold tracking-wider text-[#e05a2b] uppercase block mb-3">
+              Client Impact Benchmark
+            </span>
+            <h2 className="h2-editorial text-[#f3f1ec]">
+              The performance
+              <br />
+              <span className="font-editorial text-[#b8b5af] font-normal italic lowercase tracking-tight">
+                we
+              </span>{" "}
+              deliver<span className="text-[#e05a2b]">.</span>
+            </h2>
+          </div>
+
+          {onOpenContact && (
+            <button
+              type="button"
+              onClick={() => {
+                soundManager.playChirp();
+                onOpenContact();
+              }}
+              className="min-h-[44px] px-6 py-2.5 rounded-full bg-[#e05a2b] text-white font-sans text-xs font-semibold uppercase tracking-wider hover:bg-white hover:text-black transition-all self-start md:self-auto inline-flex items-center gap-2"
+            >
+              <span>Start Your Custom Build</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          )}
         </div>
 
         {/* Showcase Frame */}

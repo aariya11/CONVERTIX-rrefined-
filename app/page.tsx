@@ -25,11 +25,13 @@ export default function HomePage() {
   const [contactOpen, setContactOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const handleOpenContact = () => setContactOpen(true);
+
   return (
     <main className="min-h-screen bg-[#0a0a0a] text-[#f3f1ec] relative overflow-hidden mobile-safe-bottom">
       {/* Top Editorial Navigation */}
       <Navbar
-        onOpenContact={() => setContactOpen(true)}
+        onOpenContact={handleOpenContact}
         onOpenMobileMenu={() => setMobileMenuOpen(true)}
       />
 
@@ -37,55 +39,55 @@ export default function HomePage() {
       <MobileMenu
         isOpen={mobileMenuOpen}
         onClose={() => setMobileMenuOpen(false)}
-        onOpenContact={() => setContactOpen(true)}
+        onOpenContact={handleOpenContact}
       />
 
       {/* 01. Magazine Cover Hero */}
-      <HeroSection onOpenContact={() => setContactOpen(true)} />
+      <HeroSection onOpenContact={handleOpenContact} />
 
-      {/* 02. Problem Statement: Every Minute Costs a Lead */}
-      <ProblemPoster />
+      {/* 02. Problem Statement: Most Service Websites Leak High-Value Clients */}
+      <ProblemPoster onOpenContact={handleOpenContact} />
 
-      {/* 03. Operational Paradigm: Chaos into Control */}
+      {/* 03. Transformation: Templates into Growth Engines */}
       <ChaosToControl />
 
-      {/* 04. Suite 01: Leads Don't Wait */}
-      <LeadManagementSection />
+      {/* 04. Service Architecture: Design That Captures Clients */}
+      <LeadManagementSection onOpenContact={handleOpenContact} />
 
-      {/* 05. Speed Benchmark: The Advantage of Speed */}
+      {/* 05. Speed Benchmark: The Direct Cost of Slow Page Speed */}
       <ResponseTimeScrubber />
 
-      {/* 06. Suite 02: Keep Them Coming Back */}
-      <ServiceInsuranceSection />
+      {/* 06. Booking Systems: Websites That Drive Real Bookings */}
+      <ServiceInsuranceSection onOpenContact={handleOpenContact} />
 
-      {/* 07. Intelligence: AI That Knows Who Matters Now */}
-      <AIPrioritizationEngine />
+      {/* 07. Performance Standard: Engineering That Amplifies Results */}
+      <AIPrioritizationEngine onOpenContact={handleOpenContact} />
 
-      {/* 08. Topology: The Connected Dealership Ecosystem */}
-      <DealershipEcosystem />
+      {/* 08. Topology: The Complete Digital Ecosystem */}
+      <DealershipEcosystem onOpenContact={handleOpenContact} />
 
-      {/* 09. Capabilities: Vertical Feature Index */}
-      <FeatureShowcase />
+      {/* 09. Capabilities: Studio Capabilities Index */}
+      <FeatureShowcase onOpenContact={handleOpenContact} />
 
-      {/* 10. Master Showcase: The Cockpit of Record */}
-      <DashboardShowcase />
+      {/* 10. Performance Showcase: The Performance We Deliver */}
+      <DashboardShowcase onOpenContact={handleOpenContact} />
 
-      {/* 11. Manifesto: Not Another Generic CRM */}
-      <WhyConvertix />
+      {/* 11. Manifesto: Not Another Generic Agency */}
+      <WhyConvertix onOpenContact={handleOpenContact} />
 
-      {/* 12. Financial Model: What Does Slow Response Cost You? */}
-      <DealershipRoiCalculator onOpenContact={() => setContactOpen(true)} />
+      {/* 12. Revenue Model: What Is a Slow Website Costing Your Business? */}
+      <DealershipRoiCalculator onOpenContact={handleOpenContact} />
 
-      {/* 13. Closing: Ready to Move Faster? */}
-      <FinalCta onOpenContact={() => setContactOpen(true)} />
+      {/* 13. Closing: Ready to Build Your Website? */}
+      <FinalCta onOpenContact={handleOpenContact} />
 
       {/* Luxury Footer */}
-      <Footer onOpenContact={() => setContactOpen(true)} />
+      <Footer onOpenContact={handleOpenContact} />
 
-      {/* Fixed Mobile Bottom Navigation Bar (Respecting Safe Area) */}
-      <MobileFloatingBar onOpenContact={() => setContactOpen(true)} />
+      {/* Fixed Mobile Bottom Navigation Bar */}
+      <MobileFloatingBar onOpenContact={handleOpenContact} />
 
-      {/* Executive Walkthrough Modal */}
+      {/* Client Project Commissioning Modal */}
       <ContactModal
         isOpen={contactOpen}
         onClose={() => setContactOpen(false)}

@@ -1,8 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import { soundManager } from "../lib/sound";
 
-export function ServiceInsuranceSection() {
+interface ServiceInsuranceSectionProps {
+  onOpenContact?: () => void;
+}
+
+export function ServiceInsuranceSection({ onOpenContact }: ServiceInsuranceSectionProps) {
   return (
     <section id="retention" className="relative py-24 sm:py-36 bg-[#0a0a0a] border-t border-white/10 overflow-hidden defer-render">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
@@ -53,6 +59,20 @@ export function ServiceInsuranceSection() {
             <p className="body-standard">
               Convertix replaces bloated generic forms with intuitive interactive booking flows, direct WhatsApp chat channels, and automated inquiry distribution.
             </p>
+
+            {onOpenContact && (
+              <button
+                type="button"
+                onClick={() => {
+                  soundManager.playChirp();
+                  onOpenContact();
+                }}
+                className="min-h-[48px] px-6 py-3 rounded-full bg-[#e05a2b] text-white font-sans font-semibold text-xs uppercase tracking-wider hover:bg-white hover:text-black transition-all inline-flex items-center gap-2"
+              >
+                <span>Build Your Booking Funnel</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            )}
           </div>
 
           {/* Right Vertical Timeline (7 cols) */}

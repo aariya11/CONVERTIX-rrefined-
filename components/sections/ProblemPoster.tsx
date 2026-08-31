@@ -1,6 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import { soundManager } from "../lib/sound";
+
+interface ProblemPosterProps {
+  onOpenContact?: () => void;
+}
 
 const PROBLEMS = [
   { id: "01", text: "Generic templates that commoditize your service and erode client trust." },
@@ -10,7 +16,7 @@ const PROBLEMS = [
   { id: "05", text: "Unfocused messaging that fails to communicate your premium authority." },
 ];
 
-export function ProblemPoster() {
+export function ProblemPoster({ onOpenContact }: ProblemPosterProps) {
   return (
     <section id="problem" className="relative py-24 sm:py-36 bg-[#0a0a0a] border-t border-white/10 overflow-hidden defer-render">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
@@ -37,13 +43,27 @@ export function ProblemPoster() {
         {/* Composition */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-16 items-start">
           {/* Left: 45% Statistic (5 cols) */}
-          <div className="lg:col-span-5 space-y-4 border-l border-white/10 pl-6 sm:pl-8">
+          <div className="lg:col-span-5 space-y-6 border-l border-white/10 pl-6 sm:pl-8">
             <span className="text-7xl sm:text-8xl md:text-9xl font-sans font-bold text-[#f3f1ec] tracking-tighter block leading-none">
               45<span className="text-[#e05a2b] font-editorial font-normal italic">%</span>
             </span>
             <p className="body-standard max-w-sm">
               Of prospective clients abandon generic, slow, template-based websites within 8 seconds without ever submitting an inquiry.
             </p>
+
+            {onOpenContact && (
+              <button
+                type="button"
+                onClick={() => {
+                  soundManager.playChirp();
+                  onOpenContact();
+                }}
+                className="min-h-[44px] px-5 py-2.5 rounded-full border border-[#e05a2b]/40 text-[#e05a2b] hover:bg-[#e05a2b] hover:text-white font-sans text-xs font-semibold uppercase tracking-wider transition-all inline-flex items-center gap-2"
+              >
+                <span>Fix Website Leakage</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            )}
           </div>
 
           {/* Right: Pain Point List (7 cols) */}
