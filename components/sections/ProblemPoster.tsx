@@ -3,11 +3,11 @@
 import { motion } from "framer-motion";
 
 const PROBLEMS = [
-  { id: "01", text: "Slow 24-hour response delay across online leads." },
-  { id: "02", text: "Missed follow-ups on active showroom inquiries." },
-  { id: "03", text: "Disconnected OEM DMS, web portals, and aggregator silos." },
-  { id: "04", text: "Unverified manual telecalls with zero leadership audit." },
-  { id: "05", text: "Mistimed service reminders causing workshop bay churn." },
+  { id: "01", text: "Generic templates that commoditize your service and erode client trust." },
+  { id: "02", text: "Slow 4+ second load times and broken mobile touch interactions." },
+  { id: "03", text: "Absence of instant WhatsApp and high-converting callback inquiry flows." },
+  { id: "04", text: "Disconnected scheduling systems that lose high-ticket leads in the cracks." },
+  { id: "05", text: "Unfocused messaging that fails to communicate your premium authority." },
 ];
 
 export function ProblemPoster() {
@@ -18,19 +18,19 @@ export function ProblemPoster() {
         <div className="flex items-center gap-2 mb-6">
           <span className="w-2 h-2 rounded-full bg-[#e05a2b]" />
           <span className="text-xs font-sans font-semibold tracking-wider text-[#e05a2b] uppercase">
-            The Dealership Problem
+            The Digital Problem
           </span>
         </div>
 
         {/* Headline */}
         <div className="mb-16 sm:mb-24">
           <h2 className="h2-editorial text-[#f3f1ec]">
-            Every minute
+            Most service websites
             <br />
             <span className="font-editorial text-[#e05a2b] font-normal italic lowercase tracking-tight">
-              costs a
+              leak
             </span>{" "}
-            lead<span className="text-[#e05a2b]">.</span>
+            high-value clients<span className="text-[#e05a2b]">.</span>
           </h2>
         </div>
 
@@ -42,7 +42,7 @@ export function ProblemPoster() {
               45<span className="text-[#e05a2b] font-editorial font-normal italic">%</span>
             </span>
             <p className="body-standard max-w-sm">
-              Of prospective car buyers and workshop service renewals drop off when initial showroom follow-up exceeds 30 minutes.
+              Of prospective clients abandon generic, slow, template-based websites within 8 seconds without ever submitting an inquiry.
             </p>
           </div>
 

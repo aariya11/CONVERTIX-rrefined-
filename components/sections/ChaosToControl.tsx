@@ -14,15 +14,15 @@ export function ChaosToControl() {
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-16">
           <div>
             <span className="text-xs font-sans font-semibold tracking-wider text-[#e05a2b] uppercase block mb-3">
-              The Operational Paradigm
+              The Digital Transformation
             </span>
             <h2 className="h2-editorial text-[#f3f1ec]">
-              Chaos
+              Templates
               <br />
               <span className="font-editorial text-[#b8b5af] font-normal italic lowercase tracking-tight">
                 into
               </span>{" "}
-              control<span className="text-[#e05a2b]">.</span>
+              growth engines<span className="text-[#e05a2b]">.</span>
             </h2>
           </div>
 
@@ -40,7 +40,7 @@ export function ChaosToControl() {
                   : "text-[#b8b5af] hover:text-white"
               }`}
             >
-              Without Convertix
+              Standard Web Template
             </button>
             <button
               type="button"
@@ -54,7 +54,7 @@ export function ChaosToControl() {
                   : "text-[#b8b5af] hover:text-white"
               }`}
             >
-              With Convertix
+              Convertix Custom Build
             </button>
           </div>
         </div>
@@ -71,24 +71,24 @@ export function ChaosToControl() {
               className="space-y-8"
             >
               <div className="flex justify-between items-start border-b border-white/10 pb-4 text-xs font-sans text-red-400">
-                <span className="font-medium">Unmanaged Showroom Operations</span>
-                <span>52% Inquiry Leakage</span>
+                <span className="font-medium">Underperforming Service Website</span>
+                <span>Low Visitor Conversion</span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-[#b8b5af]">
                 <div className="space-y-2">
-                  <span className="text-3xl font-sans font-bold text-white block">18 Hours</span>
-                  <p className="body-standard">Average wait time before an incoming buyer receives their first phone call</p>
+                  <span className="text-3xl font-sans font-bold text-white block">4.2s Delay</span>
+                  <p className="body-standard">Slow page loads that lose over 50% of mobile ad traffic before the page renders</p>
                 </div>
 
                 <div className="space-y-2">
-                  <span className="text-3xl font-sans font-bold text-white block">&lt;40%</span>
-                  <p className="body-standard">Follow-up execution on showroom visits and web inquiries</p>
+                  <span className="text-3xl font-sans font-bold text-white block">&lt;2.1%</span>
+                  <p className="body-standard">Inquiry conversion rate from prospective high-ticket service clients</p>
                 </div>
 
                 <div className="space-y-2">
-                  <span className="text-3xl font-sans font-bold text-white block">60%+</span>
-                  <p className="body-standard">Mistimed workshop service reminders sent on arbitrary dates</p>
+                  <span className="text-3xl font-sans font-bold text-white block">Disconnected</span>
+                  <p className="body-standard">Manual email forms that take hours or days to reach your sales team</p>
                 </div>
               </div>
             </motion.div>
@@ -102,38 +102,38 @@ export function ChaosToControl() {
               className="space-y-8"
             >
               <div className="flex justify-between items-start border-b border-white/10 pb-4 text-xs font-sans text-[#e05a2b]">
-                <span className="font-medium">Convertix Synchronized Dealership Flow</span>
-                <span>94.8% SLA Adherence</span>
+                <span className="font-medium">Convertix Bespoke Service Platform</span>
+                <span>Sub-Second Performance</span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-[#b8b5af]">
                 <div className="space-y-2">
                   <span className="text-3xl font-sans font-bold text-white block">
-                    10 Mins<span className="text-[#e05a2b]">.</span>
+                    0.6s Load<span className="text-[#e05a2b]">.</span>
                   </span>
-                  <p className="body-standard">Automated lead routing and instant SIM-verified assignment</p>
+                  <p className="body-standard">Engineered with Next.js 16 and Turbopack for instant sub-second page delivery</p>
                 </div>
 
                 <div className="space-y-2">
                   <span className="text-3xl font-sans font-bold text-white block">
-                    &gt;90%<span className="text-[#e05a2b]">.</span>
+                    8.4% Rate<span className="text-[#e05a2b]">.</span>
                   </span>
-                  <p className="body-standard">Follow-up compliance backed by automatic supervisor escalation alerts</p>
+                  <p className="body-standard">Editorial visual storytelling and friction-free inquiry flows that maximize conversions</p>
                 </div>
 
                 <div className="space-y-2">
                   <span className="text-3xl font-sans font-bold text-white block">
-                    2-Way<span className="text-[#e05a2b]">.</span>
+                    Instant Sync<span className="text-[#e05a2b]">.</span>
                   </span>
-                  <p className="body-standard">Live OEM DMS synchronization with zero double-entry lag</p>
+                  <p className="body-standard">Inquiries route instantly to WhatsApp, phone dials, and your CRM in under 15 seconds</p>
                 </div>
               </div>
             </motion.div>
           )}
 
           <div className="pt-6 border-t border-white/10 text-xs font-sans text-[#b8b5af] flex items-center justify-between">
-            <span>Operating Architecture</span>
-            <span>Selenix Technology</span>
+            <span>Engineering Standard</span>
+            <span>Bespoke Web Development for Services</span>
           </div>
         </div>
       </div>

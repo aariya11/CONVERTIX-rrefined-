@@ -10,19 +10,19 @@ export function AIPrioritizationEngine() {
         <div className="flex items-center gap-2 mb-6">
           <span className="w-2 h-2 rounded-full bg-[#e05a2b]" />
           <span className="text-xs font-sans font-semibold tracking-wider text-[#e05a2b] uppercase">
-            Machine Learning Protocol
+            Performance Standard
           </span>
         </div>
 
         {/* Headline */}
         <div className="mb-16 sm:mb-24">
           <h2 className="h2-editorial text-[#f3f1ec]">
-            AI that knows
+            Engineering that
             <br />
             <span className="font-editorial text-[#b8b5af] font-normal italic lowercase tracking-tight">
-              who
+              amplifies
             </span>{" "}
-            matters now<span className="text-[#e05a2b]">.</span>
+            results<span className="text-[#e05a2b]">.</span>
           </h2>
         </div>
 
@@ -31,13 +31,13 @@ export function AIPrioritizationEngine() {
           {/* Left Score (5 cols) */}
           <div className="lg:col-span-5 space-y-3">
             <span className="text-xs font-sans text-[#b8b5af] uppercase tracking-wider block">
-              Real-Time Intent Score
+              Google Core Web Vitals
             </span>
             <div className="text-7xl sm:text-9xl font-sans font-bold text-[#f3f1ec] leading-none">
-              97<span className="text-[#e05a2b]">.</span>
+              100<span className="text-[#e05a2b]">.</span>
             </div>
             <span className="text-sm font-sans font-semibold text-[#e05a2b] block">
-              High Conversion Probability
+              Perfect Desktop & Mobile Performance
             </span>
           </div>
 
@@ -45,24 +45,24 @@ export function AIPrioritizationEngine() {
           <div className="lg:col-span-7 space-y-6 border-l border-white/10 pl-0 lg:pl-10">
             <div className="space-y-1">
               <span className="text-xs font-sans text-[#b8b5af] uppercase tracking-wider block">
-                Signal Evaluation
+                Technical Foundation
               </span>
               <h3 className="text-xl sm:text-2xl font-sans font-bold text-white">
-                Vehicle Segment: Premium SUV (₹28.5L Budget)
+                Next.js 16 App Router & Server Components
               </h3>
             </div>
 
             <div className="space-y-1">
               <span className="text-xs font-sans text-[#b8b5af] uppercase tracking-wider block">
-                Dispatch SLA
+                SEO & Discoverability
               </span>
               <p className="body-standard">
-                Immediate test drive request identified. Automatically routed to the lead sales consultant in under 15 seconds.
+                Built-in semantic HTML5, automated XML sitemaps, structured JSON-LD schemas, and OpenGraph tags to dominate local and regional service search results.
               </p>
             </div>
 
             <div className="pt-4 border-t border-white/10 text-xs font-sans text-[#b8b5af]">
-              Machine learning models quietly rank hundreds of daily inquiries so consultants always dial ready buyers first.
+              Every website we deliver is optimized for lightning-fast speeds, accessibility, search indexing, and high visitor-to-client conversion.
             </div>
           </div>
         </div>

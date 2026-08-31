@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Home, Zap, RotateCw, Calculator, Calendar } from "lucide-react";
+import { Home, Layers, Sparkles, Calculator, Send } from "lucide-react";
 import { soundManager } from "../lib/sound";
 
 interface MobileBottomNavProps {
@@ -28,25 +28,25 @@ export function MobileFloatingBar({ onOpenContact }: MobileBottomNavProps) {
           <span className="text-[11px] font-sans font-medium tracking-tight">Home</span>
         </Link>
 
-        {/* Leads */}
-        <Link
-          href="/products/lead-management"
+        {/* Services */}
+        <a
+          href="#services"
           onClick={() => soundManager.playClick()}
           className="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] py-1 text-[#b8b5af] hover:text-white transition-colors"
         >
-          <Zap className="w-4 h-4 mb-1 text-[#e05a2b]" />
-          <span className="text-[11px] font-sans font-medium tracking-tight">Leads</span>
-        </Link>
+          <Layers className="w-4 h-4 mb-1 text-[#e05a2b]" />
+          <span className="text-[11px] font-sans font-medium tracking-tight">Services</span>
+        </a>
 
-        {/* Service */}
-        <Link
-          href="/products/service-insurance"
+        {/* Capabilities */}
+        <a
+          href="#capabilities"
           onClick={() => soundManager.playClick()}
           className="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] py-1 text-[#b8b5af] hover:text-white transition-colors"
         >
-          <RotateCw className="w-4 h-4 mb-1" />
-          <span className="text-[11px] font-sans font-medium tracking-tight">Service</span>
-        </Link>
+          <Sparkles className="w-4 h-4 mb-1" />
+          <span className="text-[11px] font-sans font-medium tracking-tight">Capabilities</span>
+        </a>
 
         {/* ROI Calculator */}
         <a
@@ -58,7 +58,7 @@ export function MobileFloatingBar({ onOpenContact }: MobileBottomNavProps) {
           <span className="text-[11px] font-sans font-medium tracking-tight">ROI</span>
         </a>
 
-        {/* Action: Book Demo */}
+        {/* Action: Start Project */}
         <button
           type="button"
           onClick={() => {
@@ -67,8 +67,8 @@ export function MobileFloatingBar({ onOpenContact }: MobileBottomNavProps) {
           }}
           className="flex flex-col items-center justify-center min-w-[62px] min-h-[44px] py-1 px-2.5 rounded-xl bg-[#e05a2b] text-white font-sans font-semibold transition-all active:scale-95 shadow-md shadow-[#e05a2b]/20"
         >
-          <Calendar className="w-4 h-4 mb-0.5" />
-          <span className="text-[11px] font-sans font-bold tracking-tight">Demo</span>
+          <Send className="w-3.5 h-3.5 mb-0.5" />
+          <span className="text-[11px] font-sans font-bold tracking-tight">Hire Us</span>
         </button>
       </div>
     </nav>

@@ -9,22 +9,22 @@ interface FinalCtaProps {
 }
 
 export function FinalCta({ onOpenContact }: FinalCtaProps) {
-  const whatsappUrl = "https://wa.me/919078019472?text=Hello%20Convertix%20Team%2C%20I%20would%20like%20to%20explore%20Convertix%20for%20our%20dealership.";
+  const whatsappUrl = "https://wa.me/919078019472?text=Hello%20Convertix%20Team%2C%20I%20would%20like%20to%20commission%20a%20website%20for%20our%20service%20business.";
 
   return (
     <section className="relative py-32 sm:py-48 bg-[#0a0a0a] border-t border-white/10 overflow-hidden text-center defer-render flex items-center justify-center">
       <div className="max-w-5xl mx-auto px-4 sm:px-8 relative z-10 space-y-10">
         <span className="text-xs font-sans font-semibold tracking-wider text-[#e05a2b] uppercase block">
-          Automotive Retail Operating System
+          Digital Design & Web Engineering Studio
         </span>
 
         <h2 className="h1-editorial text-[#f3f1ec]">
-          Ready to
+          Ready to build
           <br />
           <span className="font-editorial text-[#e05a2b] font-normal italic lowercase tracking-tight">
-            move
+            your
           </span>{" "}
-          faster<span className="text-[#e05a2b]">?</span>
+          website<span className="text-[#e05a2b]">?</span>
         </h2>
 
         <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
@@ -34,10 +34,10 @@ export function FinalCta({ onOpenContact }: FinalCtaProps) {
               soundManager.playChirp();
               onOpenContact();
             }}
-            data-cursor="TALK"
+            data-cursor="START"
             className="min-h-[50px] px-8 py-3.5 rounded-full bg-[#e05a2b] text-white font-sans font-semibold text-base hover:bg-white hover:text-black transition-all inline-flex items-center gap-2 shadow-lg shadow-[#e05a2b]/25 group"
           >
-            <span>Talk to Sales</span>
+            <span>Start a Project</span>
             <ArrowUpRight className="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </button>
 

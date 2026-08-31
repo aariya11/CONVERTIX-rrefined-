@@ -31,21 +31,21 @@ export default function AboutPage() {
           <div className="flex items-center gap-2 mb-6">
             <span className="w-2 h-2 rounded-full bg-[#e05a2b]" />
             <span className="text-xs font-sans font-semibold tracking-wider text-[#e05a2b] uppercase">
-              Company Mission
+              Studio Mission
             </span>
           </div>
 
           <h1 className="h1-editorial text-[#f3f1ec] mb-6">
-            Built for
+            We build
             <br />
             <span className="font-editorial text-[#b8b5af] font-normal italic lowercase tracking-tight">
-              dealership
+              websites that
             </span>{" "}
-            reality<span className="text-[#e05a2b]">.</span>
+            grow services<span className="text-[#e05a2b]">.</span>
           </h1>
 
           <p className="body-lead max-w-3xl">
-            Convertix is engineered by Selenix Technology to solve the persistent operational gaps in modern automotive retail—where slow response times, disjointed follow-ups, and legacy software silently bleed showroom profit.
+            Convertix is a boutique digital design and web engineering studio by Selenix Technology. We exist to rescue modern service businesses from generic templates, slow WordPress page builders, and underperforming websites that silently bleed revenue.
           </p>
         </div>
       </section>
@@ -56,38 +56,38 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 sm:gap-16">
             <div className="lg:col-span-5 space-y-4">
               <span className="text-xs font-sans font-semibold uppercase tracking-wider text-[#e05a2b]">
-                Our Origin
+                Our Philosophy
               </span>
               <h2 className="text-2xl sm:text-3xl font-sans font-bold text-white">
-                Why We Built Convertix.
+                Why Standard Websites Fail Service Businesses.
               </h2>
               <p className="body-standard">
-                Automotive retail moves fast. When a prospective buyer submits an inquiry, every minute of delay reduces conversion likelihood. We built Convertix to bridge the gap between dealership management systems, mobile sales consultants, and customer channels.
+                Most web agencies build static digital brochures. When prospective clients visit, they encounter generic stock photos, 5-second loading delays, and clunky contact forms. We engineer websites as high-velocity conversion engines—pairing luxury editorial brand design with sub-second Next.js technology and direct WhatsApp communication.
               </p>
             </div>
 
             <div className="lg:col-span-7 space-y-8 sm:space-y-10 border-l border-white/10 pl-6 sm:pl-10">
               <div className="space-y-2">
                 <span className="text-xs font-sans text-[#b8b5af] uppercase tracking-wider block font-semibold">Pillar 01</span>
-                <h3 className="text-xl sm:text-2xl font-sans font-bold text-white">Zero Hardware Complexity</h3>
+                <h3 className="text-xl sm:text-2xl font-sans font-bold text-white">Handcrafted Bespoke Code</h3>
                 <p className="body-standard text-xs">
-                  Native SIM calling ensures sales consultants use standard smartphones while dealership leadership maintains complete call duration transparency.
+                  Zero page builder drag-and-drop bloat. Every website is custom coded in Next.js 16, React 19, and Tailwind CSS for unmatched speed, security, and scalability.
                 </p>
               </div>
 
               <div className="space-y-2">
                 <span className="text-xs font-sans text-[#b8b5af] uppercase tracking-wider block font-semibold">Pillar 02</span>
-                <h3 className="text-xl sm:text-2xl font-sans font-bold text-white">Real-Time OEM Synchronization</h3>
+                <h3 className="text-xl sm:text-2xl font-sans font-bold text-white">Frictionless Client Inbound</h3>
                 <p className="body-standard text-xs">
-                  Deep bi-directional sync with Tata, Maruti, Hyundai & Mahindra dealership systems to ensure zero double data entry.
+                  Built-in 1-tap WhatsApp consultation desks, real-time booking calendars, and automated lead webhooks that convert traffic into conversations.
                 </p>
               </div>
 
               <div className="space-y-2">
                 <span className="text-xs font-sans text-[#b8b5af] uppercase tracking-wider block font-semibold">Pillar 03</span>
-                <h3 className="text-xl sm:text-2xl font-sans font-bold text-white">Automated Governance</h3>
+                <h3 className="text-xl sm:text-2xl font-sans font-bold text-white">100 Google Core Web Vitals</h3>
                 <p className="body-standard text-xs">
-                  Inactivity sentinels escalate neglected leads automatically, protecting showroom investments from disappearing into the cracks.
+                  Sub-second page delivery across every mobile device, giving your service business the highest possible search ranking and ad conversion ROI.
                 </p>
               </div>
             </div>

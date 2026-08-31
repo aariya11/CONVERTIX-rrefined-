@@ -26,25 +26,24 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CONVERTIX — The Dealership Operating System | Automotive Retail Technology",
+  title: "CONVERTIX — Luxury Website Design & Engineering for Service Businesses",
   description:
-    "An intelligent operating system for automotive dealerships. Convertix unifies showroom lead response, workshop service retention, and proactive insurance workflows into one cohesive platform.",
+    "We design and build bespoke, high-converting websites and digital experiences for service businesses, premium brands, and modern enterprises.",
   keywords: [
-    "automotive dealership software",
-    "dealer CRM",
-    "automotive lead management",
-    "car dealership lead management",
-    "dealer service reminders",
-    "insurance renewal reminders",
-    "DMS integration",
-    "automotive sales software",
+    "website design for services",
+    "service business websites",
+    "luxury web design studio",
+    "high converting websites",
+    "Next.js web development",
+    "bespoke digital agency",
+    "automotive website design",
     "Selenix Technology",
   ],
   authors: [{ name: "Selenix Technology" }],
   openGraph: {
-    title: "CONVERTIX — The Dealership Operating System",
+    title: "CONVERTIX — Luxury Website Design & Engineering for Service Businesses",
     description:
-      "AI-powered lead, service and insurance workflows engineered specifically for modern automotive retail.",
+      "We design and build bespoke, high-converting websites and digital platforms for modern service companies.",
     url: "https://convertix.in",
     siteName: "Convertix",
     locale: "en_IN",

@@ -12,7 +12,7 @@ interface MobileMenuProps {
 }
 
 export function MobileMenu({ isOpen, onClose, onOpenContact }: MobileMenuProps) {
-  const whatsappUrl = "https://wa.me/919078019472?text=Hello%20Convertix%20Team%2C%20I%20would%20like%20to%20explore%20Convertix%20for%20our%20dealership.";
+  const whatsappUrl = "https://wa.me/919078019472?text=Hello%20Convertix%20Team%2C%20I%20would%20like%20to%20discuss%20building%20a%20website%20for%20our%20service%20business.";
 
   const handleLinkClick = () => {
     soundManager.playClick();
@@ -54,24 +54,24 @@ export function MobileMenu({ isOpen, onClose, onOpenContact }: MobileMenuProps) 
           {/* Navigation Links */}
           <div className="py-8 space-y-6">
             <span className="text-xs font-sans font-semibold uppercase tracking-wider text-[#e05a2b]">
-              Dealership Solutions
+              Studio Navigation
             </span>
 
             <div className="space-y-4 font-sans text-2xl sm:text-3xl font-bold tracking-tight text-white/90">
-              <Link
-                href="/products/lead-management"
+              <a
+                href="#services"
                 onClick={handleLinkClick}
                 className="block hover:text-[#e05a2b] transition-colors py-1"
               >
-                Lead & Pre-Sales
-              </Link>
-              <Link
-                href="/products/service-insurance"
+                Web Design
+              </a>
+              <a
+                href="#capabilities"
                 onClick={handleLinkClick}
                 className="block hover:text-[#e05a2b] transition-colors py-1"
               >
-                Service & Retention
-              </Link>
+                Capabilities
+              </a>
               <a
                 href="#ecosystem"
                 onClick={handleLinkClick}
@@ -91,14 +91,14 @@ export function MobileMenu({ isOpen, onClose, onOpenContact }: MobileMenuProps) 
                 onClick={handleLinkClick}
                 className="block hover:text-[#e05a2b] transition-colors py-1"
               >
-                Editions
+                Packages
               </Link>
               <Link
                 href="/about"
                 onClick={handleLinkClick}
                 className="block hover:text-[#e05a2b] transition-colors py-1"
               >
-                About Convertix
+                About Studio
               </Link>
             </div>
           </div>
@@ -133,7 +133,7 @@ export function MobileMenu({ isOpen, onClose, onOpenContact }: MobileMenuProps) 
               }}
               className="w-full min-h-[48px] rounded-full bg-[#f3f1ec] text-black font-sans font-semibold text-sm flex items-center justify-center gap-2 hover:bg-[#e05a2b] hover:text-white transition-colors"
             >
-              <span>Schedule Walkthrough</span>
+              <span>Start a Project</span>
               <ArrowUpRight className="w-4 h-4" />
             </button>
           </div>

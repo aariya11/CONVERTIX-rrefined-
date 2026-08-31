@@ -9,7 +9,7 @@ interface FooterProps {
 }
 
 export function Footer({ onOpenContact }: FooterProps) {
-  const whatsappUrl = "https://wa.me/919078019472?text=Hello%20Convertix%20Team%2C%20I%20would%20like%20to%20explore%20Convertix%20for%20our%20dealership.";
+  const whatsappUrl = "https://wa.me/919078019472?text=Hello%20Convertix%20Team%2C%20I%20would%20like%20to%20discuss%20building%20a%20website%20for%20our%20service%20business.";
 
   return (
     <footer className="relative bg-[#0a0a0a] border-t border-white/10 pt-20 pb-16 overflow-hidden">
@@ -19,7 +19,7 @@ export function Footer({ onOpenContact }: FooterProps) {
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
             <div>
               <span className="text-xs font-sans font-semibold tracking-wider text-[#e05a2b] uppercase mb-2 block">
-                Automotive Retail Operating System
+                Digital Design & Web Engineering Studio
               </span>
               <h2 className="text-4xl sm:text-6xl font-sans font-extrabold tracking-tight text-[#f3f1ec]">
                 Convertix<span className="text-[#e05a2b]">.</span>
@@ -44,10 +44,10 @@ export function Footer({ onOpenContact }: FooterProps) {
                   soundManager.playChirp();
                   onOpenContact?.();
                 }}
-                data-cursor="TALK"
+                data-cursor="START"
                 className="inline-flex items-center gap-2 text-xs font-sans font-semibold text-[#f3f1ec] hover:text-[#e05a2b] transition-colors group"
               >
-                <span>Schedule Consultation</span>
+                <span>Start a Project</span>
                 <ArrowUpRight className="w-4 h-4 text-[#e05a2b] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </button>
             </div>
@@ -59,21 +59,21 @@ export function Footer({ onOpenContact }: FooterProps) {
           <div className="space-y-2">
             <span className="text-[#b8b5af] font-semibold block">Overview</span>
             <p className="body-standard text-xs leading-relaxed max-w-xs">
-              AI-powered lead, service and insurance workflows engineered specifically for modern automotive retail networks.
+              We design and build bespoke, high-converting websites, digital brand identities, and client acquisition funnels for service businesses.
             </p>
           </div>
 
           <div className="space-y-2">
-            <span className="text-[#b8b5af] font-semibold block">Platforms</span>
+            <span className="text-[#b8b5af] font-semibold block">Services</span>
             <div className="space-y-1.5">
               <Link href="/products/lead-management" className="block text-[#f3f1ec] hover:text-[#e05a2b] transition-colors">
-                Lead & Pre-Sales OS →
+                Bespoke Web Design →
               </Link>
               <Link href="/products/service-insurance" className="block text-[#f3f1ec] hover:text-[#e05a2b] transition-colors">
-                Service & Insurance Retention →
+                Booking Funnels & Retention →
               </Link>
               <Link href="/pricing" className="block text-[#f3f1ec] hover:text-[#e05a2b] transition-colors">
-                Editions & Licensing →
+                Packages & Pricing →
               </Link>
             </div>
           </div>
@@ -82,7 +82,7 @@ export function Footer({ onOpenContact }: FooterProps) {
             <span className="text-[#b8b5af] font-semibold block">Company</span>
             <div className="space-y-1 text-[#b8b5af]">
               <p>Selenix Technology</p>
-              <p>Automotive Intelligence Division</p>
+              <p>Digital Product Studio</p>
               <p>India</p>
             </div>
           </div>
@@ -108,11 +108,11 @@ export function Footer({ onOpenContact }: FooterProps) {
 
         {/* Bottom */}
         <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs font-sans text-[#b8b5af]">
-          <p>© 2026 Convertix. A flagship product of Selenix Technology.</p>
+          <p>© 2026 Convertix. A flagship digital studio of Selenix Technology.</p>
           <div className="flex items-center gap-4">
-            <a href="#" className="hover:text-white transition-colors">Privacy Protocol</a>
+            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
             <a href="#" className="hover:text-white transition-colors">Security Architecture</a>
-            <a href="#" className="hover:text-white transition-colors">OEM DMS Compliance</a>
           </div>
         </div>
       </div>

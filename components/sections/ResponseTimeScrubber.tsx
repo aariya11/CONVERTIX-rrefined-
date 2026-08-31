@@ -5,11 +5,11 @@ import { motion } from "framer-motion";
 import { soundManager } from "../lib/sound";
 
 const STEPS = [
-  { time: "10 Mins", contact: "94%", label: "High Intent", desc: "Customer is actively reviewing specs. Highest callback answer rate and test drive booking conversion." },
-  { time: "30 Mins", contact: "86%", label: "Active Interest", desc: "Customer clearly remembers submitting the inquiry. Receptive to dealership consultation." },
-  { time: "2 Hours", contact: "52%", label: "Cooling Off", desc: "Nearly half of inquiries go unanswered. Customer starts browsing competing brands." },
-  { time: "6 Hours", contact: "31%", label: "Severe Leakage", desc: "A rival dealer group has already connected. Customer shows high friction." },
-  { time: "24 Hours", contact: "6%", label: "Lost Sale", desc: "Booking token or test drive already committed elsewhere. Lead is permanently lost." },
+  { time: "0.5s", contact: "96%", label: "Sub-Second Elite", desc: "Instant page render. Zero layout shift. High-ticket clients explore services immediately with maximum conversion." },
+  { time: "1.5s", contact: "88%", label: "Good Performance", desc: "Smooth user experience. Prospective clients stay engaged and read through service offerings." },
+  { time: "3.0s", contact: "54%", label: "Visitor Friction", desc: "Over 40% of mobile users abandon the site before reading your value proposition." },
+  { time: "5.0s", contact: "28%", label: "Severe Ad Waste", desc: "Paid ad traffic from Google and Instagram bounces heavily. High customer acquisition cost." },
+  { time: "8.0s+", contact: "6%", label: "Complete Drop-off", desc: "Bloated template plugins and unoptimized scripts destroy inquiry generation completely." },
 ];
 
 export function ResponseTimeScrubber() {
@@ -22,15 +22,15 @@ export function ResponseTimeScrubber() {
         {/* Header */}
         <div className="mb-16 sm:mb-24">
           <span className="text-xs font-sans font-semibold tracking-wider text-[#e05a2b] uppercase block mb-3">
-            Speed-to-Lead Benchmark
+            Web Speed & Conversion Benchmark
           </span>
           <h2 className="h2-editorial text-[#f3f1ec]">
-            The advantage
+            The direct cost
             <br />
             <span className="font-editorial text-[#b8b5af] font-normal italic lowercase tracking-tight">
               of
             </span>{" "}
-            speed<span className="text-[#e05a2b]">.</span>
+            slow page speed<span className="text-[#e05a2b]">.</span>
           </h2>
         </div>
 
@@ -52,7 +52,7 @@ export function ResponseTimeScrubber() {
                     : "bg-transparent border-white/10 hover:border-white/20 text-[#b8b5af]"
                 }`}
               >
-                <span className="text-[11px] font-sans text-[#b8b5af] block mb-0.5">Stage 0{i + 1}</span>
+                <span className="text-[11px] font-sans text-[#b8b5af] block mb-0.5">Speed Stage 0{i + 1}</span>
                 <span className="text-lg sm:text-xl font-sans font-bold text-white block">
                   {step.time}
                 </span>
@@ -64,7 +64,7 @@ export function ResponseTimeScrubber() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-6 border-t border-white/10">
             <div className="lg:col-span-6 space-y-1">
               <span className="text-xs font-sans text-[#b8b5af] uppercase tracking-wider block">
-                Contact Execution Probability
+                Visitor Retention Probability
               </span>
               <div className="text-6xl sm:text-7xl font-sans font-bold text-[#f3f1ec]">
                 {current.contact}

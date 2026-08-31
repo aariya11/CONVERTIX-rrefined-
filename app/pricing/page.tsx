@@ -12,45 +12,45 @@ import { soundManager } from "@/components/lib/sound";
 
 const TIERS = [
   {
-    name: "Lead Management Edition",
-    tagline: "Speed-to-lead & showroom execution",
-    badge: "Introductory Offer",
-    description: "Designed for single and multi-outlet showrooms needing 10-minute response times, SIM calling, and AI lead scoring.",
+    name: "High-Converting Service Website",
+    tagline: "Bespoke design & sub-second speed",
+    badge: "Most Popular",
+    description: "Designed for premium service businesses needing an elite digital brand presence that converts high-value website visitors into inquiries.",
     features: [
-      "AI-Powered Intent Prioritization Matrix",
-      "SIM-Integrated Outbound Dialing & Auto Logging",
-      "Automated Multi-Source Capture (OEM DMS, CarWale, Web)",
-      "Smart 15m & 24h Inactivity Escalation Sentinels",
-      "2-Way OEM DMS Realtime Writeback",
-      "Showroom Floor Consultant Mobile App",
+      "Bespoke Luxury Editorial UI/UX Design",
+      "Next.js 16 + React 19 Server Architecture",
+      "1-Tap Floating WhatsApp Business Inbound Desk",
+      "Sub-Second 100 Lighthouse Performance",
+      "Full Local & Technical SEO Schema Markup",
+      "100% Mobile Responsive Touch Optimization",
     ],
   },
   {
-    name: "Service & Insurance Edition",
-    tagline: "Predictive workshop & policy renewals",
-    badge: "High Workshop ROI",
-    description: "Designed for dealership service centers to eliminate empty bays, mistimed reminders, and lost insurance renewals.",
+    name: "Service Booking & Retention Platform",
+    tagline: "Interactive booking & automated funnels",
+    badge: "Maximum Inquiries",
+    description: "Engineered for appointment-based service companies, clinics, dealerships, and consultants needing structured booking workflows.",
     features: [
-      "Predictive Odometer Mileage Extrapolation Algorithm",
-      "60/30/15-Day Insurance Expiry Radar",
-      "1-Click Interactive WhatsApp Workshop Bay Booking",
-      "SIM-Verified Telecall Duration Audit",
-      "Service Advisor Escalation Sentinel",
-      "2-Way Workshop Management DMS Sync",
+      "Everything in High-Converting Website",
+      "Interactive Service Menus & Pricing Packages",
+      "Dynamic Appointment Booking & Calendar Integration",
+      "Automated WhatsApp & Email Confirmation Webhooks",
+      "Proactive Client Re-Engagement & Retention Sequences",
+      "Real-Time Inquiry Analytics & Conversion Tracking",
     ],
   },
   {
-    name: "Unified Enterprise Dealership OS",
-    tagline: "Complete multi-branch showroom & workshop suite",
-    badge: "Flagship Group Protocol",
-    description: "The complete Convertix operating system unifying sales, service, insurance, and executive governance across regional dealer groups.",
+    name: "Custom Enterprise Digital Flagship",
+    tagline: "Multi-service enterprise web architecture",
+    badge: "Bespoke Studio Delivery",
+    description: "The complete custom digital platform engineered for multi-location service brands, luxury retail networks, and high-growth enterprises.",
     features: [
-      "Everything in Leads & Pre-Sales Edition",
-      "Everything in Service & Insurance Edition",
-      "Built-in Cross-Department Dealer Chat",
-      "Multi-Branch Executive Pivot Dashboard & Cockpit",
-      "Custom OEM DMS Integration & Security Compliance SLA",
-      "Dedicated Automotive Technology Account Director",
+      "Everything in Booking & Retention Platform",
+      "Multi-Branch & Multi-Location Service Portals",
+      "Custom CRM Integration (HubSpot, Salesforce, Custom DMS)",
+      "Bespoke Cinematic Motion & Interactive 3D Visuals",
+      "Dedicated Senior Creative Director & Lead Architect",
+      "Priority SLA, Cloud Edge Hosting & Ongoing Optimization",
     ],
   },
 ];
@@ -58,7 +58,7 @@ const TIERS = [
 export default function PricingPage() {
   const [contactOpen, setContactOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const whatsappUrl = "https://wa.me/919078019472?text=Hello%20Convertix%20Team%2C%20I%20would%20like%20to%20explore%20Convertix%20pricing%20for%20our%20dealership.";
+  const whatsappUrl = "https://wa.me/919078019472?text=Hello%20Convertix%20Team%2C%20I%20would%20like%20to%20discuss%20website%20development%20packages%20for%20our%20service%20business.";
 
   return (
     <main className="min-h-screen bg-[#0a0a0a] text-[#f3f1ec] relative overflow-hidden mobile-safe-bottom">
@@ -79,21 +79,21 @@ export default function PricingPage() {
           <div className="flex items-center gap-2 mb-6">
             <span className="w-2 h-2 rounded-full bg-[#e05a2b]" />
             <span className="text-xs font-sans font-semibold tracking-wider text-[#e05a2b] uppercase">
-              Editions & Licensing
+              Web Development Packages
             </span>
           </div>
 
           <h1 className="h1-editorial text-[#f3f1ec] mb-6">
-            Start with one.
+            Transparent packages.
             <br />
             <span className="font-editorial text-[#b8b5af] font-normal italic lowercase tracking-tight">
-              scale to
+              engineered for
             </span>{" "}
-            both<span className="text-[#e05a2b]">.</span>
+            growth<span className="text-[#e05a2b]">.</span>
           </h1>
 
           <p className="body-lead max-w-2xl">
-            Deploy Convertix Lead Management or Convertix Service & Insurance independently—or activate the complete unified enterprise suite.
+            Choose the right website engagement package for your service business—or commission a custom enterprise digital flagship.
           </p>
         </div>
       </section>
@@ -155,10 +155,10 @@ export default function PricingPage() {
           <div className="p-6 sm:p-8 rounded-3xl bg-[#121212] border border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
             <div>
               <h4 className="font-sans font-bold text-base sm:text-lg text-white">
-                Multi-Brand Enterprise Dealership Group?
+                Have Custom Technical Requirements?
               </h4>
               <p className="text-xs font-sans text-[#b8b5af]">
-                Direct Commercial Desk: +91 9078 019 472
+                Direct Studio Desk: +91 9078 019 472
               </p>
             </div>
 

@@ -49,20 +49,20 @@ export function Navbar({ onOpenContact, onOpenMobileMenu }: NavbarProps) {
 
           {/* Center Links (Desktop) */}
           <div className="hidden md:flex items-center gap-7 text-[13px] font-sans font-medium text-[#b8b5af]">
-            <Link
-              href="/products/lead-management"
+            <a
+              href="#services"
               className="hover:text-white transition-colors"
               onClick={() => soundManager.playClick()}
             >
-              Leads
-            </Link>
-            <Link
-              href="/products/service-insurance"
+              Services
+            </a>
+            <a
+              href="#capabilities"
               className="hover:text-white transition-colors"
               onClick={() => soundManager.playClick()}
             >
-              Service & Insurance
-            </Link>
+              Capabilities
+            </a>
             <a
               href="#ecosystem"
               className="hover:text-white transition-colors"
@@ -82,7 +82,7 @@ export function Navbar({ onOpenContact, onOpenMobileMenu }: NavbarProps) {
               className="hover:text-white transition-colors"
               onClick={() => soundManager.playClick()}
             >
-              Editions
+              Packages
             </Link>
             <Link
               href="/about"
@@ -101,10 +101,10 @@ export function Navbar({ onOpenContact, onOpenMobileMenu }: NavbarProps) {
                 soundManager.playChirp();
                 onOpenContact();
               }}
-              data-cursor="TALK"
+              data-cursor="START"
               className="hidden sm:inline-flex items-center gap-2 text-xs font-sans font-semibold text-[#f3f1ec] bg-white/10 hover:bg-[#e05a2b] hover:text-white px-4 py-2 rounded-full transition-all group"
             >
-              <span>Talk to Sales</span>
+              <span>Start a Project</span>
               <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </button>
 

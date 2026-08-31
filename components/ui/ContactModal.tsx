@@ -15,10 +15,11 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
-    dealershipName: "",
+    companyName: "",
+    projectGoals: "",
   });
 
-  const whatsappUrl = "https://wa.me/919078019472?text=Hello%20Convertix%20Team%2C%20I%20would%20like%20to%20explore%20Convertix%20for%20our%20dealership.";
+  const whatsappUrl = "https://wa.me/919078019472?text=Hello%20Convertix%20Team%2C%20I%20would%20like%20to%20discuss%20building%20a%20website%20for%20our%20service%20business.";
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -71,29 +72,29 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
               <div className="py-10 text-center space-y-3">
                 <CheckCircle2 className="w-12 h-12 text-[#e05a2b] mx-auto" />
                 <h3 className="text-2xl sm:text-3xl font-sans font-bold text-white">
-                  Consultation Booked.
+                  Project Inquiry Received.
                 </h3>
                 <p className="body-standard max-w-xs mx-auto">
-                  Our Automotive Solutions Director will connect with your dealership team within 15 minutes.
+                  Our Lead Web Architect will review your requirements and connect within 15 minutes.
                 </p>
               </div>
             ) : (
               <div className="space-y-6">
                 <div>
                   <span className="text-xs font-sans font-semibold tracking-wider text-[#e05a2b] uppercase block mb-1">
-                    Executive Walkthrough
+                    Client Consultation
                   </span>
                   <h3 className="text-2xl sm:text-3xl font-sans font-bold text-white">
-                    Deploy Convertix<span className="text-[#e05a2b]">.</span>
+                    Start Your Project<span className="text-[#e05a2b]">.</span>
                   </h3>
                   <p className="body-standard text-xs mt-1">
-                    Transform your dealership's response velocity, service bays, and insurance renewals.
+                    Let's design and engineer a bespoke, high-converting website for your service business.
                   </p>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-4 text-xs font-sans">
                   <div className="space-y-1">
-                    <label className="text-white/70 uppercase tracking-wider block font-medium">Full Name</label>
+                    <label className="text-white/70 uppercase tracking-wider block font-medium">Your Name</label>
                     <input
                       type="text"
                       required
@@ -118,23 +119,34 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     </div>
 
                     <div className="space-y-1">
-                      <label className="text-white/70 uppercase tracking-wider block font-medium">Dealership Name</label>
+                      <label className="text-white/70 uppercase tracking-wider block font-medium">Service / Company Name</label>
                       <input
                         type="text"
                         required
-                        placeholder="e.g. Apex Motors"
-                        value={formData.dealershipName}
-                        onChange={(e) => setFormData({ ...formData, dealershipName: e.target.value })}
+                        placeholder="e.g. Apex Luxury Services"
+                        value={formData.companyName}
+                        onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
                         className="w-full min-h-[48px] px-4 bg-[#181818] border border-white/10 rounded-xl text-white text-sm focus:border-[#e05a2b] focus:outline-none"
                       />
                     </div>
+                  </div>
+
+                  <div className="space-y-1">
+                    <label className="text-white/70 uppercase tracking-wider block font-medium">Website Goals / Service Scope</label>
+                    <input
+                      type="text"
+                      placeholder="e.g. Redesign existing website to boost high-ticket inquiries & bookings"
+                      value={formData.projectGoals}
+                      onChange={(e) => setFormData({ ...formData, projectGoals: e.target.value })}
+                      className="w-full min-h-[48px] px-4 bg-[#181818] border border-white/10 rounded-xl text-white text-sm focus:border-[#e05a2b] focus:outline-none"
+                    />
                   </div>
 
                   <button
                     type="submit"
                     className="w-full min-h-[48px] rounded-full bg-[#e05a2b] text-white font-sans font-semibold text-sm hover:bg-white hover:text-black transition-all flex items-center justify-center gap-2 mt-3"
                   >
-                    <span>Confirm Walkthrough</span>
+                    <span>Send Project Inquiry</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
 

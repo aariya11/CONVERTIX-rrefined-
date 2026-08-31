@@ -8,39 +8,39 @@ import { soundManager } from "../lib/sound";
 const FEATURES = [
   {
     id: "01",
-    title: "AI Prioritization",
-    tagline: "Instant machine-learning intent qualification.",
-    description: "Dynamic 0–100 scoring algorithms rank incoming vehicle inquiries so showroom sales teams dial ready buyers first.",
+    title: "Bespoke Editorial Web Design",
+    tagline: "Handcrafted layouts, typography & motion.",
+    description: "Custom aesthetic direction inspired by international luxury design—no cookie-cutter templates or generic page builders.",
   },
   {
     id: "02",
-    title: "SIM-Integrated Calling",
-    tagline: "Authentic telecall verification without hardware.",
-    description: "Every outbound dial occurs over native mobile SIMs with zero hardware lag. Duration and outcome auto-written to DMS.",
+    title: "High-Converting Lead Architecture",
+    tagline: "1-tap WhatsApp, instant quotes & smart schedulers.",
+    description: "Engineered inquiry funnels that eliminate friction, guiding high-value visitors directly into confirmed conversations and bookings.",
   },
   {
     id: "03",
-    title: "2-Way DMS Synchronization",
-    tagline: "Bi-directional integration with Tata, Maruti & Hyundai.",
-    description: "Eliminates double data entry, keeping customer masters, vehicle bookings, and workshop records in 100% real-time sync.",
+    title: "Sub-Second Next.js 16 Engineering",
+    tagline: "100 Google Core Web Vitals performance.",
+    description: "Server-side rendered with Next.js 16, React 19, and Tailwind CSS for instant sub-second page loads across every device.",
   },
   {
     id: "04",
-    title: "Smart Inactivity Sentinels",
-    tagline: "Automated manager escalation on neglected leads.",
-    description: "Leads untouched for &gt;15 minutes or 24 hours trigger automatic supervisor alerts to prevent high-value deal drop-off.",
+    title: "Mobile-First Touch Interaction",
+    tagline: "Flawless mobile experience on iOS and Android.",
+    description: "Engineered around comfortable 48px+ touch targets, zero layout shifts, dynamic safe-area insets, and non-overlapping floating actions.",
   },
   {
     id: "05",
-    title: "Real-Time Group Dashboards",
-    tagline: "Multi-branch executive visibility across outlets.",
-    description: "Custom pivot analysis enabling Dealer Principals to monitor response speed, consultant productivity, and revenue trajectories.",
+    title: "CRM & Calendar Synchronization",
+    tagline: "Automated inquiry routing with zero data loss.",
+    description: "Connect your website directly to WhatsApp, Google Calendar, HubSpot, Salesforce, or your custom CRM via real-time webhooks.",
   },
   {
     id: "06",
-    title: "Omnichannel Engagement",
-    tagline: "WhatsApp, SMS, and voice in one unified interface.",
-    description: "Send official vehicle brochures, video walkarounds, and service booking invites directly through verified business channels.",
+    title: "SEO & Growth Infrastructure",
+    tagline: "Built-in search engine authority from day one.",
+    description: "Structured JSON-LD schema, automated XML sitemaps, semantic hierarchy, and lightning speeds to rank at the top of Google searches.",
   },
 ];
 
@@ -48,25 +48,25 @@ export function FeatureShowcase() {
   const [hovered, setHovered] = useState<string>("01");
 
   return (
-    <section id="features" className="relative py-24 sm:py-36 bg-[#0a0a0a] border-t border-white/10 overflow-hidden defer-render">
+    <section id="capabilities" className="relative py-24 sm:py-36 bg-[#0a0a0a] border-t border-white/10 overflow-hidden defer-render">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         {/* Eyebrow */}
         <div className="flex items-center gap-2 mb-6">
           <span className="w-2 h-2 rounded-full bg-[#e05a2b]" />
           <span className="text-xs font-sans font-semibold tracking-wider text-[#e05a2b] uppercase">
-            System Capabilities
+            Studio Capabilities
           </span>
         </div>
 
         {/* Headline */}
         <div className="mb-16 sm:mb-24">
           <h2 className="h2-editorial text-[#f3f1ec]">
-            Engineered
+            Crafted
             <br />
             <span className="font-editorial text-[#b8b5af] font-normal italic lowercase tracking-tight">
               for
             </span>{" "}
-            scale<span className="text-[#e05a2b]">.</span>
+            measurable impact<span className="text-[#e05a2b]">.</span>
           </h2>
         </div>
 

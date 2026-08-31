@@ -11,13 +11,13 @@ interface DealershipRoiCalculatorProps {
 }
 
 export function DealershipRoiCalculator({ onOpenContact }: DealershipRoiCalculatorProps) {
-  const [monthlyLeads, setMonthlyLeads] = useState<number>(1200);
-  const [currentConversion, setCurrentConversion] = useState<number>(6);
-  const [avgMargin, setAvgMargin] = useState<number>(35000);
+  const [monthlyVisitors, setMonthlyVisitors] = useState<number>(3000);
+  const [currentConversion, setCurrentConversion] = useState<number>(2.5);
+  const [avgClientValue, setAvgClientValue] = useState<number>(45000);
 
-  // Convertix lifts conversion by +3.5% through 10-minute speed and >90% follow-up retention
-  const additionalCars = Math.round(monthlyLeads * 0.035);
-  const recoveredMonthlyProfit = additionalCars * avgMargin + Math.round(monthlyLeads * 0.8 * 850);
+  // Convertix lifts conversion by +3.5% through sub-second speed, editorial trust, and 1-tap WhatsApp capture
+  const additionalClients = Math.round(monthlyVisitors * 0.035);
+  const recoveredMonthlyProfit = additionalClients * avgClientValue;
   const annualLift = recoveredMonthlyProfit * 12;
 
   return (
@@ -27,20 +27,20 @@ export function DealershipRoiCalculator({ onOpenContact }: DealershipRoiCalculat
         <div className="flex items-center gap-2 mb-6">
           <span className="w-2 h-2 rounded-full bg-[#e05a2b]" />
           <span className="text-xs font-sans font-semibold tracking-wider text-[#e05a2b] uppercase">
-            Financial Impact Model
+            Revenue Impact Model
           </span>
         </div>
 
         {/* Headline */}
         <div className="mb-16 sm:mb-24">
           <h2 className="h2-editorial text-[#f3f1ec]">
-            What does
+            What is a slow website
             <br />
             <span className="font-editorial text-[#b8b5af] font-normal italic lowercase tracking-tight">
-              slow response
+              costing your
             </span>
             <br />
-            cost you<span className="text-[#e05a2b]">?</span>
+            service business<span className="text-[#e05a2b]">?</span>
           </h2>
         </div>
 
@@ -48,22 +48,22 @@ export function DealershipRoiCalculator({ onOpenContact }: DealershipRoiCalculat
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-16 items-start">
           {/* Inputs (6 cols) */}
           <div className="lg:col-span-6 space-y-8">
-            {/* Leads */}
+            {/* Visitors */}
             <div className="border-b border-white/10 pb-6 space-y-2">
               <span className="text-xs font-sans text-[#b8b5af] uppercase tracking-wider block">
-                Monthly Incoming Leads
+                Monthly Website Visitors
               </span>
               <div className="text-4xl sm:text-5xl font-sans font-bold text-white">
-                {monthlyLeads.toLocaleString()}
+                {monthlyVisitors.toLocaleString()}
               </div>
               <input
                 type="range"
-                min="300"
-                max="5000"
-                step="100"
-                value={monthlyLeads}
+                min="500"
+                max="25000"
+                step="500"
+                value={monthlyVisitors}
                 onChange={(e) => {
-                  setMonthlyLeads(Number(e.target.value));
+                  setMonthlyVisitors(Number(e.target.value));
                   soundManager.playClick();
                 }}
                 className="w-full accent-[#e05a2b] cursor-pointer h-2 bg-[#222] rounded-lg mt-2"
@@ -73,15 +73,15 @@ export function DealershipRoiCalculator({ onOpenContact }: DealershipRoiCalculat
             {/* Conversion */}
             <div className="border-b border-white/10 pb-6 space-y-2">
               <span className="text-xs font-sans text-[#b8b5af] uppercase tracking-wider block">
-                Current Conversion Rate
+                Current Inquiry Conversion Rate
               </span>
               <div className="text-4xl sm:text-5xl font-sans font-bold text-white">
                 {currentConversion}%
               </div>
               <input
                 type="range"
-                min="2"
-                max="12"
+                min="0.5"
+                max="8"
                 step="0.5"
                 value={currentConversion}
                 onChange={(e) => {
@@ -92,22 +92,22 @@ export function DealershipRoiCalculator({ onOpenContact }: DealershipRoiCalculat
               />
             </div>
 
-            {/* Margin */}
+            {/* Client Value */}
             <div className="space-y-2">
               <span className="text-xs font-sans text-[#b8b5af] uppercase tracking-wider block">
-                Average Gross Profit per Vehicle
+                Average Value per Client / Contract
               </span>
               <div className="text-4xl sm:text-5xl font-sans font-bold text-white">
-                {formatINR(avgMargin)}
+                {formatINR(avgClientValue)}
               </div>
               <input
                 type="range"
-                min="15000"
-                max="75000"
-                step="2500"
-                value={avgMargin}
+                min="10000"
+                max="200000"
+                step="5000"
+                value={avgClientValue}
                 onChange={(e) => {
-                  setAvgMargin(Number(e.target.value));
+                  setAvgClientValue(Number(e.target.value));
                   soundManager.playClick();
                 }}
                 className="w-full accent-[#e05a2b] cursor-pointer h-2 bg-[#222] rounded-lg mt-2"
@@ -119,23 +119,23 @@ export function DealershipRoiCalculator({ onOpenContact }: DealershipRoiCalculat
           <div className="lg:col-span-6 border border-white/12 rounded-3xl p-6 sm:p-12 bg-[#121212] space-y-8 shadow-xl flex flex-col justify-between">
             <div>
               <span className="text-xs font-sans font-semibold uppercase tracking-wider text-[#e05a2b] block mb-2">
-                Estimated Monthly Profit Recovered
+                Projected Monthly Revenue Lift
               </span>
               <div className="text-4xl sm:text-6xl font-sans font-bold text-[#f3f1ec] tracking-tight leading-none mb-3">
                 {formatINR(recoveredMonthlyProfit)}
                 <span className="text-sm font-sans text-[#b8b5af] block mt-2 font-normal">
-                  ≈ {formatINR(annualLift)} Projected Annual Impact
+                  ≈ {formatINR(annualLift)} Projected Annual Business Growth
                 </span>
               </div>
 
               <div className="pt-6 border-t border-white/10 space-y-3 text-xs font-sans text-[#b8b5af]">
                 <div className="flex justify-between">
-                  <span>Additional Cars Delivered:</span>
-                  <span className="text-white font-semibold">+{additionalCars} Units / month</span>
+                  <span>Additional Inquiries Converted:</span>
+                  <span className="text-white font-semibold">+{additionalClients} High-Value Clients / mo</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>Workshop Retention Lift:</span>
-                  <span className="text-white font-semibold">+12% Service Revenue</span>
+                  <span>Conversion Multiplier:</span>
+                  <span className="text-white font-semibold">+3.5% Baseline Lift</span>
                 </div>
               </div>
             </div>
@@ -147,10 +147,10 @@ export function DealershipRoiCalculator({ onOpenContact }: DealershipRoiCalculat
                   soundManager.playChirp();
                   onOpenContact?.();
                 }}
-                data-cursor="MOVE"
+                data-cursor="START"
                 className="w-full min-h-[48px] py-3.5 px-6 rounded-full bg-[#f3f1ec] text-black font-sans font-semibold text-sm hover:bg-[#e05a2b] hover:text-white transition-all flex items-center justify-center gap-2"
               >
-                <span>Deploy Dealership OS</span>
+                <span>Build Your High-Converting Website</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
