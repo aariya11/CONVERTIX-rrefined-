@@ -1,9 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
-import { ArrowRight, Phone, ShieldCheck, Sparkles } from "lucide-react";
-import { MagneticButton } from "../ui/MagneticButton";
+import { ArrowUpRight } from "lucide-react";
 import { soundManager } from "../lib/sound";
 
 interface FinalCtaProps {
@@ -12,63 +10,43 @@ interface FinalCtaProps {
 
 export function FinalCta({ onOpenContact }: FinalCtaProps) {
   return (
-    <section className="relative py-24 sm:py-32 bg-[#07080a] border-t border-white/10 overflow-hidden text-center defer-render">
-      {/* Glow Backdrop */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#d4ff00]/5 blur-[140px] rounded-full pointer-events-none" />
+    <section className="relative py-40 sm:py-60 bg-[#0a0a0a] border-t border-white/10 overflow-hidden text-center defer-render flex items-center justify-center">
+      <div className="max-w-6xl mx-auto px-4 sm:px-8 relative z-10 space-y-12">
+        <span className="text-xs font-mono uppercase tracking-[0.3em] text-[#e05a2b] block">
+          AUTOMOTIVE RETAIL INTELLIGENCE
+        </span>
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Eyebrow */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/12 text-xs font-mono text-[#d4ff00] mb-6">
-          <Sparkles className="w-3.5 h-3.5" />
-          <span>JOIN INDIA'S LEADING AUTOMOTIVE DEALERSHIPS</span>
-        </div>
-
-        {/* Large Emerging Typography */}
-        <h2 className="text-5xl sm:text-7xl lg:text-8xl font-display font-black tracking-tighter text-white uppercase leading-[0.88] mb-6">
+        <h2 className="text-6xl xs:text-7xl sm:text-8xl md:text-9xl font-display font-black tracking-[-0.06em] text-[#f3f1ec] uppercase leading-[0.85]">
           READY TO
           <br />
-          <span className="text-[#d4ff00]">MOVE FASTER?</span>
+          <span className="font-editorial text-[#e05a2b] font-normal italic lowercase tracking-tight">
+            move
+          </span>{" "}
+          FASTER<span className="text-[#e05a2b]">?</span>
         </h2>
 
-        <p className="text-base sm:text-xl text-white/70 max-w-2xl mx-auto font-normal leading-relaxed mb-10">
-          Bring sales, service, and insurance workflows into one intelligent operating system. Start with Lead Management or Service Automation—or deploy the complete unified suite.
-        </p>
-
-        {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-          <MagneticButton
-            variant="primary"
-            onClick={onOpenContact}
-            cursorText="START"
-            className="!py-4 !px-8 text-xs font-bold"
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-center gap-8">
+          <button
+            type="button"
+            onClick={() => {
+              soundManager.playChirp();
+              onOpenContact();
+            }}
+            data-cursor="TALK"
+            className="text-2xl sm:text-4xl font-display font-bold uppercase tracking-tight text-[#f3f1ec] hover:text-[#e05a2b] transition-colors inline-flex items-center gap-3 group"
           >
-            <span>Talk to Convertix</span>
-            <ArrowRight className="w-4 h-4" />
-          </MagneticButton>
+            <span>TALK TO SALES</span>
+            <ArrowUpRight className="w-8 h-8 text-[#e05a2b] group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform" />
+          </button>
 
-          <Link
-            href="/pricing"
-            onClick={() => soundManager.playClick()}
-            className="px-8 py-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white font-mono text-xs uppercase tracking-wider transition-colors flex items-center gap-2"
-          >
-            <span>Explore Introductory Editions</span>
-          </Link>
-        </div>
+          <span className="text-white/20 hidden sm:inline">•</span>
 
-        {/* Direct Phone & Trust SLA */}
-        <div className="flex flex-wrap items-center justify-center gap-6 text-xs font-mono text-white/50 pt-8 border-t border-white/5">
           <a
             href="tel:+917888028729"
-            className="text-white hover:text-[#00f58c] flex items-center gap-2 transition-colors"
+            className="text-base sm:text-xl font-mono text-[#b8b5af] hover:text-white transition-colors"
           >
-            <Phone className="w-3.5 h-3.5 text-[#00f58c]" />
-            <span>Direct Enterprise Desk: +91 7888 028 729</span>
+            Direct: +91 7888 028 729
           </a>
-          <span>•</span>
-          <span className="flex items-center gap-1.5 text-white/70">
-            <ShieldCheck className="w-3.5 h-3.5 text-[#d4ff00]" />
-            OEM DMS Certified • 24/7 Dedicated Account Director
-          </span>
         </div>
       </div>
     </section>

@@ -7,27 +7,15 @@ import { MobileMenu } from "@/components/navigation/MobileMenu";
 import { Footer } from "@/components/navigation/Footer";
 import { MobileFloatingBar } from "@/components/navigation/MobileFloatingBar";
 import { ContactModal } from "@/components/ui/ContactModal";
-import { MagneticButton } from "@/components/ui/MagneticButton";
-import {
-  Zap,
-  PhoneCall,
-  Database,
-  Sparkles,
-  ShieldCheck,
-  ArrowRight,
-  Clock,
-  CheckCircle2,
-  BarChart3,
-  MessageCircle,
-  Users,
-} from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { soundManager } from "@/components/lib/sound";
 
 export default function LeadManagementPage() {
   const [contactOpen, setContactOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <main className="min-h-screen bg-[#07080a] text-[#f5f6f8] relative overflow-hidden">
+    <main className="min-h-screen bg-[#0a0a0a] text-[#f3f1ec] relative overflow-hidden">
       <Navbar
         onOpenContact={() => setContactOpen(true)}
         onOpenMobileMenu={() => setMobileMenuOpen(true)}
@@ -39,113 +27,106 @@ export default function LeadManagementPage() {
         onOpenContact={() => setContactOpen(true)}
       />
 
-      {/* Product Hero */}
-      <section className="relative pt-32 sm:pt-36 pb-20 sm:pb-24 border-b border-white/10">
-        <div className="absolute inset-0 tech-grid opacity-40 pointer-events-none" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#d4ff00]/10 border border-[#d4ff00]/30 text-xs font-mono text-[#d4ff00] mb-6">
-            <Zap className="w-3.5 h-3.5" />
-            <span>PRODUCT ARCHITECTURE // SUITE 01</span>
+      {/* Editorial Product Hero */}
+      <section className="relative pt-36 sm:pt-48 pb-24 border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
+          <div className="flex items-center gap-3 mb-8">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#e05a2b]" />
+            <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-[#e05a2b]">
+              SUITE 01 // ARCHITECTURAL DOSSIER
+            </span>
           </div>
 
-          <h1 className="text-4xl xs:text-5xl sm:text-7xl lg:text-8xl font-display font-black tracking-tighter text-white uppercase leading-[0.92] sm:leading-[0.9] mb-6 break-words">
+          <h1 className="text-5xl xs:text-6xl sm:text-8xl md:text-9xl font-display font-black tracking-[-0.06em] text-[#f3f1ec] uppercase leading-[0.85] mb-8">
             LEAD & PRE-SALES
             <br />
-            <span className="font-editorial text-[#d4ff00] font-normal italic lowercase">
-              speed
+            <span className="font-editorial text-[#b8b5af] font-normal italic lowercase tracking-tight">
+              velocity
             </span>{" "}
-            MANAGEMENT.
+            OS<span className="text-[#e05a2b]">.</span>
           </h1>
 
-          <p className="text-sm sm:text-lg md:text-xl text-white/70 max-w-3xl font-normal leading-relaxed mb-8 sm:mb-10">
-            An AI-powered lead management platform engineered for automotive dealerships—featuring automated multi-source lead ingestion, SIM-integrated calling, 2-way OEM DMS integration, and instant executive escalation protocols.
+          <p className="text-base sm:text-xl text-[#b8b5af] max-w-3xl font-normal leading-relaxed mb-12">
+            An intelligent lead operating system engineered for automotive dealerships—featuring multi-source capture, SIM-integrated calling, 2-way OEM DMS integration, and instant executive escalation protocols.
           </p>
 
-          <div className="flex flex-wrap items-center gap-3 sm:gap-4">
-            <MagneticButton
-              variant="primary"
-              onClick={() => setContactOpen(true)}
-              className="!py-3.5 !px-6 text-xs w-full sm:w-auto"
+          <div className="flex flex-wrap items-center gap-6">
+            <button
+              type="button"
+              onClick={() => {
+                soundManager.playChirp();
+                setContactOpen(true);
+              }}
+              className="py-4 px-8 rounded-full bg-[#e05a2b] text-white font-mono font-bold text-xs uppercase tracking-widest hover:bg-white hover:text-black transition-colors flex items-center gap-2"
             >
-              <span>Deploy Lead OS Instance</span>
+              <span>Schedule Architecture Walkthrough</span>
               <ArrowRight className="w-4 h-4" />
-            </MagneticButton>
+            </button>
 
             <a
               href="tel:+917888028729"
-              className="w-full sm:w-auto text-center justify-center px-6 py-3.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white font-mono text-xs uppercase tracking-wider transition-colors"
+              className="text-xs font-mono uppercase tracking-widest text-[#b8b5af] hover:text-white transition-colors"
             >
-              Consult Automotive Specialist
+              Direct: +91 7888 028 729 →
             </a>
           </div>
         </div>
       </section>
 
-      {/* Core Operational Pillars */}
-      <section className="py-20 sm:py-24 bg-[#090b10] border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-12 sm:mb-16">
-            {/* Benchmark 1 */}
-            <div className="p-6 sm:p-8 rounded-3xl bg-[#0e1118] border border-white/12 space-y-4">
+      {/* Editorial Benchmarks */}
+      <section className="py-32 bg-[#0a0a0a] border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-24">
+            <div className="border-l border-white/10 pl-8 space-y-4">
               <span className="text-xs font-mono text-white/40 uppercase tracking-widest block">
                 BENCHMARK 01 // FIRST CONTACT LATENCY
               </span>
-              <div className="flex flex-wrap items-baseline gap-2 sm:gap-4">
-                <span className="text-3xl sm:text-5xl font-display font-black text-[#d4ff00]">
-                  10–30 MIN
-                </span>
-                <span className="text-xs sm:text-sm font-mono text-white/40 line-through">DMS: 6–24 HOURS</span>
+              <div className="text-6xl sm:text-7xl font-display font-black text-[#f3f1ec]">
+                10–30 MIN<span className="text-[#e05a2b]">.</span>
               </div>
-              <p className="text-xs sm:text-sm text-white/70 leading-relaxed font-normal">
-                Most CRMs delay the first call due to manual lead assignment and lack of monitoring. Convertix automates lead capture, assignment, and notifications—ensuring instant response without manual supervision.
+              <p className="text-sm font-mono text-[#b8b5af] leading-relaxed">
+                Traditional CRMs delay first calls by 6–24 hours. Convertix automates multi-source ingestion and instant consultant routing without manual supervisor bottlenecks.
               </p>
             </div>
 
-            {/* Benchmark 2 */}
-            <div className="p-6 sm:p-8 rounded-3xl bg-[#0e1118] border border-white/12 space-y-4">
+            <div className="border-l border-white/10 pl-8 space-y-4">
               <span className="text-xs font-mono text-white/40 uppercase tracking-widest block">
                 BENCHMARK 02 // FOLLOW-UP EXECUTION RATE
               </span>
-              <div className="flex flex-wrap items-baseline gap-2 sm:gap-4">
-                <span className="text-3xl sm:text-5xl font-display font-black text-[#00f58c]">
-                  &gt;90%
-                </span>
-                <span className="text-xs sm:text-sm font-mono text-white/40 line-through">DMS: &lt;40%</span>
+              <div className="text-6xl sm:text-7xl font-display font-black text-[#f3f1ec]">
+                &gt;90%<span className="text-[#e05a2b]">.</span>
               </div>
-              <p className="text-xs sm:text-sm text-white/70 leading-relaxed font-normal">
-                Missed or delayed follow-ups cause high-value leads to drop off unnoticed. Convertix ensures timely engagement with automated scheduling, smart reminders, SIM-integrated calls, and AI alerts for inactive leads.
+              <p className="text-sm font-mono text-[#b8b5af] leading-relaxed">
+                Missed showroom follow-ups cause high-value buyers to drop off unnoticed. Convertix enforces follow-up SLAs with automated reminders and supervisor alerts.
               </p>
             </div>
           </div>
 
-          {/* Deep Feature Grid */}
-          <div className="space-y-6">
-            <h3 className="text-xl sm:text-2xl font-display font-bold text-white">
-              Core Architectural Capabilities
-            </h3>
+          {/* Feature Breakdown */}
+          <div className="space-y-12">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#e05a2b] block">
+              PLATFORM CAPABILITIES
+            </span>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-              <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/8 space-y-2">
-                <Sparkles className="w-5 h-5 text-[#d4ff00]" />
-                <h4 className="font-display font-bold text-base text-white">AI-Powered Prioritization</h4>
-                <p className="text-xs text-white/60 leading-relaxed">
-                  Machine Learning models evaluate intent velocity, segment budget, and engagement signals to route hot leads to top consultants.
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="p-8 rounded-2xl bg-[#0e0e0e] border border-white/10 space-y-3">
+                <h3 className="text-xl font-display font-bold text-white">AI Intent Scoring</h3>
+                <p className="text-xs font-mono text-[#b8b5af] leading-relaxed">
+                  Machine learning algorithms calculate buyer intent velocity to rank incoming inquiries.
                 </p>
               </div>
 
-              <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/8 space-y-2">
-                <PhoneCall className="w-5 h-5 text-[#00f58c]" />
-                <h4 className="font-display font-bold text-base text-white">SIM-Integrated Calling</h4>
-                <p className="text-xs text-white/60 leading-relaxed">
-                  Every outbound call is routed via SIM, automatically logged, duration-audited, and synced directly to the DMS master file.
+              <div className="p-8 rounded-2xl bg-[#0e0e0e] border border-white/10 space-y-3">
+                <h3 className="text-xl font-display font-bold text-white">SIM-Integrated Calling</h3>
+                <p className="text-xs font-mono text-[#b8b5af] leading-relaxed">
+                  Every showroom dial is executed via SIM, automatically logged, and verified in real-time.
                 </p>
               </div>
 
-              <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/8 space-y-2">
-                <Database className="w-5 h-5 text-[#00d8f6]" />
-                <h4 className="font-display font-bold text-base text-white">2-Way OEM DMS Protocol</h4>
-                <p className="text-xs text-white/60 leading-relaxed">
-                  Direct bi-directional synchronization with Tata, Maruti, Hyundai & Mahindra dealership management systems.
+              <div className="p-8 rounded-2xl bg-[#0e0e0e] border border-white/10 space-y-3">
+                <h3 className="text-xl font-display font-bold text-white">2-Way OEM DMS Protocol</h3>
+                <p className="text-xs font-mono text-[#b8b5af] leading-relaxed">
+                  Direct bi-directional sync with Tata, Maruti, Hyundai & Mahindra dealer systems.
                 </p>
               </div>
             </div>

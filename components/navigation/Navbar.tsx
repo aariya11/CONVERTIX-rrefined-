@@ -3,18 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  ChevronDown,
-  Phone,
-  Sparkles,
-  Zap,
-  RotateCw,
-  Layers,
-  ArrowUpRight,
-  Menu,
-} from "lucide-react";
-import { SoundToggle } from "../ui/SoundToggle";
-import { MagneticButton } from "../ui/MagneticButton";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import { soundManager } from "../lib/sound";
 
 interface NavbarProps {
@@ -24,11 +13,10 @@ interface NavbarProps {
 
 export function Navbar({ onOpenContact, onOpenMobileMenu }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
-  const [productsOpen, setProductsOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 40) {
+      if (window.scrollY > 50) {
         setScrolled(true);
       } else {
         setScrolled(false);
@@ -39,180 +27,96 @@ export function Navbar({ onOpenContact, onOpenMobileMenu }: NavbarProps) {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 pointer-events-none">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6">
+    <header className="fixed top-0 left-0 right-0 z-50 pointer-events-none transition-all duration-500">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 pt-6 sm:pt-8">
         <nav
-          className={`pointer-events-auto transition-all duration-500 rounded-full flex items-center justify-between ${
+          className={`pointer-events-auto transition-all duration-500 flex items-center justify-between ${
             scrolled
-              ? "bg-[#090b0e]/85 backdrop-blur-xl border border-white/12 shadow-2xl py-2.5 px-4 sm:px-6 mx-auto max-w-5xl"
-              : "bg-transparent py-4 px-2"
+              ? "bg-[#0a0a0a]/90 backdrop-blur-xl border border-white/10 rounded-full py-3 px-6 shadow-2xl mx-auto max-w-4xl"
+              : "bg-transparent py-2 px-0"
           }`}
         >
-          {/* Logo Brand */}
+          {/* Left Brand */}
           <Link
             href="/"
             onClick={() => soundManager.playClick()}
             data-cursor="CONVERTIX"
-            className="flex items-center gap-3 group"
+            className="flex items-center gap-2 group"
           >
-            <div className="w-8 h-8 rounded-lg bg-[#d4ff00] text-black font-black flex items-center justify-center font-display text-base tracking-tighter group-hover:scale-105 transition-transform">
-              CX
-            </div>
-            <div className="flex flex-col">
-              <span className="font-display font-bold text-sm tracking-wider text-white flex items-center gap-1.5">
-                CONVERTIX
-                <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#00f58c] animate-pulse" />
-              </span>
-              <span className="text-[9px] font-mono tracking-widest text-white/40 uppercase hidden sm:inline">
-                Auto Retail OS
-              </span>
-            </div>
+            <span className="font-display font-black text-lg sm:text-xl tracking-[-0.05em] text-[#f3f1ec]">
+              CONVERTIX<span className="text-[#e05a2b]">.</span>
+            </span>
           </Link>
 
-          {/* Desktop Navigation Links */}
-          <div className="hidden md:flex items-center gap-1 lg:gap-2">
-            {/* Products Dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => {
-                setProductsOpen(true);
-                soundManager.playClick();
-              }}
-              onMouseLeave={() => setProductsOpen(false)}
+          {/* Center Links (Desktop) */}
+          <div className="hidden md:flex items-center gap-8 text-xs font-mono tracking-widest text-[#b8b5af]">
+            <Link
+              href="/products/lead-management"
+              className="hover:text-white transition-colors uppercase"
+              onClick={() => soundManager.playClick()}
             >
-              <button
-                type="button"
-                className="px-3 py-1.5 rounded-full text-xs font-mono text-white/80 hover:text-white hover:bg-white/5 transition-colors flex items-center gap-1 uppercase tracking-wider"
-              >
-                Products
-                <ChevronDown
-                  className={`w-3 h-3 transition-transform duration-200 ${
-                    productsOpen ? "rotate-180 text-[#d4ff00]" : ""
-                  }`}
-                />
-              </button>
-
-              <AnimatePresence>
-                {productsOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 8, scale: 0.96 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 8, scale: 0.96 }}
-                    transition={{ duration: 0.18, ease: "easeOut" }}
-                    className="absolute top-full left-0 mt-2 w-80 p-2 bg-[#0c0e14] border border-white/15 rounded-2xl shadow-2xl backdrop-blur-2xl"
-                  >
-                    <Link
-                      href="/products/lead-management"
-                      onClick={() => soundManager.playClick()}
-                      className="block p-3 rounded-xl hover:bg-white/5 transition-colors group/item"
-                    >
-                      <div className="flex items-center gap-2.5 mb-1">
-                        <div className="p-1.5 rounded-lg bg-[#d4ff00]/10 text-[#d4ff00]">
-                          <Zap className="w-4 h-4" />
-                        </div>
-                        <div className="font-display font-semibold text-xs text-white group-hover/item:text-[#d4ff00] transition-colors">
-                          Lead & Pre-Sales OS
-                        </div>
-                      </div>
-                      <p className="text-[11px] text-white/50 leading-relaxed pl-8">
-                        10-minute response speed, SIM-integrated calling & AI prioritization matrix.
-                      </p>
-                    </Link>
-
-                    <Link
-                      href="/products/service-insurance"
-                      onClick={() => soundManager.playClick()}
-                      className="block p-3 rounded-xl hover:bg-white/5 transition-colors group/item"
-                    >
-                      <div className="flex items-center gap-2.5 mb-1">
-                        <div className="p-1.5 rounded-lg bg-[#00f58c]/10 text-[#00f58c]">
-                          <RotateCw className="w-4 h-4" />
-                        </div>
-                        <div className="font-display font-semibold text-xs text-white group-hover/item:text-[#00f58c] transition-colors">
-                          Service & Insurance Reminders
-                        </div>
-                      </div>
-                      <p className="text-[11px] text-white/50 leading-relaxed pl-8">
-                        Mileage-based triggers, policy renewals & 90%+ follow-up retention.
-                      </p>
-                    </Link>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-
+              Leads
+            </Link>
+            <Link
+              href="/products/service-insurance"
+              className="hover:text-white transition-colors uppercase"
+              onClick={() => soundManager.playClick()}
+            >
+              Service & Insurance
+            </Link>
             <a
               href="#ecosystem"
+              className="hover:text-white transition-colors uppercase"
               onClick={() => soundManager.playClick()}
-              className="px-3 py-1.5 rounded-full text-xs font-mono text-white/70 hover:text-white hover:bg-white/5 transition-colors uppercase tracking-wider"
             >
               Ecosystem
             </a>
-
-            <a
-              href="#problem"
-              onClick={() => soundManager.playClick()}
-              className="px-3 py-1.5 rounded-full text-xs font-mono text-white/70 hover:text-white hover:bg-white/5 transition-colors uppercase tracking-wider"
-            >
-              Why Convertix
-            </a>
-
             <a
               href="#roi"
+              className="hover:text-white transition-colors uppercase"
               onClick={() => soundManager.playClick()}
-              className="px-3 py-1.5 rounded-full text-xs font-mono text-white/70 hover:text-white hover:bg-white/5 transition-colors uppercase tracking-wider flex items-center gap-1"
             >
-              <Sparkles className="w-3 h-3 text-[#d4ff00]" />
-              ROI Model
+              ROI Impact
             </a>
-
             <Link
               href="/pricing"
+              className="hover:text-white transition-colors uppercase"
               onClick={() => soundManager.playClick()}
-              className="px-3 py-1.5 rounded-full text-xs font-mono text-white/70 hover:text-white hover:bg-white/5 transition-colors uppercase tracking-wider"
             >
-              Pricing
+              Editions
             </Link>
-
             <Link
               href="/about"
+              className="hover:text-white transition-colors uppercase"
               onClick={() => soundManager.playClick()}
-              className="px-3 py-1.5 rounded-full text-xs font-mono text-white/70 hover:text-white hover:bg-white/5 transition-colors uppercase tracking-wider"
             >
               About
             </Link>
           </div>
 
-          {/* Right Actions */}
-          <div className="flex items-center gap-2 sm:gap-3">
-            <SoundToggle />
-
-            <a
-              href="tel:+917888028729"
-              className="hidden xl:flex items-center gap-1.5 text-[11px] font-mono text-white/70 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition-colors"
+          {/* Right Action */}
+          <div className="flex items-center gap-4">
+            <button
+              type="button"
+              onClick={() => {
+                soundManager.playChirp();
+                onOpenContact();
+              }}
+              data-cursor="TALK"
+              className="hidden sm:inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#f3f1ec] hover:text-[#e05a2b] transition-colors group"
             >
-              <Phone className="w-3 h-3 text-[#00f58c]" />
-              <span>+91 7888 028 729</span>
-            </a>
+              <span>Talk to Sales</span>
+              <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-[#e05a2b]" />
+            </button>
 
-            <MagneticButton
-              variant="primary"
-              onClick={onOpenContact}
-              cursorText="TALK"
-              className="!py-2 !px-4 text-[11px]"
-            >
-              <span>Book VIP Demo</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
-            </MagneticButton>
-
-            {/* Mobile Menu Toggle */}
+            {/* Mobile Trigger */}
             <button
               type="button"
               onClick={onOpenMobileMenu}
-              aria-label="Open mobile navigation"
-              className="md:hidden p-2 rounded-full border border-white/10 bg-white/5 text-white/80 hover:text-white"
+              aria-label="Open Navigation"
+              className="md:hidden p-2 text-[#f3f1ec] hover:text-[#e05a2b] transition-colors"
             >
-              <Menu className="w-4 h-4" />
+              <Menu className="w-5 h-5" />
             </button>
           </div>
         </nav>

@@ -12,7 +12,6 @@ import { ProblemPoster } from "@/components/sections/ProblemPoster";
 import { ChaosToControl } from "@/components/sections/ChaosToControl";
 import { LeadManagementSection } from "@/components/sections/LeadManagementSection";
 import { ResponseTimeScrubber } from "@/components/sections/ResponseTimeScrubber";
-import { FollowUpWorkflow } from "@/components/sections/FollowUpWorkflow";
 import { ServiceInsuranceSection } from "@/components/sections/ServiceInsuranceSection";
 import { AIPrioritizationEngine } from "@/components/sections/AIPrioritizationEngine";
 import { DealershipEcosystem } from "@/components/sections/DealershipEcosystem";
@@ -27,8 +26,8 @@ export default function HomePage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <main className="min-h-screen bg-[#07080a] text-[#f5f6f8] relative overflow-hidden">
-      {/* Navigation */}
+    <main className="min-h-screen bg-[#0a0a0a] text-[#f3f1ec] relative overflow-hidden">
+      {/* Editorial Navigation */}
       <Navbar
         onOpenContact={() => setContactOpen(true)}
         onOpenMobileMenu={() => setMobileMenuOpen(true)}
@@ -40,55 +39,52 @@ export default function HomePage() {
         onOpenContact={() => setContactOpen(true)}
       />
 
-      {/* Hero Section */}
+      {/* 01. Magazine Cover Hero */}
       <HeroSection onOpenContact={() => setContactOpen(true)} />
 
-      {/* 01. The Problem Editorial Poster */}
+      {/* 02. Problem Poster: EVERY MINUTE COSTS A LEAD */}
       <ProblemPoster />
 
-      {/* 02. Chaos to Control Transformation */}
+      {/* 03. Paradigm Shift: CHAOS INTO CONTROL */}
       <ChaosToControl />
 
-      {/* 03. Lead & Pre-Sales Management Cockpit */}
+      {/* 04. Suite 01: LEADS DON'T WAIT */}
       <LeadManagementSection />
 
-      {/* 04. Speed-to-Lead Response Scrubber */}
+      {/* 05. Speed-to-Lead Benchmark: THE ADVANTAGE OF SPEED */}
       <ResponseTimeScrubber />
 
-      {/* 05. Follow-Up Workflow Execution Engine */}
-      <FollowUpWorkflow />
-
-      {/* 06. Service & Insurance Retention Matrix */}
+      {/* 06. Suite 02: KEEP THEM COMING BACK */}
       <ServiceInsuranceSection />
 
-      {/* 07. AI Prioritization Engine */}
+      {/* 07. Intelligence: AI THAT KNOWS WHO MATTERS NOW */}
       <AIPrioritizationEngine />
 
-      {/* 08. Connected Dealership Ecosystem */}
+      {/* 08. Nodal Graphic: THE CONNECTED DEALERSHIP ECOSYSTEM */}
       <DealershipEcosystem />
 
-      {/* 09. 9-Feature Platform Showcase */}
+      {/* 09. System Capabilities: Vertical Feature Index */}
       <FeatureShowcase />
 
-      {/* 10. Multi-Branch Executive Dashboard */}
+      {/* 10. Master Product View: THE COCKPIT OF RECORD */}
       <DashboardShowcase />
 
-      {/* 11. Built for Automotive Retail Manifesto */}
+      {/* 11. Automotive Manifesto: NOT ANOTHER CRM */}
       <WhyConvertix />
 
-      {/* 12. Interactive Dealership ROI Calculator */}
+      {/* 12. Financial Model: WHAT DOES SLOW RESPONSE COST YOU? */}
       <DealershipRoiCalculator onOpenContact={() => setContactOpen(true)} />
 
-      {/* 13. Dramatic Final CTA */}
+      {/* 13. Dramatic Ending: READY TO MOVE FASTER? */}
       <FinalCta onOpenContact={() => setContactOpen(true)} />
 
-      {/* Footer */}
+      {/* Luxury Footer */}
       <Footer onOpenContact={() => setContactOpen(true)} />
 
-      {/* Floating Bottom Action Bar for Mobile Conversions */}
+      {/* Subtle Mobile Quick Bar */}
       <MobileFloatingBar onOpenContact={() => setContactOpen(true)} />
 
-      {/* VIP Demo & Contact Modal */}
+      {/* Executive Consultation Modal */}
       <ContactModal
         isOpen={contactOpen}
         onClose={() => setContactOpen(false)}

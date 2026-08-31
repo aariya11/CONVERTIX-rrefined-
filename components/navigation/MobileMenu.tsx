@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { X, Phone, ArrowUpRight, Zap, RotateCw, Sparkles, Building } from "lucide-react";
+import { X, ArrowUpRight, Phone } from "lucide-react";
 import { soundManager } from "../lib/sound";
 
 interface MobileMenuProps {
@@ -21,22 +21,20 @@ export function MobileMenu({ isOpen, onClose, onOpenContact }: MobileMenuProps) 
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[10000] bg-[#07080a] flex flex-col justify-between p-6 overflow-y-auto"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          className="fixed inset-0 z-[10000] bg-[#0a0a0a] flex flex-col justify-between p-6 sm:p-10 overflow-y-auto"
         >
           {/* Header */}
-          <div className="flex items-center justify-between border-b border-white/10 pb-4">
+          <div className="flex items-center justify-between border-b border-white/10 pb-6">
             <Link
               href="/"
               onClick={handleLinkClick}
-              className="flex items-center gap-2.5"
+              className="font-display font-black text-xl tracking-[-0.05em] text-[#f3f1ec]"
             >
-              <div className="w-7 h-7 rounded-lg bg-[#d4ff00] text-black font-black flex items-center justify-center font-display text-sm">
-                CX
-              </div>
-              <span className="font-display font-bold text-base text-white">CONVERTIX</span>
+              CONVERTIX<span className="text-[#e05a2b]">.</span>
             </Link>
             <button
               type="button"
@@ -45,121 +43,83 @@ export function MobileMenu({ isOpen, onClose, onOpenContact }: MobileMenuProps) 
                 onClose();
               }}
               aria-label="Close menu"
-              className="p-2 rounded-full border border-white/10 bg-white/5 text-white"
+              className="p-2 text-white/60 hover:text-white"
             >
-              <X className="w-5 h-5" />
+              <X className="w-6 h-6" />
             </button>
           </div>
 
           {/* Navigation Links */}
-          <div className="py-8 space-y-6">
-            <p className="text-[10px] font-mono uppercase tracking-widest text-[#d4ff00]">
-              PLATFORM SUITES
-            </p>
+          <div className="py-12 space-y-6">
+            <span className="text-[10px] font-mono uppercase tracking-widest text-[#e05a2b]">
+              ARCHITECTURAL SUITES
+            </span>
 
-            <div className="space-y-4">
+            <div className="space-y-4 font-display text-3xl sm:text-4xl font-bold tracking-tight text-white/90">
               <Link
                 href="/products/lead-management"
                 onClick={handleLinkClick}
-                className="flex items-center gap-4 p-3.5 rounded-xl bg-white/5 border border-white/10"
+                className="block hover:text-[#e05a2b] transition-colors"
               >
-                <div className="p-2 rounded-lg bg-[#d4ff00]/10 text-[#d4ff00]">
-                  <Zap className="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 className="font-display font-bold text-sm text-white">
-                    Lead & Pre-Sales Management
-                  </h4>
-                  <p className="text-xs text-white/50">10-30 min response & AI qualification</p>
-                </div>
+                Lead & Pre-Sales
               </Link>
-
               <Link
                 href="/products/service-insurance"
                 onClick={handleLinkClick}
-                className="flex items-center gap-4 p-3.5 rounded-xl bg-white/5 border border-white/10"
+                className="block hover:text-[#e05a2b] transition-colors"
               >
-                <div className="p-2 rounded-lg bg-[#00f58c]/10 text-[#00f58c]">
-                  <RotateCw className="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 className="font-display font-bold text-sm text-white">
-                    Service & Insurance Reminders
-                  </h4>
-                  <p className="text-xs text-white/50">Mileage triggers & 90%+ renewal follow-up</p>
-                </div>
+                Service & Retention
               </Link>
-            </div>
-
-            <p className="text-[10px] font-mono uppercase tracking-widest text-white/40 pt-4">
-              NAVIGATION
-            </p>
-
-            <div className="space-y-3 font-display text-2xl font-bold text-white/90">
               <a
                 href="#ecosystem"
                 onClick={handleLinkClick}
-                className="block hover:text-[#d4ff00] transition-colors"
+                className="block hover:text-[#e05a2b] transition-colors"
               >
-                Dealership Ecosystem
-              </a>
-              <a
-                href="#problem"
-                onClick={handleLinkClick}
-                className="block hover:text-[#d4ff00] transition-colors"
-              >
-                Why Convertix
+                Ecosystem
               </a>
               <a
                 href="#roi"
                 onClick={handleLinkClick}
-                className="block hover:text-[#d4ff00] transition-colors flex items-center justify-between"
+                className="block hover:text-[#e05a2b] transition-colors"
               >
-                <span>Dealership ROI Model</span>
-                <Sparkles className="w-5 h-5 text-[#d4ff00]" />
+                ROI Impact
               </a>
               <Link
                 href="/pricing"
                 onClick={handleLinkClick}
-                className="block hover:text-[#d4ff00] transition-colors"
+                className="block hover:text-[#e05a2b] transition-colors"
               >
-                Pricing & Editions
+                Editions
               </Link>
               <Link
                 href="/about"
                 onClick={handleLinkClick}
-                className="block hover:text-[#d4ff00] transition-colors"
+                className="block hover:text-[#e05a2b] transition-colors"
               >
-                About & Architecture
-              </Link>
-              <Link
-                href="/contact"
-                onClick={handleLinkClick}
-                className="block hover:text-[#d4ff00] transition-colors"
-              >
-                Contact Sales
+                About Convertix
               </Link>
             </div>
           </div>
 
-          {/* Bottom Actions */}
-          <div className="pt-6 border-t border-white/10 space-y-3">
+          {/* Footer Info */}
+          <div className="border-t border-white/10 pt-6 space-y-4">
             <a
               href="tel:+917888028729"
-              className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-white"
+              className="flex items-center gap-2 text-xs font-mono text-[#b8b5af] hover:text-white transition-colors"
             >
-              <Phone className="w-4 h-4 text-[#00f58c]" />
-              <span>+91 7888 028 729</span>
+              <Phone className="w-3.5 h-3.5 text-[#e05a2b]" />
+              <span>Direct Enterprise Desk: +91 7888 028 729</span>
             </a>
+
             <button
               type="button"
               onClick={() => {
                 onClose();
                 onOpenContact();
               }}
-              className="w-full py-3.5 rounded-xl bg-[#d4ff00] text-black font-mono font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2"
+              className="w-full py-4 rounded-full bg-[#f3f1ec] text-black font-mono font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-[#e05a2b] hover:text-white transition-colors"
             >
-              <span>Schedule VIP Consultation</span>
+              <span>Schedule Private Walkthrough</span>
               <ArrowUpRight className="w-4 h-4" />
             </button>
           </div>

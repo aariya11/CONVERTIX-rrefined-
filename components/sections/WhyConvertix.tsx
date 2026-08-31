@@ -1,104 +1,72 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, X, Shield, Zap, Car, Layers } from "lucide-react";
 
-const COMPARISON_ROWS = [
+const MANIFESTO_POINTS = [
   {
-    capability: "SIM-Integrated Call Verification",
-    generic: "Requires expensive external cloud PBX hardware or manual consultant entry.",
-    convertix: "Native mobile SIM dialing with 100% verified duration & zero hardware cost.",
+    title: "SIM-Integrated Telephony",
+    body: "Built for mobile consultants on showroom floors. Native SIM dialing eliminates expensive external PBX hardware while ensuring 100% verified conversation audits.",
   },
   {
-    capability: "2-Way OEM DMS Protocol",
-    generic: "Disconnected CSV imports/exports causing data duplicate errors.",
-    convertix: "Native bi-directional REST sync with Tata, Maruti, Hyundai & Mahindra DMS.",
+    title: "2-Way OEM DMS Protocol",
+    body: "Direct bi-directional sync with Tata, Maruti, Hyundai & Mahindra. No disconnected CSV files, no double data entry, no latency.",
   },
   {
-    capability: "Predictive Workshop Service Reminders",
-    generic: "Blind generic date blasts that customers ignore as spam.",
-    convertix: "Odometer velocity algorithms predicting exact 10k/20k km service windows.",
+    title: "Predictive Workshop Odometer Engine",
+    body: "Extrapolates customer mileage rhythms to trigger service booking precisely when maintenance is due, slashing mistimed reminders to under 10%.",
   },
   {
-    capability: "AI Automotive Lead Scoring",
-    generic: "Generic B2B web metrics irrelevant to car buyers.",
-    convertix: "Intent models factoring vehicle segment, exchange car, and test drive urgency.",
+    title: "Automotive Intent Lead Scoring",
+    body: "Machine learning algorithms trained on vehicle segment budgets, test drive requests, and exchange car signals rather than generic SaaS metrics.",
   },
   {
-    capability: "Hierarchical Manager Escalations",
-    generic: "Static notifications lost in email inboxes.",
-    convertix: "SLA sentinels alerting Branch Managers upon 15-minute lead inactivity.",
+    title: "Hierarchical Manager Sentinels",
+    body: "Automated SLA escalations that alert General Managers upon 15-minute lead inactivity, ensuring zero customer leakage across showroom outlets.",
   },
 ];
 
 export function WhyConvertix() {
   return (
-    <section id="why-convertix" className="relative py-20 sm:py-28 bg-[#090b10] border-t border-white/10 overflow-hidden defer-render">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
-        <div className="mb-16 max-w-3xl">
-          <span className="text-xs font-mono uppercase tracking-widest text-[#d4ff00] mb-3 block">
-            Product Manifesto
+    <section id="why-convertix" className="relative py-32 sm:py-48 bg-[#0a0a0a] border-t border-white/10 overflow-hidden defer-render">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8">
+        {/* Top Eyebrow */}
+        <div className="flex items-center gap-3 mb-8">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#e05a2b]" />
+          <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-[#e05a2b]">
+            BRAND MANIFESTO
           </span>
-          <h2 className="text-4xl sm:text-6xl lg:text-7xl font-display font-black tracking-tighter text-white uppercase leading-[0.9]">
-            BUILT SPECIFICALLY FOR
+        </div>
+
+        {/* Massive Headline */}
+        <div className="mb-20 sm:mb-28">
+          <h2 className="text-5xl xs:text-6xl sm:text-8xl md:text-9xl font-display font-black tracking-[-0.06em] text-[#f3f1ec] uppercase leading-[0.85]">
+            NOT ANOTHER
             <br />
-            <span className="font-editorial text-white/40 font-normal italic lowercase">automotive</span>{" "}
-            RETAIL.
+            <span className="font-editorial text-[#e05a2b] font-normal italic lowercase tracking-tight">
+              generic
+            </span>{" "}
+            CRM<span className="text-[#e05a2b]">.</span>
           </h2>
-          <p className="text-base sm:text-lg text-white/60 mt-4 leading-relaxed">
-            Generic SaaS CRMs were built for software salespeople at desks. Convertix was engineered on the dealership showroom floor—built around the real velocity of vehicle sales, test drives, and workshop bays.
+          <p className="text-lg sm:text-xl text-[#b8b5af] max-w-3xl mt-8 font-normal leading-relaxed">
+            Generic SaaS platforms were engineered for software salespeople at desks. Convertix was built on the dealership floor around the real velocity of test drives, vehicle delivery bays, and OEM compliance.
           </p>
         </div>
 
-        {/* Comparison Matrix Table */}
-        <div className="rounded-3xl bg-[#0c0e14] border border-white/15 shadow-2xl overflow-hidden">
-          <div className="grid grid-cols-1 md:grid-cols-12 border-b border-white/10 bg-[#12151e] p-4 sm:p-6 text-xs font-mono">
-            <div className="md:col-span-4 text-white/40 uppercase tracking-wider">
-              OPERATIONAL CAPABILITY
+        {/* Editorial Manifesto Statements */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 sm:gap-16 border-t border-white/10 pt-16">
+          {MANIFESTO_POINTS.map((point, i) => (
+            <div key={point.title} className="space-y-3">
+              <span className="text-xs font-mono text-[#e05a2b] uppercase tracking-widest block">
+                0{i + 1} //
+              </span>
+              <h3 className="text-2xl sm:text-3xl font-display font-bold text-white">
+                {point.title}
+              </h3>
+              <p className="text-sm font-mono text-[#b8b5af] leading-relaxed pt-1">
+                {point.body}
+              </p>
             </div>
-            <div className="md:col-span-4 text-white/40 uppercase tracking-wider hidden md:block">
-              GENERIC CRM (SALESFORCE / HUBSPOT)
-            </div>
-            <div className="md:col-span-4 text-[#d4ff00] font-bold uppercase tracking-wider hidden md:block">
-              CONVERTIX DEALERSHIP OS
-            </div>
-          </div>
-
-          <div className="divide-y divide-white/5">
-            {COMPARISON_ROWS.map((row, idx) => (
-              <div
-                key={row.capability}
-                className="grid grid-cols-1 md:grid-cols-12 p-5 sm:p-6 gap-4 items-center hover:bg-white/[0.02] transition-colors"
-              >
-                {/* Capability Name */}
-                <div className="md:col-span-4 font-display font-bold text-sm sm:text-base text-white">
-                  <span className="text-[11px] font-mono text-white/40 block mb-1">
-                    0{idx + 1} //
-                  </span>
-                  {row.capability}
-                </div>
-
-                {/* Generic CRM */}
-                <div className="md:col-span-4 text-xs font-mono text-white/50 space-y-1">
-                  <div className="flex items-center gap-1.5 text-red-400 font-bold md:hidden">
-                    <X className="w-3.5 h-3.5" />
-                    <span>Generic CRM:</span>
-                  </div>
-                  <p className="leading-relaxed">{row.generic}</p>
-                </div>
-
-                {/* Convertix */}
-                <div className="md:col-span-4 text-xs font-mono text-white/90 space-y-1 p-3 rounded-xl bg-[#d4ff00]/5 border border-[#d4ff00]/20">
-                  <div className="flex items-center gap-1.5 text-[#d4ff00] font-bold md:hidden">
-                    <Check className="w-3.5 h-3.5" />
-                    <span>Convertix Advantage:</span>
-                  </div>
-                  <p className="leading-relaxed text-white font-semibold">{row.convertix}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          ))}
         </div>
       </div>
     </section>

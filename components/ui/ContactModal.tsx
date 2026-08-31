@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, CheckCircle2, Phone, Mail, Building2, ShieldCheck, ArrowRight } from "lucide-react";
+import { X, ArrowRight, CheckCircle2, Phone } from "lucide-react";
 import { soundManager } from "../lib/sound";
 
 interface ContactModalProps {
@@ -14,219 +14,173 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
-    dealership: "",
     phone: "",
-    email: "",
-    outlets: "1-3 Outlets",
-    brands: "",
-    interest: "Both Lead Management & Service Suite",
+    dealershipName: "",
+    brand: "Tata Motors",
+    outlets: "1–3 Outlets",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    soundManager.playChirp();
+    soundManager.playSuccessTone();
     setSubmitted(true);
-  };
-
-  const handleClose = () => {
-    soundManager.playClick();
-    onClose();
-    setTimeout(() => setSubmitted(false), 300);
+    setTimeout(() => {
+      setSubmitted(false);
+      onClose();
+    }, 2800);
   };
 
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[10000] flex items-center justify-center p-4 sm:p-6 md:p-10">
+        <div className="fixed inset-0 z-[10000] flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
           {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={handleClose}
-            className="absolute inset-0 bg-black/80 backdrop-blur-md"
+            onClick={() => {
+              soundManager.playClick();
+              onClose();
+            }}
+            className="fixed inset-0 bg-black/85 backdrop-blur-md"
           />
 
           {/* Modal Card */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            initial={{ opacity: 0, scale: 0.96, y: 15 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ type: "spring", duration: 0.4, bounce: 0.15 }}
-            className="relative w-full max-w-2xl bg-[#0e1117] border border-white/15 rounded-2xl shadow-2xl overflow-hidden z-10"
+            exit={{ opacity: 0, scale: 0.96, y: 15 }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            className="relative w-full max-w-xl bg-[#0e0e0e] border border-white/15 rounded-3xl p-8 sm:p-12 shadow-2xl z-10 my-auto text-[#f3f1ec]"
           >
-            {/* Top Bar */}
-            <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-[#13161f]">
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#d4ff00] animate-pulse" />
-                <span className="text-[11px] font-mono uppercase tracking-widest text-[#d4ff00]">
-                  Convertix VIP Onboarding
-                </span>
-              </div>
-              <button
-                type="button"
-                onClick={handleClose}
-                aria-label="Close dialog"
-                className="p-1.5 rounded-full text-white/50 hover:text-white hover:bg-white/10 transition-colors"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            </div>
+            {/* Close Button */}
+            <button
+              type="button"
+              onClick={() => {
+                soundManager.playClick();
+                onClose();
+              }}
+              aria-label="Close"
+              className="absolute top-6 right-6 p-2 text-white/40 hover:text-white transition-colors"
+            >
+              <X className="w-5 h-5" />
+            </button>
 
-            <div className="p-6 sm:p-8">
-              {submitted ? (
-                <div className="py-12 text-center flex flex-col items-center">
-                  <div className="w-16 h-16 rounded-full bg-[#00f58c]/10 border border-[#00f58c]/30 flex items-center justify-center mb-6">
-                    <CheckCircle2 className="w-8 h-8 text-[#00f58c]" />
-                  </div>
-                  <h3 className="text-2xl font-bold font-display tracking-tight text-white mb-2">
-                    VIP Consultation Requested
+            {submitted ? (
+              <div className="py-12 text-center space-y-4">
+                <CheckCircle2 className="w-12 h-12 text-[#e05a2b] mx-auto" />
+                <h3 className="text-3xl font-display font-bold text-white">
+                  Consultation Booked.
+                </h3>
+                <p className="text-sm font-mono text-[#b8b5af]">
+                  Our Automotive Solutions Director will connect with your dealership team within 15 minutes.
+                </p>
+              </div>
+            ) : (
+              <div className="space-y-8">
+                <div>
+                  <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-[#e05a2b] block mb-2">
+                    EXECUTIVE CONSULTATION
+                  </span>
+                  <h3 className="text-3xl sm:text-4xl font-display font-black text-white uppercase tracking-tight">
+                    DEPLOY CONVERTIX<span className="text-[#e05a2b]">.</span>
                   </h3>
-                  <p className="text-sm text-white/70 max-w-md mb-8">
-                    Our Automotive Retail Technology Director will reach out to{" "}
-                    <span className="text-white font-mono">{formData.phone || "your number"}</span>{" "}
-                    within 15 minutes to configure your custom live instance.
+                  <p className="text-xs font-mono text-[#b8b5af] mt-2">
+                    Transform your dealership's response velocity, service bays, and insurance renewals.
                   </p>
-                  <div className="p-4 rounded-xl bg-white/5 border border-white/10 w-full max-w-sm text-left mb-6">
-                    <p className="text-xs font-mono text-white/50 mb-1">Direct Technical Support Line:</p>
+                </div>
+
+                <form onSubmit={handleSubmit} className="space-y-5 text-xs font-mono">
+                  <div className="space-y-1.5">
+                    <label className="text-white/60 uppercase tracking-wider block">Full Name</label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. Vikram Singhania"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      className="w-full px-4 py-3.5 bg-[#141414] border border-white/10 rounded-xl text-white focus:border-[#e05a2b] focus:outline-none"
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="space-y-1.5">
+                      <label className="text-white/60 uppercase tracking-wider block">Direct Mobile / WhatsApp</label>
+                      <input
+                        type="tel"
+                        required
+                        placeholder="+91 98XXX XXXXX"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        className="w-full px-4 py-3.5 bg-[#141414] border border-white/10 rounded-xl text-white focus:border-[#e05a2b] focus:outline-none"
+                      />
+                    </div>
+
+                    <div className="space-y-1.5">
+                      <label className="text-white/60 uppercase tracking-wider block">Dealership Name</label>
+                      <input
+                        type="text"
+                        required
+                        placeholder="e.g. Apex Motors"
+                        value={formData.dealershipName}
+                        onChange={(e) => setFormData({ ...formData, dealershipName: e.target.value })}
+                        className="w-full px-4 py-3.5 bg-[#141414] border border-white/10 rounded-xl text-white focus:border-[#e05a2b] focus:outline-none"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="space-y-1.5">
+                      <label className="text-white/60 uppercase tracking-wider block">Primary OEM Brand</label>
+                      <select
+                        value={formData.brand}
+                        onChange={(e) => setFormData({ ...formData, brand: e.target.value })}
+                        className="w-full px-4 py-3.5 bg-[#141414] border border-white/10 rounded-xl text-white focus:border-[#e05a2b] focus:outline-none"
+                      >
+                        <option>Tata Motors</option>
+                        <option>Maruti Suzuki</option>
+                        <option>Hyundai Motor</option>
+                        <option>Mahindra & Mahindra</option>
+                        <option>Kia Motors</option>
+                        <option>Multi-Brand Dealer Group</option>
+                      </select>
+                    </div>
+
+                    <div className="space-y-1.5">
+                      <label className="text-white/60 uppercase tracking-wider block">Network Scale</label>
+                      <select
+                        value={formData.outlets}
+                        onChange={(e) => setFormData({ ...formData, outlets: e.target.value })}
+                        className="w-full px-4 py-3.5 bg-[#141414] border border-white/10 rounded-xl text-white focus:border-[#e05a2b] focus:outline-none"
+                      >
+                        <option>1–3 Outlets (Single Region)</option>
+                        <option>4–10 Outlets (Multi-City)</option>
+                        <option>10+ Outlets (Large Enterprise Group)</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full py-4 rounded-full bg-[#e05a2b] text-white font-bold text-xs uppercase tracking-widest hover:bg-white hover:text-black transition-colors flex items-center justify-center gap-2 mt-4"
+                  >
+                    <span>Confirm Executive Walkthrough</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+
+                  <div className="text-center pt-2">
                     <a
                       href="tel:+917888028729"
-                      className="text-sm font-mono font-bold text-[#d4ff00] hover:underline flex items-center gap-2"
+                      className="text-white/40 hover:text-white transition-colors inline-flex items-center gap-1.5"
                     >
-                      <Phone className="w-4 h-4" /> +91 7888 028 729
+                      <Phone className="w-3 h-3 text-[#e05a2b]" />
+                      <span>Prefer to call? +91 7888 028 729</span>
                     </a>
                   </div>
-                  <button
-                    type="button"
-                    onClick={handleClose}
-                    className="px-6 py-2.5 rounded-full bg-white text-black font-mono text-xs uppercase tracking-wider font-semibold hover:bg-[#d4ff00] transition-colors"
-                  >
-                    Return to Experience
-                  </button>
-                </div>
-              ) : (
-                <>
-                  <div className="mb-6">
-                    <h3 className="text-2xl sm:text-3xl font-display font-bold tracking-tight text-white mb-2">
-                      Deploy the Dealership OS.
-                    </h3>
-                    <p className="text-xs sm:text-sm text-white/60">
-                      Schedule a 20-minute operational walkthrough tailored to your OEM and dealership network.
-                    </p>
-                  </div>
-
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-[11px] font-mono uppercase tracking-wider text-white/60 mb-1.5">
-                          Full Name *
-                        </label>
-                        <input
-                          required
-                          type="text"
-                          placeholder="e.g. Vikram Singhania"
-                          value={formData.name}
-                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          className="w-full px-3.5 py-2.5 bg-white/5 border border-white/10 rounded-lg text-sm text-white focus:outline-none focus:border-[#d4ff00] transition-colors"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-[11px] font-mono uppercase tracking-wider text-white/60 mb-1.5">
-                          Direct Phone (WhatsApp) *
-                        </label>
-                        <input
-                          required
-                          type="tel"
-                          placeholder="+91 98765 43210"
-                          value={formData.phone}
-                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          className="w-full px-3.5 py-2.5 bg-white/5 border border-white/10 rounded-lg text-sm text-white focus:outline-none focus:border-[#d4ff00] transition-colors"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-[11px] font-mono uppercase tracking-wider text-white/60 mb-1.5">
-                          Dealership / Group Name *
-                        </label>
-                        <input
-                          required
-                          type="text"
-                          placeholder="e.g. Apex Motors Group"
-                          value={formData.dealership}
-                          onChange={(e) => setFormData({ ...formData, dealership: e.target.value })}
-                          className="w-full px-3.5 py-2.5 bg-white/5 border border-white/10 rounded-lg text-sm text-white focus:outline-none focus:border-[#d4ff00] transition-colors"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-[11px] font-mono uppercase tracking-wider text-white/60 mb-1.5">
-                          OEM Brand(s)
-                        </label>
-                        <input
-                          type="text"
-                          placeholder="e.g. Tata / Hyundai / Maruti / MG"
-                          value={formData.brands}
-                          onChange={(e) => setFormData({ ...formData, brands: e.target.value })}
-                          className="w-full px-3.5 py-2.5 bg-white/5 border border-white/10 rounded-lg text-sm text-white focus:outline-none focus:border-[#d4ff00] transition-colors"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-[11px] font-mono uppercase tracking-wider text-white/60 mb-1.5">
-                          Outlets / Showroom Count
-                        </label>
-                        <select
-                          value={formData.outlets}
-                          onChange={(e) => setFormData({ ...formData, outlets: e.target.value })}
-                          className="w-full px-3.5 py-2.5 bg-[#171a22] border border-white/10 rounded-lg text-sm text-white focus:outline-none focus:border-[#d4ff00] transition-colors"
-                        >
-                          <option value="1 Outlet">1 Single Showroom / Workshop</option>
-                          <option value="2-4 Outlets">2 – 4 Outlets (Regional Hub)</option>
-                          <option value="5-10 Outlets">5 – 10 Outlets (Major Group)</option>
-                          <option value="10+ Outlets">10+ Outlets (Enterprise Network)</option>
-                        </select>
-                      </div>
-                      <div>
-                        <label className="block text-[11px] font-mono uppercase tracking-wider text-white/60 mb-1.5">
-                          System Evaluation Focus
-                        </label>
-                        <select
-                          value={formData.interest}
-                          onChange={(e) => setFormData({ ...formData, interest: e.target.value })}
-                          className="w-full px-3.5 py-2.5 bg-[#171a22] border border-white/10 rounded-lg text-sm text-white focus:outline-none focus:border-[#d4ff00] transition-colors"
-                        >
-                          <option value="Unified Suite">Unified Suite (Leads + Service + Insurance)</option>
-                          <option value="Lead Management Only">Leads & Pre-Sales Speed Module</option>
-                          <option value="Service & Insurance Only">Service & Insurance Retention Module</option>
-                          <option value="DMS API Integration">2-Way OEM DMS Integration Engine</option>
-                        </select>
-                      </div>
-                    </div>
-
-                    <div className="pt-2">
-                      <button
-                        type="submit"
-                        className="w-full py-3.5 px-6 rounded-xl bg-[#d4ff00] text-black font-mono font-bold text-xs uppercase tracking-wider hover:bg-white transition-colors flex items-center justify-center gap-2 shadow-lg shadow-[#d4ff00]/10"
-                      >
-                        <span>Confirm VIP Consultation Slot</span>
-                        <ArrowRight className="w-4 h-4" />
-                      </button>
-                    </div>
-
-                    <div className="flex items-center justify-between text-[11px] text-white/40 pt-2 font-mono border-t border-white/5">
-                      <span className="flex items-center gap-1.5">
-                        <ShieldCheck className="w-3.5 h-3.5 text-[#00f58c]" />
-                        256-Bit Dealership Data Privacy
-                      </span>
-                      <span>Product of Selenix Technology</span>
-                    </div>
-                  </form>
-                </>
-              )}
-            </div>
+                </form>
+              </div>
+            )}
           </motion.div>
         </div>
       )}

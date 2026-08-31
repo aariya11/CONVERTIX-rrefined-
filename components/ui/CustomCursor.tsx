@@ -12,11 +12,10 @@ export function CustomCursor() {
   const mouseX = useMotionValue(-100);
   const mouseY = useMotionValue(-100);
 
-  const springX = useSpring(mouseX, { stiffness: 500, damping: 28 });
-  const springY = useSpring(mouseY, { stiffness: 500, damping: 28 });
+  const springX = useSpring(mouseX, { stiffness: 600, damping: 30 });
+  const springY = useSpring(mouseY, { stiffness: 600, damping: 30 });
 
   useEffect(() => {
-    // Detect touch devices to avoid intrusive mobile cursors
     if (window.matchMedia("(pointer: coarse)").matches || "ontouchstart" in window) {
       setIsTouch(true);
       return;
@@ -67,19 +66,19 @@ export function CustomCursor() {
     >
       <motion.div
         animate={{
-          scale: label ? 2.6 : isHovered ? 1.6 : 1,
+          scale: label ? 2.2 : isHovered ? 1.6 : 1,
           backgroundColor: label
-            ? "rgba(212, 255, 0, 0.95)"
+            ? "#e05a2b"
             : isHovered
-            ? "rgba(212, 255, 0, 0.25)"
-            : "rgba(255, 255, 255, 0.9)",
-          borderColor: isHovered ? "rgba(212, 255, 0, 0.8)" : "transparent",
+            ? "transparent"
+            : "#f3f1ec",
+          borderColor: isHovered ? "rgba(243, 241, 236, 0.6)" : "transparent",
         }}
         transition={{ type: "spring", stiffness: 450, damping: 25 }}
-        className="w-3.5 h-3.5 rounded-full border border-transparent backdrop-blur-[1px] flex items-center justify-center transition-colors"
+        className="w-2.5 h-2.5 rounded-full border border-transparent flex items-center justify-center transition-colors"
       >
         {label && (
-          <span className="text-[7px] font-mono font-bold tracking-widest text-black uppercase scale-75 select-none">
+          <span className="text-[6px] font-mono font-bold tracking-widest text-white uppercase scale-90 select-none">
             {label}
           </span>
         )}

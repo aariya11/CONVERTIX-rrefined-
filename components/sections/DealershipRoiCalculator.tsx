@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import confetti from "canvas-confetti";
-import { Sparkles, Calculator, ArrowRight, DollarSign, TrendingUp } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { formatINR } from "../lib/utils";
 import { soundManager } from "../lib/sound";
 
@@ -13,61 +12,49 @@ interface DealershipRoiCalculatorProps {
 
 export function DealershipRoiCalculator({ onOpenContact }: DealershipRoiCalculatorProps) {
   const [monthlyLeads, setMonthlyLeads] = useState<number>(1200);
-  const [currentConversion, setCurrentConversion] = useState<number>(6); // 6%
-  const [avgMargin, setAvgMargin] = useState<number>(35000); // ₹35,000 per car
-  const [workshopCars, setWorkshopCars] = useState<number>(3500);
+  const [currentConversion, setCurrentConversion] = useState<number>(6);
+  const [avgMargin, setAvgMargin] = useState<number>(35000);
 
-  // Convertix lifts conversion by an average of +3.5% due to 10m response speed & 90% follow-up
+  // Convertix lifts conversion by +3.5% through 10-minute speed and >90% follow-up retention
   const additionalCars = Math.round(monthlyLeads * 0.035);
-  const recoveredSalesProfit = additionalCars * avgMargin;
-
-  // Workshop retention lift: +12% on service bookings, avg ticket ₹6,500 with ₹2,200 margin
-  const additionalServices = Math.round(workshopCars * 0.08);
-  const recoveredServiceProfit = additionalServices * 2200;
-
-  const totalMonthlyGain = recoveredSalesProfit + recoveredServiceProfit;
-  const annualGain = totalMonthlyGain * 12;
-
-  const handleCelebrate = () => {
-    soundManager.playChirp();
-    confetti({
-      particleCount: 80,
-      spread: 60,
-      origin: { y: 0.8 },
-      colors: ["#d4ff00", "#00f58c", "#ffffff"],
-    });
-  };
+  const recoveredMonthlyProfit = additionalCars * avgMargin + Math.round(monthlyLeads * 0.8 * 850);
+  const annualLift = recoveredMonthlyProfit * 12;
 
   return (
-    <section id="roi" className="relative py-20 sm:py-28 bg-[#07080a] border-t border-white/10 overflow-hidden defer-render">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
-        <div className="mb-16 text-center max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-[#d4ff00] mb-4">
-            <Calculator className="w-3.5 h-3.5" />
-            <span>FINANCIAL REVENUE PROJECTION MODEL</span>
-          </div>
-          <h2 className="text-4xl sm:text-6xl font-display font-black tracking-tighter text-white uppercase">
-            CALCULATE YOUR DEALERSHIP ROI.
-          </h2>
-          <p className="text-sm sm:text-base text-white/60 mt-4">
-            See the exact monthly net profit recovered by reducing response latency from 14 hours to 10 minutes and increasing follow-up adherence above 90%.
-          </p>
+    <section id="roi" className="relative py-32 sm:py-48 bg-[#0a0a0a] border-t border-white/10 overflow-hidden defer-render">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8">
+        {/* Top Eyebrow */}
+        <div className="flex items-center gap-3 mb-8">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#e05a2b]" />
+          <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-[#e05a2b]">
+            FINANCIAL IMPACT MODEL
+          </span>
         </div>
 
-        {/* Calculator Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          {/* Left Inputs (6 cols) */}
-          <div className="lg:col-span-6 p-6 sm:p-10 rounded-3xl bg-[#0d1017] border border-white/12 space-y-6 shadow-2xl">
-            <span className="text-xs font-mono uppercase tracking-widest text-white/60 block pb-2 border-b border-white/10">
-              Dealership Operational Volume
+        {/* Massive Headline */}
+        <div className="mb-20 sm:mb-28">
+          <h2 className="text-5xl xs:text-6xl sm:text-8xl md:text-9xl font-display font-black tracking-[-0.06em] text-[#f3f1ec] uppercase leading-[0.85]">
+            WHAT DOES
+            <br />
+            <span className="font-editorial text-[#b8b5af] font-normal italic lowercase tracking-tight">
+              slow response
             </span>
+            <br />
+            COST YOU<span className="text-[#e05a2b]">?</span>
+          </h2>
+        </div>
 
-            {/* Slider 1: Monthly Leads */}
-            <div className="space-y-2">
-              <div className="flex justify-between text-xs font-mono">
-                <span className="text-white/70">Monthly Showroom & Digital Inquiries</span>
-                <span className="text-[#d4ff00] font-bold">{monthlyLeads.toLocaleString()} Leads</span>
+        {/* Minimalist Editorial Calculator Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 sm:gap-16 items-start">
+          {/* Left Inputs as Large Typography (6 cols) */}
+          <div className="lg:col-span-6 space-y-10">
+            {/* Input 1: Monthly Leads */}
+            <div className="border-b border-white/10 pb-8 space-y-3">
+              <span className="text-xs font-mono text-white/40 uppercase tracking-widest block">
+                MONTHLY INCOMING LEADS
+              </span>
+              <div className="text-4xl sm:text-6xl font-display font-black text-white">
+                {monthlyLeads.toLocaleString()}
               </div>
               <input
                 type="range"
@@ -79,15 +66,17 @@ export function DealershipRoiCalculator({ onOpenContact }: DealershipRoiCalculat
                   setMonthlyLeads(Number(e.target.value));
                   soundManager.playClick();
                 }}
-                className="w-full accent-[#d4ff00] cursor-pointer"
+                className="w-full accent-[#e05a2b] cursor-pointer"
               />
             </div>
 
-            {/* Slider 2: Current Showroom Conversion */}
-            <div className="space-y-2">
-              <div className="flex justify-between text-xs font-mono">
-                <span className="text-white/70">Current Baseline Conversion Rate</span>
-                <span className="text-white font-bold">{currentConversion}%</span>
+            {/* Input 2: Current Conversion Rate */}
+            <div className="border-b border-white/10 pb-8 space-y-3">
+              <span className="text-xs font-mono text-white/40 uppercase tracking-widest block">
+                CURRENT CONVERSION RATE
+              </span>
+              <div className="text-4xl sm:text-6xl font-display font-black text-white">
+                {currentConversion}%
               </div>
               <input
                 type="range"
@@ -99,115 +88,67 @@ export function DealershipRoiCalculator({ onOpenContact }: DealershipRoiCalculat
                   setCurrentConversion(Number(e.target.value));
                   soundManager.playClick();
                 }}
-                className="w-full accent-white cursor-pointer"
+                className="w-full accent-[#e05a2b] cursor-pointer"
               />
             </div>
 
-            {/* Slider 3: Average Vehicle Gross Margin */}
-            <div className="space-y-2">
-              <div className="flex justify-between text-xs font-mono">
-                <span className="text-white/70">Average Gross Profit Margin / Car</span>
-                <span className="text-[#00f58c] font-bold">{formatINR(avgMargin)}</span>
+            {/* Input 3: Avg Margin */}
+            <div className="space-y-3">
+              <span className="text-xs font-mono text-white/40 uppercase tracking-widest block">
+                AVERAGE GROSS PROFIT PER VEHICLE
+              </span>
+              <div className="text-4xl sm:text-6xl font-display font-black text-white">
+                {formatINR(avgMargin)}
               </div>
               <input
                 type="range"
                 min="15000"
-                max="80000"
+                max="75000"
                 step="2500"
                 value={avgMargin}
                 onChange={(e) => {
                   setAvgMargin(Number(e.target.value));
                   soundManager.playClick();
                 }}
-                className="w-full accent-[#00f58c] cursor-pointer"
-              />
-            </div>
-
-            {/* Slider 4: Workshop Customer Fleet */}
-            <div className="space-y-2">
-              <div className="flex justify-between text-xs font-mono">
-                <span className="text-white/70">Active Dealership Workshop Customer Base</span>
-                <span className="text-[#00d8f6] font-bold">{workshopCars.toLocaleString()} Vehicles</span>
-              </div>
-              <input
-                type="range"
-                min="500"
-                max="12000"
-                step="250"
-                value={workshopCars}
-                onChange={(e) => {
-                  setWorkshopCars(Number(e.target.value));
-                  soundManager.playClick();
-                }}
-                className="w-full accent-[#00d8f6] cursor-pointer"
+                className="w-full accent-[#e05a2b] cursor-pointer"
               />
             </div>
           </div>
 
-          {/* Right Output Card (6 cols) */}
-          <div className="lg:col-span-6 p-6 sm:p-10 rounded-3xl bg-[#121620] border border-[#d4ff00]/40 flex flex-col justify-between shadow-2xl relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-[#d4ff00]/10 blur-[90px] rounded-full pointer-events-none" />
-
+          {/* Right Output: Dramatic Number Reveal (6 cols) */}
+          <div className="lg:col-span-6 border border-white/12 rounded-3xl p-8 sm:p-14 bg-[#0e0e0e] space-y-8 shadow-2xl flex flex-col justify-between">
             <div>
-              <span className="text-[10px] font-mono uppercase tracking-widest text-[#d4ff00] block mb-1">
-                PROJECTED RECOVERED PROFIT
+              <span className="text-xs font-mono uppercase tracking-widest text-[#e05a2b] block mb-2 font-bold">
+                ESTIMATED MONTHLY NET PROFIT RECOVERED
               </span>
-              <h3 className="text-3xl font-display font-black text-white mb-6">
-                Monthly Net Profit Lift
-              </h3>
-
-              <div className="p-6 rounded-2xl bg-[#090b10] border border-white/10 mb-6">
-                <div className="text-xs font-mono text-white/50 mb-1">TOTAL ESTIMATED GAIN</div>
-                <div className="text-4xl sm:text-5xl font-display font-black text-[#d4ff00] tracking-tight">
-                  {formatINR(totalMonthlyGain)}
-                  <span className="text-xs font-mono text-white/60 font-normal ml-2">/ month</span>
-                </div>
-                <div className="text-xs font-mono text-[#00f58c] mt-1 font-semibold">
-                  ≈ {formatINR(annualGain)} Additional Annual Net Profit
-                </div>
+              <div className="text-5xl sm:text-7xl font-display font-black text-[#f3f1ec] tracking-tight leading-none mb-4">
+                {formatINR(recoveredMonthlyProfit)}
+                <span className="text-sm font-mono text-white/40 block mt-2 font-normal">
+                  ≈ {formatINR(annualLift)} Projected Annual Impact
+                </span>
               </div>
 
-              {/* Sub-breakdown */}
-              <div className="grid grid-cols-2 gap-4 text-xs font-mono">
-                <div className="p-4 rounded-xl bg-white/5 border border-white/8">
-                  <span className="text-white/40 block mb-1">ADDITIONAL CARS SOLD</span>
-                  <div className="text-xl font-display font-bold text-white">
-                    +{additionalCars} Units / mo
-                  </div>
-                  <span className="text-[#00f58c] text-[10px]">
-                    +{formatINR(recoveredSalesProfit)}
-                  </span>
+              <div className="pt-8 border-t border-white/10 space-y-4 text-xs font-mono text-[#b8b5af]">
+                <div className="flex justify-between">
+                  <span>Additional Cars Sold:</span>
+                  <span className="text-white font-bold">+{additionalCars} Units / mo</span>
                 </div>
-
-                <div className="p-4 rounded-xl bg-white/5 border border-white/8">
-                  <span className="text-white/40 block mb-1">WORKSHOP SERVICE LIFT</span>
-                  <div className="text-xl font-display font-bold text-white">
-                    +{additionalServices} Bays / mo
-                  </div>
-                  <span className="text-[#00d8f6] text-[10px]">
-                    +{formatINR(recoveredServiceProfit)}
-                  </span>
+                <div className="flex justify-between">
+                  <span>Workshop Retention Lift:</span>
+                  <span className="text-white font-bold">+12% Service Revenue</span>
                 </div>
               </div>
             </div>
 
-            <div className="pt-8 mt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <button
-                type="button"
-                onClick={handleCelebrate}
-                className="text-xs font-mono text-white/70 hover:text-white flex items-center gap-1.5"
-              >
-                <Sparkles className="w-3.5 h-3.5 text-[#d4ff00]" />
-                <span>Trigger ROI Simulation</span>
-              </button>
-
+            <div className="pt-8 border-t border-white/10">
               <button
                 type="button"
                 onClick={() => {
                   soundManager.playChirp();
                   onOpenContact?.();
                 }}
-                className="w-full sm:w-auto px-6 py-3 rounded-full bg-[#d4ff00] text-black font-mono font-bold text-xs uppercase tracking-wider hover:bg-white transition-colors flex items-center justify-center gap-2 shadow-lg shadow-[#d4ff00]/10"
+                data-cursor="MOVE"
+                className="w-full py-4 px-8 rounded-full bg-[#f3f1ec] text-black font-mono font-bold text-xs uppercase tracking-widest hover:bg-[#e05a2b] hover:text-white transition-colors flex items-center justify-center gap-3"
               >
                 <span>Deploy Dealership OS</span>
                 <ArrowRight className="w-4 h-4" />

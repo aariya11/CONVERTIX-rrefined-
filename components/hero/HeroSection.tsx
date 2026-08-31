@@ -1,9 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, Zap, Shield, PhoneCall } from "lucide-react";
-import { DealershipPipelineSim } from "./DealershipPipelineSim";
-import { MagneticButton } from "../ui/MagneticButton";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { soundManager } from "../lib/sound";
 
 interface HeroSectionProps {
   onOpenContact: () => void;
@@ -11,138 +10,144 @@ interface HeroSectionProps {
 
 export function HeroSection({ onOpenContact }: HeroSectionProps) {
   return (
-    <section className="relative min-h-[90vh] pt-24 xs:pt-28 sm:pt-36 pb-16 sm:pb-20 overflow-hidden flex flex-col justify-between">
-      {/* Background Gradients & Grids */}
-      <div className="absolute inset-0 tech-grid pointer-events-none opacity-40" />
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[600px] h-[200px] sm:h-[300px] bg-[#d4ff00]/5 blur-[90px] sm:blur-[120px] rounded-full pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10 w-full">
-        {/* Top Mini Badge */}
+    <section className="relative min-h-[92vh] sm:min-h-screen pt-32 sm:pt-40 pb-20 flex flex-col justify-between overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 w-full relative z-10">
+        {/* Top Minimal Editorial Tag */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-white/5 border border-white/12 backdrop-blur-md mb-4 sm:mb-6"
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="flex items-center justify-between border-b border-white/10 pb-4 mb-12 sm:mb-16"
         >
-          <span className="w-2 h-2 rounded-full bg-[#00f58c] animate-ping" />
-          <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-white/90">
-            Convertix AI 3.2 Live
+          <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#e05a2b]">
+            VOL. 04 // AUTOMOTIVE RETAIL INTELLIGENCE
           </span>
-          <span className="text-white/30 hidden xs:inline">•</span>
-          <span className="text-[10px] sm:text-[11px] font-mono text-[#d4ff00] hidden xs:inline">
-            Automotive Dealership Protocol
+          <span className="text-[11px] font-mono uppercase tracking-widest text-[#b8b5af] hidden sm:inline">
+            EST. 2026 // SELENIX TECH
           </span>
         </motion.div>
 
-        {/* Oversized Cinematic Editorial Headline */}
-        <div className="mb-6 sm:mb-8">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-display font-black tracking-tighter text-white leading-[0.92] sm:leading-[0.88] uppercase break-words"
+        {/* Asymmetrical Magazine Cover Composition */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end mb-16 sm:mb-24">
+          {/* Left: Enormous Editorial Headline (7 cols) */}
+          <div className="lg:col-span-7">
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="text-6xl xs:text-7xl sm:text-8xl md:text-9xl font-display font-black tracking-[-0.06em] text-[#f3f1ec] leading-[0.85] uppercase"
+            >
+              THE
+              <br />
+              DEALERSHIP
+              <br />
+              <span className="font-editorial text-[#b8b5af] font-normal italic lowercase tracking-tight">
+                operating
+              </span>
+              <br />
+              SYSTEM<span className="text-[#e05a2b]">.</span>
+            </motion.h1>
+          </div>
+
+          {/* Right: Dramatic Cropped Luxury Automotive Visual (5 cols) */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.2, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 space-y-8"
           >
-            THE DEALERSHIP
-            <br />
-            <span className="font-editorial text-white/40 font-normal italic lowercase tracking-tight">
-              operating
-            </span>{" "}
-            SYSTEM.
-          </motion.h1>
+            {/* Artistic Automotive Imagery Element */}
+            <div className="luxury-image-wrapper rounded-2xl sm:rounded-3xl border border-white/15 aspect-[4/3] bg-[#141414] overflow-hidden relative group">
+              {/* Cinematic SVG Automotive Contour Architecture */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#0a0a0a] via-[#161616] to-[#242424] flex items-center justify-center p-8">
+                <svg
+                  viewBox="0 0 400 300"
+                  className="w-full h-full opacity-60 group-hover:opacity-90 transition-opacity duration-700"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M 30 220 C 70 170, 140 140, 240 140 C 310 140, 360 170, 380 220"
+                    stroke="#f3f1ec"
+                    strokeWidth="1.5"
+                    strokeDasharray="4 4"
+                  />
+                  <path
+                    d="M 50 200 C 100 110, 190 90, 290 100 C 350 110, 370 160, 370 190"
+                    stroke="#e05a2b"
+                    strokeWidth="2"
+                  />
+                  <circle cx="110" cy="210" r="32" stroke="#f3f1ec" strokeWidth="1.5" />
+                  <circle cx="310" cy="210" r="32" stroke="#f3f1ec" strokeWidth="1.5" />
+                  <line x1="20" y1="242" x2="380" y2="242" stroke="#444" strokeWidth="1" />
+                </svg>
+              </div>
+
+              {/* Minimal Editorial Overlay Text */}
+              <div className="absolute bottom-4 left-4 right-4 p-3 bg-black/70 backdrop-blur-md rounded-xl border border-white/10 flex items-center justify-between text-[10px] font-mono text-[#b8b5af]">
+                <span>AERODYNAMIC ARCHITECTURE</span>
+                <span className="text-[#e05a2b] font-bold">10-MIN SLA</span>
+              </div>
+            </div>
+
+            {/* Editorial Caption & Actions */}
+            <div className="space-y-6">
+              <p className="text-sm sm:text-base text-[#b8b5af] leading-relaxed font-normal">
+                AI-powered lead, service and insurance workflows engineered specifically for modern automotive retail networks. Transforming showroom latency into closed momentum.
+              </p>
+
+              <div className="flex items-center gap-6 pt-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    soundManager.playChirp();
+                    onOpenContact();
+                  }}
+                  data-cursor="MOVE"
+                  className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#f3f1ec] bg-[#e05a2b] px-6 py-3.5 rounded-full hover:bg-white hover:text-black transition-colors font-bold group"
+                >
+                  <span>Explore Convertix</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </button>
+
+                <a
+                  href="tel:+917888028729"
+                  className="text-xs font-mono uppercase tracking-widest text-[#b8b5af] hover:text-white transition-colors"
+                >
+                  Talk to Sales →
+                </a>
+              </div>
+            </div>
+          </motion.div>
         </div>
 
-        {/* Supporting Statement & Actions */}
+        {/* Minimal Typographic Stats Bar */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 sm:gap-8 mb-8 sm:mb-12 border-b border-white/10 pb-8 sm:pb-10"
+          transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          className="border-t border-white/10 pt-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-xs font-mono"
         >
-          <p className="text-sm sm:text-lg md:text-xl text-white/70 max-w-2xl font-normal leading-relaxed">
-            AI-powered lead, service and insurance workflows engineered specifically for modern automotive retail networks. Replace delayed manual assignments with 10-minute response precision.
-          </p>
+          <div>
+            <span className="text-white/40 block text-[10px] uppercase tracking-widest mb-1">Response Window</span>
+            <span className="font-display text-2xl sm:text-3xl font-black text-[#f3f1ec]">10–30 MIN</span>
+          </div>
 
-          <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
-            <MagneticButton
-              variant="primary"
-              onClick={onOpenContact}
-              cursorText="BOOK"
-              className="!py-3 !px-5 sm:!py-3.5 sm:!px-6 text-xs w-full sm:w-auto"
-            >
-              <span>Explore Convertix OS</span>
-              <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-            </MagneticButton>
+          <div>
+            <span className="text-white/40 block text-[10px] uppercase tracking-widest mb-1">Follow-Up SLA</span>
+            <span className="font-display text-2xl sm:text-3xl font-black text-[#f3f1ec]">&gt;90%</span>
+          </div>
 
-            <a
-              href="tel:+917888028729"
-              className="w-full sm:w-auto text-center justify-center px-4 sm:px-5 py-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white font-mono text-xs uppercase tracking-wider transition-colors flex items-center gap-2"
-            >
-              <PhoneCall className="w-3.5 h-3.5 text-[#00f58c]" />
-              <span>Talk to Sales</span>
-            </a>
+          <div>
+            <span className="text-white/40 block text-[10px] uppercase tracking-widest mb-1">OEM DMS Protocol</span>
+            <span className="font-display text-2xl sm:text-3xl font-black text-[#f3f1ec]">2-WAY SYNC</span>
+          </div>
+
+          <div>
+            <span className="text-white/40 block text-[10px] uppercase tracking-widest mb-1">Telecall Audit</span>
+            <span className="font-display text-2xl sm:text-3xl font-black text-[#f3f1ec]">SIM-NATIVE</span>
           </div>
         </motion.div>
-
-        {/* Live Dealership Simulation */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.99 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-8 sm:mb-14"
-        >
-          <DealershipPipelineSim />
-        </motion.div>
-
-        {/* Benchmark Metric Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
-          <div className="p-3 sm:p-4 rounded-xl bg-white/[0.03] border border-white/8 flex flex-col">
-            <span className="text-[9px] sm:text-[10px] font-mono uppercase tracking-widest text-white/40 mb-0.5 sm:mb-1 truncate">
-              Lead Response Window
-            </span>
-            <div className="flex flex-wrap items-baseline gap-1 sm:gap-2">
-              <span className="text-xl sm:text-2xl md:text-3xl font-display font-black text-[#d4ff00]">
-                10–30 MIN
-              </span>
-              <span className="text-[9px] sm:text-[11px] font-mono text-white/40 line-through">DMS: 24h</span>
-            </div>
-          </div>
-
-          <div className="p-3 sm:p-4 rounded-xl bg-white/[0.03] border border-white/8 flex flex-col">
-            <span className="text-[9px] sm:text-[10px] font-mono uppercase tracking-widest text-white/40 mb-0.5 sm:mb-1 truncate">
-              Follow-Up Rate
-            </span>
-            <div className="flex flex-wrap items-baseline gap-1 sm:gap-2">
-              <span className="text-xl sm:text-2xl md:text-3xl font-display font-black text-[#00f58c]">
-                &gt;90%
-              </span>
-              <span className="text-[9px] sm:text-[11px] font-mono text-white/40 line-through">DMS: &lt;40%</span>
-            </div>
-          </div>
-
-          <div className="p-3 sm:p-4 rounded-xl bg-white/[0.03] border border-white/8 flex flex-col">
-            <span className="text-[9px] sm:text-[10px] font-mono uppercase tracking-widest text-white/40 mb-0.5 sm:mb-1 truncate">
-              DMS Synchronization
-            </span>
-            <div className="flex flex-wrap items-baseline gap-1 sm:gap-2">
-              <span className="text-xl sm:text-2xl md:text-3xl font-display font-black text-white">
-                2-WAY
-              </span>
-              <span className="text-[9px] sm:text-[11px] font-mono text-[#00d8f6]">Zero Data Lag</span>
-            </div>
-          </div>
-
-          <div className="p-3 sm:p-4 rounded-xl bg-white/[0.03] border border-white/8 flex flex-col">
-            <span className="text-[9px] sm:text-[10px] font-mono uppercase tracking-widest text-white/40 mb-0.5 sm:mb-1 truncate">
-              Telephony Verification
-            </span>
-            <div className="flex flex-wrap items-baseline gap-1 sm:gap-2">
-              <span className="text-xl sm:text-2xl md:text-3xl font-display font-black text-white">
-                SIM-NATIVE
-              </span>
-              <span className="text-[9px] sm:text-[11px] font-mono text-[#d4ff00]">Auto-Logged</span>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );

@@ -105,6 +105,30 @@ class SoundSynthesizer {
     osc.start();
     osc.stop(this.ctx.currentTime + 0.05);
   }
+
+  public playSuccessTone() {
+    if (!this.enabled) return;
+    this.initCtx();
+    if (!this.ctx) return;
+
+    const now = this.ctx.currentTime;
+    const osc = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+
+    osc.type = "sine";
+    osc.frequency.setValueAtTime(440, now);
+    osc.frequency.setValueAtTime(554.37, now + 0.08);
+    osc.frequency.setValueAtTime(659.25, now + 0.16);
+
+    gain.gain.setValueAtTime(0.05, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+
+    osc.connect(gain);
+    gain.connect(this.ctx.destination);
+
+    osc.start();
+    osc.stop(now + 0.3);
+  }
 }
 
 export const soundManager = new SoundSynthesizer();

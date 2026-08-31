@@ -5,16 +5,17 @@ import Link from "next/link";
 import { Navbar } from "@/components/navigation/Navbar";
 import { MobileMenu } from "@/components/navigation/MobileMenu";
 import { Footer } from "@/components/navigation/Footer";
+import { MobileFloatingBar } from "@/components/navigation/MobileFloatingBar";
 import { ContactModal } from "@/components/ui/ContactModal";
-import { MagneticButton } from "@/components/ui/MagneticButton";
-import { Building2, ShieldCheck, Sparkles, Cpu, Award, Phone, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { soundManager } from "@/components/lib/sound";
 
 export default function AboutPage() {
   const [contactOpen, setContactOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <main className="min-h-screen bg-[#07080a] text-[#f5f6f8] relative overflow-hidden">
+    <main className="min-h-screen bg-[#0a0a0a] text-[#f3f1ec] relative overflow-hidden">
       <Navbar
         onOpenContact={() => setContactOpen(true)}
         onOpenMobileMenu={() => setMobileMenuOpen(true)}
@@ -27,81 +28,69 @@ export default function AboutPage() {
       />
 
       {/* Hero */}
-      <section className="relative pt-36 pb-20 border-b border-white/10">
-        <div className="absolute inset-0 tech-grid opacity-40 pointer-events-none" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/12 text-xs font-mono text-[#d4ff00] mb-6">
-            <Building2 className="w-3.5 h-3.5" />
-            <span>SELENIX TECHNOLOGY // CONVERTIX DIVISION</span>
+      <section className="relative pt-36 sm:pt-48 pb-20 border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
+          <div className="flex items-center gap-3 mb-8">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#e05a2b]" />
+            <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-[#e05a2b]">
+              COMPANY ARCHIVE
+            </span>
           </div>
 
-          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-display font-black tracking-tighter text-white uppercase leading-[0.9] mb-6">
-            RE-ENGINEERING
+          <h1 className="text-5xl xs:text-6xl sm:text-8xl md:text-9xl font-display font-black tracking-[-0.06em] text-[#f3f1ec] uppercase leading-[0.85] mb-8">
+            BUILT FOR
             <br />
-            <span className="font-editorial text-white/40 font-normal italic lowercase">the</span>{" "}
-            AUTOMOTIVE RETAIL REALITY.
+            <span className="font-editorial text-[#b8b5af] font-normal italic lowercase tracking-tight">
+              dealership
+            </span>{" "}
+            REALITY<span className="text-[#e05a2b]">.</span>
           </h1>
 
-          <p className="text-base sm:text-xl text-white/70 max-w-3xl font-normal leading-relaxed mb-10">
-            Convertix was born out of a stark observation: while modern vehicles have become high-tech marvels, automotive dealership workflows were still burdened with 24-hour response delays, unverified phone calls, and disconnected software silos.
+          <p className="text-base sm:text-xl text-[#b8b5af] max-w-3xl font-normal leading-relaxed">
+            Convertix is engineered by Selenix Technology to solve the persistent operational gaps in modern automotive retail—where slow response times, disjointed follow-ups, and legacy software silently bleed showroom profit.
           </p>
         </div>
       </section>
 
-      {/* Manifesto Body */}
-      <section className="py-24 bg-[#090b10] border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-            <div>
-              <span className="text-xs font-mono uppercase tracking-widest text-[#d4ff00] mb-2 block">
-                Our Engineering Mission
+      {/* Content */}
+      <section className="py-32 bg-[#0a0a0a]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+            <div className="lg:col-span-5 space-y-6">
+              <span className="text-xs font-mono uppercase tracking-widest text-[#e05a2b]">
+                OUR ORIGIN
               </span>
-              <h2 className="text-3xl sm:text-4xl font-display font-black text-white uppercase mb-4">
-                We bring innovation & efficiency across auto retail.
+              <h2 className="text-3xl sm:text-4xl font-display font-bold text-white">
+                Why We Built Convertix.
               </h2>
-              <p className="text-sm sm:text-base text-white/70 leading-relaxed font-normal mb-6">
-                We enable dealerships and OEMs to adopt smarter digital processes—from lead management to service and insurance—improving customer experience, operational efficiency, and profitability across the entire automotive retail ecosystem.
-              </p>
-              <p className="text-sm sm:text-base text-white/70 leading-relaxed font-normal">
-                Convertix is not a generic CRM adapted for cars. Every workflow, data schema, SIM trigger, and escalation rule is purpose-built around dealership operations, consultant floor rhythms, and workshop bay capacities.
+              <p className="text-sm font-mono text-[#b8b5af] leading-relaxed">
+                Automotive retail moves fast. When a prospective buyer submits an inquiry, every minute of delay reduces conversion likelihood. We built Convertix to bridge the gap between dealership management systems, mobile sales consultants, and customer channels.
               </p>
             </div>
 
-            <div className="p-8 rounded-3xl bg-[#0e1118] border border-white/12 space-y-6">
-              <span className="text-xs font-mono uppercase tracking-widest text-white/40 block pb-2 border-b border-white/10">
-                Core Principles
-              </span>
+            <div className="lg:col-span-7 space-y-12 border-l border-white/10 pl-8 sm:pl-12">
+              <div className="space-y-3">
+                <span className="text-xs font-mono text-white/40 uppercase tracking-widest block">PILLAR 01</span>
+                <h3 className="text-2xl font-display font-bold text-white">Zero Hardware Complexity</h3>
+                <p className="text-xs font-mono text-[#b8b5af] leading-relaxed">
+                  Native SIM calling ensures sales consultants use standard smartphones while dealership leadership maintains complete call duration transparency.
+                </p>
+              </div>
 
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <div className="p-2 rounded-lg bg-[#d4ff00]/10 text-[#d4ff00] shrink-0 mt-0.5">
-                    <Sparkles className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <h4 className="font-display font-bold text-white text-base">Speed as a Competitive Moat</h4>
-                    <p className="text-xs text-white/60">Reducing first customer contact from hours to minutes turns every advertising rupee into tangible showroom momentum.</p>
-                  </div>
-                </div>
+              <div className="space-y-3">
+                <span className="text-xs font-mono text-white/40 uppercase tracking-widest block">PILLAR 02</span>
+                <h3 className="text-2xl font-display font-bold text-white">Real-Time OEM Synchronization</h3>
+                <p className="text-xs font-mono text-[#b8b5af] leading-relaxed">
+                  Deep bi-directional sync with Tata, Maruti, Hyundai & Mahindra dealership systems to ensure zero double data entry.
+                </p>
+              </div>
 
-                <div className="flex items-start gap-3">
-                  <div className="p-2 rounded-lg bg-[#00f58c]/10 text-[#00f58c] shrink-0 mt-0.5">
-                    <ShieldCheck className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <h4 className="font-display font-bold text-white text-base">Zero Phantom Interactions</h4>
-                    <p className="text-xs text-white/60">Hardware-free SIM telecall tracking provides verified audit trails and transparency without burdensome manual reporting.</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="p-2 rounded-lg bg-[#00d8f6]/10 text-[#00d8f6] shrink-0 mt-0.5">
-                    <Cpu className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <h4 className="font-display font-bold text-white text-base">Seamless OEM Coexistence</h4>
-                    <p className="text-xs text-white/60">2-Way bi-directional DMS sync ensures complete data integrity without disrupting manufacturer compliance.</p>
-                  </div>
-                </div>
+              <div className="space-y-3">
+                <span className="text-xs font-mono text-white/40 uppercase tracking-widest block">PILLAR 03</span>
+                <h3 className="text-2xl font-display font-bold text-white">Automated Governance</h3>
+                <p className="text-xs font-mono text-[#b8b5af] leading-relaxed">
+                  Inactivity sentinels escalate neglected leads automatically, protecting showroom investments from disappearing into the cracks.
+                </p>
               </div>
             </div>
           </div>
@@ -110,6 +99,9 @@ export default function AboutPage() {
 
       {/* Footer */}
       <Footer onOpenContact={() => setContactOpen(true)} />
+
+      {/* Mobile Floating Bar */}
+      <MobileFloatingBar onOpenContact={() => setContactOpen(true)} />
 
       {/* Modal */}
       <ContactModal
