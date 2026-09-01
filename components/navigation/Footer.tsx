@@ -55,34 +55,37 @@ export function Footer({ onOpenContact }: FooterProps) {
           </div>
         </div>
 
-        {/* Links */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-12 text-xs font-sans">
-          <div className="space-y-2">
+        {/* Links Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 mb-12 text-xs font-sans">
+          {/* Overview */}
+          <div className="space-y-2 md:col-span-1">
             <span className="text-[#b8b5af] font-semibold block">Overview</span>
             <p className="body-standard text-xs leading-relaxed max-w-xs">
               We design and build bespoke, high-converting websites, digital brand identities, and client acquisition funnels for service businesses.
             </p>
           </div>
 
+          {/* Services */}
           <div className="space-y-2">
             <span className="text-[#b8b5af] font-semibold block">Services</span>
             <div className="space-y-2">
-              <Link href="/products/lead-management" className="block text-[#f3f1ec] hover:text-[#e05a2b] transition-colors py-1 min-h-[32px]">
+              <Link href="/products/lead-management" className="block text-[#f3f1ec] hover:text-[#e05a2b] transition-colors py-1">
                 Bespoke Web Design →
               </Link>
-              <Link href="/products/service-insurance" className="block text-[#f3f1ec] hover:text-[#e05a2b] transition-colors py-1 min-h-[32px]">
+              <Link href="/products/service-insurance" className="block text-[#f3f1ec] hover:text-[#e05a2b] transition-colors py-1">
                 Booking Funnels & Retention →
               </Link>
-              <Link href="/pricing" className="block text-[#f3f1ec] hover:text-[#e05a2b] transition-colors py-1 min-h-[32px]">
+              <Link href="/pricing" className="block text-[#f3f1ec] hover:text-[#e05a2b] transition-colors py-1">
                 Packages & Pricing →
               </Link>
             </div>
           </div>
 
+          {/* Company */}
           <div className="space-y-2">
             <span className="text-[#b8b5af] font-semibold block">Company</span>
             <div className="space-y-1.5 text-[#b8b5af]">
-              <p>Selenix Technology</p>
+              <p className="text-white font-semibold">Selenix Technology</p>
               <p>Digital Product Studio</p>
               <Link href="/about" className="block text-white hover:text-[#e05a2b] transition-colors py-1">
                 About Studio →
@@ -93,6 +96,26 @@ export function Footer({ onOpenContact }: FooterProps) {
             </div>
           </div>
 
+          {/* Legal Pages */}
+          <div className="space-y-2">
+            <span className="text-[#b8b5af] font-semibold block">Legal & Policies</span>
+            <div className="space-y-1.5 text-[#b8b5af]">
+              <Link href="/terms" className="block hover:text-white transition-colors py-1">
+                Terms & Conditions
+              </Link>
+              <Link href="/privacy" className="block hover:text-white transition-colors py-1">
+                Privacy Policy
+              </Link>
+              <Link href="/cookies" className="block hover:text-white transition-colors py-1">
+                Cookie Policy
+              </Link>
+              <Link href="/refund-policy" className="block hover:text-white transition-colors py-1">
+                Refund & Cancellation
+              </Link>
+            </div>
+          </div>
+
+          {/* Direct Desk */}
           <div className="space-y-2">
             <span className="text-[#e05a2b] font-semibold block">Direct Desk</span>
             <a
@@ -114,13 +137,14 @@ export function Footer({ onOpenContact }: FooterProps) {
           </div>
         </div>
 
-        {/* Bottom */}
+        {/* Bottom Bar */}
         <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs font-sans text-[#b8b5af]">
-          <p>© 2026 Convertix. A flagship digital studio of Selenix Technology.</p>
+          <p>© 2026 Convertix. A flagship digital studio of Selenix Technology. All rights reserved.</p>
           <div className="flex flex-wrap items-center gap-4">
-            <Link href="/contact" className="hover:text-white transition-colors py-1">Contact</Link>
-            <Link href="/about" className="hover:text-white transition-colors py-1">About</Link>
-            <Link href="/pricing" className="hover:text-white transition-colors py-1">Packages</Link>
+            <Link href="/terms" className="hover:text-white transition-colors py-1">Terms</Link>
+            <Link href="/privacy" className="hover:text-white transition-colors py-1">Privacy</Link>
+            <Link href="/cookies" className="hover:text-white transition-colors py-1">Cookies</Link>
+            <Link href="/refund-policy" className="hover:text-white transition-colors py-1">Refunds</Link>
           </div>
         </div>
       </div>

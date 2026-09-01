@@ -3,6 +3,7 @@ import { Manrope, Instrument_Serif, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { CustomCursor } from "@/components/ui/CustomCursor";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
+import { CookieConsent } from "@/components/ui/CookieConsent";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -73,6 +74,9 @@ export default function RootLayout({
 
         {/* Global Floating WhatsApp Desk */}
         <WhatsAppButton />
+
+        {/* Luxury Cookie Consent Popup */}
+        <CookieConsent />
 
         {children}
       </body>
