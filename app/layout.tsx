@@ -40,6 +40,9 @@ export const metadata: Metadata = {
     "Selenix Technology",
   ],
   authors: [{ name: "Selenix Technology" }],
+  verification: {
+    google: "googleeef78ba5c027569d",
+  },
   openGraph: {
     title: "CONVERTIX — Luxury Website Design & Engineering for Service Businesses",
     description:
