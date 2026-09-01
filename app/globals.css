@@ -12,9 +12,6 @@
     --accent: #e05a2b;
     --border: rgba(243, 241, 236, 0.1);
     --border-hover: rgba(243, 241, 236, 0.22);
-    
-    /* Dynamic Mobile Nav Height Token */
-    --mobile-nav-height: 64px;
   }
 
   * {
@@ -139,17 +136,6 @@
   letter-spacing: 0.04em;
   font-weight: 500;
   text-transform: uppercase;
-}
-
-/* Mobile Safe Bottom Padding on Page Main Wrapper */
-.mobile-safe-bottom {
-  padding-bottom: calc(var(--mobile-nav-height) + env(safe-area-inset-bottom, 0px) + 28px);
-}
-
-@media (min-width: 768px) {
-  .mobile-safe-bottom {
-    padding-bottom: 0px;
-  }
 }
 
 /* Luxury Editorial Image Reveal & Hover */

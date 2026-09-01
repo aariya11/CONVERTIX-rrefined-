@@ -5,7 +5,6 @@ import Link from "next/link";
 import { Navbar } from "@/components/navigation/Navbar";
 import { MobileMenu } from "@/components/navigation/MobileMenu";
 import { Footer } from "@/components/navigation/Footer";
-import { MobileFloatingBar } from "@/components/navigation/MobileFloatingBar";
 import { ContactModal } from "@/components/ui/ContactModal";
 import { ArrowRight, Phone, CheckCircle2, MessageCircle } from "lucide-react";
 import { soundManager } from "@/components/lib/sound";
@@ -30,7 +29,7 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#0a0a0a] text-[#f3f1ec] relative overflow-hidden mobile-safe-bottom">
+    <main className="min-h-screen bg-[#0a0a0a] text-[#f3f1ec] relative overflow-hidden">
       <Navbar
         onOpenContact={() => setContactOpen(true)}
         onOpenMobileMenu={() => setMobileMenuOpen(true)}
@@ -191,9 +190,6 @@ export default function ContactPage() {
 
       {/* Footer */}
       <Footer onOpenContact={() => setContactOpen(true)} />
-
-      {/* Mobile Floating Bar */}
-      <MobileFloatingBar onOpenContact={() => setContactOpen(true)} />
 
       {/* Modal */}
       <ContactModal

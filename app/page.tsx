@@ -4,7 +4,6 @@ import { useState } from "react";
 import { Navbar } from "@/components/navigation/Navbar";
 import { MobileMenu } from "@/components/navigation/MobileMenu";
 import { Footer } from "@/components/navigation/Footer";
-import { MobileFloatingBar } from "@/components/navigation/MobileFloatingBar";
 import { ContactModal } from "@/components/ui/ContactModal";
 
 import { HeroSection } from "@/components/hero/HeroSection";
@@ -28,7 +27,7 @@ export default function HomePage() {
   const handleOpenContact = () => setContactOpen(true);
 
   return (
-    <main className="min-h-screen bg-[#0a0a0a] text-[#f3f1ec] relative overflow-hidden mobile-safe-bottom">
+    <main className="min-h-screen bg-[#0a0a0a] text-[#f3f1ec] relative overflow-hidden">
       {/* Top Editorial Navigation */}
       <Navbar
         onOpenContact={handleOpenContact}
@@ -83,9 +82,6 @@ export default function HomePage() {
 
       {/* Luxury Footer */}
       <Footer onOpenContact={handleOpenContact} />
-
-      {/* Fixed Mobile Bottom Navigation Bar */}
-      <MobileFloatingBar onOpenContact={handleOpenContact} />
 
       {/* Client Project Commissioning Modal */}
       <ContactModal

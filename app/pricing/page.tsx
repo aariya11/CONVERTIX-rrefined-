@@ -5,7 +5,6 @@ import Link from "next/link";
 import { Navbar } from "@/components/navigation/Navbar";
 import { MobileMenu } from "@/components/navigation/MobileMenu";
 import { Footer } from "@/components/navigation/Footer";
-import { MobileFloatingBar } from "@/components/navigation/MobileFloatingBar";
 import { ContactModal } from "@/components/ui/ContactModal";
 import { ArrowRight, Check, MessageCircle, Phone } from "lucide-react";
 import { soundManager } from "@/components/lib/sound";
@@ -61,7 +60,7 @@ export default function PricingPage() {
   const whatsappUrl = "https://wa.me/919078019472?text=Hello%20Convertix%20Team%2C%20I%20would%20like%20to%20discuss%20website%20development%20packages%20for%20our%20service%20business.";
 
   return (
-    <main className="min-h-screen bg-[#0a0a0a] text-[#f3f1ec] relative overflow-hidden mobile-safe-bottom">
+    <main className="min-h-screen bg-[#0a0a0a] text-[#f3f1ec] relative overflow-hidden">
       <Navbar
         onOpenContact={() => setContactOpen(true)}
         onOpenMobileMenu={() => setMobileMenuOpen(true)}
@@ -187,9 +186,6 @@ export default function PricingPage() {
 
       {/* Footer */}
       <Footer onOpenContact={() => setContactOpen(true)} />
-
-      {/* Mobile Floating Bar */}
-      <MobileFloatingBar onOpenContact={() => setContactOpen(true)} />
 
       {/* Modal */}
       <ContactModal
