@@ -44,7 +44,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
               soundManager.playClick();
               onClose();
             }}
-            className="fixed inset-0 bg-black/85 backdrop-blur-md"
+            className="fixed inset-0 bg-black/85 backdrop-blur-md touch-manipulation"
           />
 
           {/* Modal Card */}
@@ -52,7 +52,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
             initial={{ opacity: 0, scale: 0.96, y: 15 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: 15 }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
             className="relative w-full max-w-lg bg-[#111111] border border-white/15 rounded-3xl p-6 sm:p-10 shadow-2xl z-10 my-auto text-[#f3f1ec]"
           >
             {/* Close Button */}
@@ -63,7 +63,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 onClose();
               }}
               aria-label="Close"
-              className="absolute top-5 right-5 p-2 text-white/40 hover:text-white transition-colors"
+              className="absolute top-4 right-4 min-w-[44px] min-h-[44px] flex items-center justify-center p-2 text-white/50 hover:text-white active:scale-90 transition-all touch-manipulation cursor-pointer rounded-full bg-white/[0.05]"
             >
               <X className="w-5 h-5" />
             </button>
@@ -101,7 +101,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                       placeholder="e.g. Vikram Singhania"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full min-h-[48px] px-4 bg-[#181818] border border-white/10 rounded-xl text-white text-sm focus:border-[#e05a2b] focus:outline-none"
+                      className="w-full min-h-[48px] px-4 bg-[#181818] border border-white/10 rounded-xl text-white text-base sm:text-sm focus:border-[#e05a2b] focus:outline-none"
                     />
                   </div>
 
@@ -114,7 +114,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                         placeholder="+91 90XXX XXXXX"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full min-h-[48px] px-4 bg-[#181818] border border-white/10 rounded-xl text-white text-sm focus:border-[#e05a2b] focus:outline-none"
+                        className="w-full min-h-[48px] px-4 bg-[#181818] border border-white/10 rounded-xl text-white text-base sm:text-sm focus:border-[#e05a2b] focus:outline-none"
                       />
                     </div>
 
@@ -126,7 +126,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                         placeholder="e.g. Apex Luxury Services"
                         value={formData.companyName}
                         onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
-                        className="w-full min-h-[48px] px-4 bg-[#181818] border border-white/10 rounded-xl text-white text-sm focus:border-[#e05a2b] focus:outline-none"
+                        className="w-full min-h-[48px] px-4 bg-[#181818] border border-white/10 rounded-xl text-white text-base sm:text-sm focus:border-[#e05a2b] focus:outline-none"
                       />
                     </div>
                   </div>
@@ -135,16 +135,16 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     <label className="text-white/70 uppercase tracking-wider block font-medium">Website Goals / Service Scope</label>
                     <input
                       type="text"
-                      placeholder="e.g. Redesign existing website to boost high-ticket inquiries & bookings"
+                      placeholder="e.g. Redesign existing website to boost high-ticket inquiries"
                       value={formData.projectGoals}
                       onChange={(e) => setFormData({ ...formData, projectGoals: e.target.value })}
-                      className="w-full min-h-[48px] px-4 bg-[#181818] border border-white/10 rounded-xl text-white text-sm focus:border-[#e05a2b] focus:outline-none"
+                      className="w-full min-h-[48px] px-4 bg-[#181818] border border-white/10 rounded-xl text-white text-base sm:text-sm focus:border-[#e05a2b] focus:outline-none"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full min-h-[48px] rounded-full bg-[#e05a2b] text-white font-sans font-semibold text-sm hover:bg-white hover:text-black transition-all flex items-center justify-center gap-2 mt-3"
+                    className="w-full min-h-[50px] rounded-full bg-[#e05a2b] text-white font-sans font-semibold text-sm hover:bg-white hover:text-black active:scale-95 transition-all flex items-center justify-center gap-2 mt-3 touch-manipulation cursor-pointer shadow-lg shadow-[#e05a2b]/20"
                   >
                     <span>Send Project Inquiry</span>
                     <ArrowRight className="w-4 h-4" />
@@ -153,7 +153,8 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   <div className="flex flex-wrap items-center justify-center gap-4 pt-1">
                     <a
                       href="tel:+919078019472"
-                      className="text-white/70 hover:text-white transition-colors inline-flex items-center gap-1.5 py-1"
+                      onClick={() => soundManager.playClick()}
+                      className="min-h-[44px] text-white/70 hover:text-white transition-colors inline-flex items-center gap-1.5 py-1 touch-manipulation"
                     >
                       <Phone className="w-3.5 h-3.5 text-[#e05a2b]" />
                       <span>Call: +91 9078 019 472</span>
@@ -163,7 +164,8 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                       href={whatsappUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[#25D366] hover:underline inline-flex items-center gap-1.5 py-1"
+                      onClick={() => soundManager.playChirp()}
+                      className="min-h-[44px] text-[#25D366] hover:underline inline-flex items-center gap-1.5 py-1 touch-manipulation"
                     >
                       <MessageCircle className="w-3.5 h-3.5" />
                       <span>WhatsApp Chat</span>

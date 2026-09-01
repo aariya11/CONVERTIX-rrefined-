@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, MessageCircle, Phone, Sparkles } from "lucide-react";
+import { ArrowRight, MessageCircle, Phone } from "lucide-react";
 import { soundManager } from "../lib/sound";
 
 interface HeroSectionProps {
@@ -12,34 +12,34 @@ export function HeroSection({ onOpenContact }: HeroSectionProps) {
   const whatsappUrl = "https://wa.me/919078019472?text=Hello%20Convertix%20Team%2C%20I%20would%20like%20to%20discuss%20building%20a%20website%20for%20our%20service%20business.";
 
   return (
-    <section className="relative pt-28 sm:pt-36 md:pt-44 pb-16 sm:pb-24 flex flex-col justify-between overflow-hidden">
+    <section className="relative pt-24 sm:pt-36 md:pt-44 pb-14 sm:pb-24 flex flex-col justify-between overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 w-full relative z-10">
         {/* Top Label */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="flex items-center justify-between border-b border-white/10 pb-4 mb-8 sm:mb-12"
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="flex items-center justify-between border-b border-white/10 pb-3 sm:pb-4 mb-6 sm:mb-12"
         >
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-[#e05a2b]" />
-            <span className="text-xs font-sans font-semibold tracking-wider text-[#e05a2b] uppercase">
-              Digital Design & Web Engineering Studio
+            <span className="text-[11px] sm:text-xs font-sans font-semibold tracking-wider text-[#e05a2b] uppercase">
+              Web Engineering Studio
             </span>
           </div>
-          <span className="text-xs font-sans text-[#b8b5af] hidden sm:inline">
+          <span className="text-[11px] sm:text-xs font-sans text-[#b8b5af] hidden sm:inline">
             Websites Built for Service Businesses
           </span>
         </motion.div>
 
         {/* Asymmetrical Editorial Hero Composition */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end mb-16 sm:mb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end mb-12 sm:mb-24">
           {/* Left: Fluid Editorial Headline (7 cols) */}
           <div className="lg:col-span-7">
             <motion.h1
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="h1-editorial text-[#f3f1ec]"
             >
               We build
@@ -57,8 +57,8 @@ export function HeroSection({ onOpenContact }: HeroSectionProps) {
           <motion.div
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-5 space-y-6"
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 space-y-5 sm:space-y-6"
           >
             {/* Visual Frame */}
             <div className="luxury-image-wrapper rounded-2xl sm:rounded-3xl border border-white/12 aspect-[4/3] bg-[#121212] overflow-hidden relative group">
@@ -89,8 +89,8 @@ export function HeroSection({ onOpenContact }: HeroSectionProps) {
             </div>
 
             {/* Narrative & Actions */}
-            <div className="space-y-5">
-              <p className="body-lead">
+            <div className="space-y-4 sm:space-y-5">
+              <p className="body-lead text-[#b8b5af]">
                 We design and engineer luxury editorial websites, high-speed lead capture systems, and client acquisition engines built specifically for premium service companies.
               </p>
 
@@ -102,7 +102,7 @@ export function HeroSection({ onOpenContact }: HeroSectionProps) {
                     onOpenContact();
                   }}
                   data-cursor="START"
-                  className="min-h-[48px] px-6 py-3 rounded-full bg-[#e05a2b] text-white font-sans font-semibold text-sm hover:bg-white hover:text-black transition-all flex items-center gap-2 shadow-lg shadow-[#e05a2b]/20"
+                  className="min-h-[48px] px-6 py-3 rounded-full bg-[#e05a2b] text-white font-sans font-semibold text-sm hover:bg-white hover:text-black active:scale-95 transition-all flex items-center gap-2 shadow-lg shadow-[#e05a2b]/25 touch-manipulation cursor-pointer"
                 >
                   <span>Start a Project</span>
                   <ArrowRight className="w-4 h-4" />
@@ -112,7 +112,8 @@ export function HeroSection({ onOpenContact }: HeroSectionProps) {
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="min-h-[48px] px-5 py-3 rounded-full border border-[#25D366]/40 text-[#25D366] font-sans font-medium text-sm hover:bg-[#25D366] hover:text-black transition-all inline-flex items-center gap-2"
+                  onClick={() => soundManager.playChirp()}
+                  className="min-h-[48px] px-5 py-3 rounded-full border border-[#25D366]/40 text-[#25D366] font-sans font-medium text-sm hover:bg-[#25D366] hover:text-black active:scale-95 transition-all inline-flex items-center gap-2 touch-manipulation"
                 >
                   <MessageCircle className="w-4 h-4" />
                   <span>WhatsApp Chat</span>
@@ -120,7 +121,8 @@ export function HeroSection({ onOpenContact }: HeroSectionProps) {
 
                 <a
                   href="tel:+919078019472"
-                  className="text-sm font-sans font-medium text-[#b8b5af] hover:text-white transition-colors"
+                  onClick={() => soundManager.playClick()}
+                  className="min-h-[44px] flex items-center text-sm font-sans font-medium text-[#b8b5af] hover:text-white transition-colors touch-manipulation"
                 >
                   +91 9078 019 472
                 </a>
@@ -133,27 +135,27 @@ export function HeroSection({ onOpenContact }: HeroSectionProps) {
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="border-t border-white/10 pt-8 grid grid-cols-2 md:grid-cols-4 gap-6"
+          transition={{ duration: 0.5, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          className="border-t border-white/10 pt-6 sm:pt-8 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6"
         >
           <div>
-            <span className="text-xs text-[#b8b5af] block mb-1">Performance Standard</span>
-            <span className="text-2xl sm:text-3xl font-sans font-bold text-[#f3f1ec]">Sub-Second</span>
+            <span className="text-[11px] sm:text-xs text-[#b8b5af] block mb-1">Performance Standard</span>
+            <span className="text-xl sm:text-3xl font-sans font-bold text-[#f3f1ec]">Sub-Second</span>
           </div>
 
           <div>
-            <span className="text-xs text-[#b8b5af] block mb-1">Average Conversion Lift</span>
-            <span className="text-2xl sm:text-3xl font-sans font-bold text-[#f3f1ec]">3.4x More Leads</span>
+            <span className="text-[11px] sm:text-xs text-[#b8b5af] block mb-1">Inquiry Conversion Lift</span>
+            <span className="text-xl sm:text-3xl font-sans font-bold text-[#f3f1ec]">3.4x More Leads</span>
           </div>
 
           <div>
-            <span className="text-xs text-[#b8b5af] block mb-1">Tech Stack Architecture</span>
-            <span className="text-2xl sm:text-3xl font-sans font-bold text-[#f3f1ec]">Custom Next.js</span>
+            <span className="text-[11px] sm:text-xs text-[#b8b5af] block mb-1">Tech Stack Architecture</span>
+            <span className="text-xl sm:text-3xl font-sans font-bold text-[#f3f1ec]">Custom Next.js</span>
           </div>
 
           <div>
-            <span className="text-xs text-[#b8b5af] block mb-1">Client Inquiries</span>
-            <span className="text-2xl sm:text-3xl font-sans font-bold text-[#f3f1ec]">WhatsApp + CRM</span>
+            <span className="text-[11px] sm:text-xs text-[#b8b5af] block mb-1">Client Inquiries</span>
+            <span className="text-xl sm:text-3xl font-sans font-bold text-[#f3f1ec]">WhatsApp + CRM</span>
           </div>
         </motion.div>
       </div>

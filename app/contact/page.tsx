@@ -6,12 +6,14 @@ import { Navbar } from "@/components/navigation/Navbar";
 import { MobileMenu } from "@/components/navigation/MobileMenu";
 import { Footer } from "@/components/navigation/Footer";
 import { MobileFloatingBar } from "@/components/navigation/MobileFloatingBar";
+import { ContactModal } from "@/components/ui/ContactModal";
 import { ArrowRight, Phone, CheckCircle2, MessageCircle } from "lucide-react";
 import { soundManager } from "@/components/lib/sound";
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
   const whatsappUrl = "https://wa.me/919078019472?text=Hello%20Convertix%20Team%2C%20I%20would%20like%20to%20discuss%20building%20a%20website%20for%20our%20service%20business.";
 
   const [formData, setFormData] = useState({
@@ -30,14 +32,14 @@ export default function ContactPage() {
   return (
     <main className="min-h-screen bg-[#0a0a0a] text-[#f3f1ec] relative overflow-hidden mobile-safe-bottom">
       <Navbar
-        onOpenContact={() => {}}
+        onOpenContact={() => setContactOpen(true)}
         onOpenMobileMenu={() => setMobileMenuOpen(true)}
       />
 
       <MobileMenu
         isOpen={mobileMenuOpen}
         onClose={() => setMobileMenuOpen(false)}
-        onOpenContact={() => {}}
+        onOpenContact={() => setContactOpen(true)}
       />
 
       {/* Hero */}
@@ -66,7 +68,7 @@ export default function ContactPage() {
       </section>
 
       {/* Form Section */}
-      <section className="py-20 sm:py-28 bg-[#0a0a0a]">
+      <section id="contact-form" className="py-20 sm:py-28 bg-[#0a0a0a]">
         <div className="max-w-7xl mx-auto px-4 sm:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 sm:gap-16">
             {/* Left Contact Card */}
@@ -77,6 +79,7 @@ export default function ContactPage() {
                 </span>
                 <a
                   href="tel:+919078019472"
+                  onClick={() => soundManager.playClick()}
                   className="text-2xl sm:text-3xl font-sans font-bold text-white hover:text-[#e05a2b] transition-colors block"
                 >
                   +91 9078 019 472
@@ -90,6 +93,7 @@ export default function ContactPage() {
                     href={whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => soundManager.playChirp()}
                     className="min-h-[44px] inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#25D366]/15 border border-[#25D366]/40 text-[#25D366] font-sans text-xs font-semibold uppercase tracking-wider hover:bg-[#25D366] hover:text-black transition-all"
                   >
                     <MessageCircle className="w-4 h-4" />
@@ -130,7 +134,7 @@ export default function ContactPage() {
                       placeholder="e.g. Anand Singhania"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full min-h-[48px] px-4 bg-[#161616] border border-white/10 rounded-xl text-white text-sm focus:border-[#e05a2b] focus:outline-none"
+                      className="w-full min-h-[48px] px-4 bg-[#161616] border border-white/10 rounded-xl text-white text-base sm:text-sm focus:border-[#e05a2b] focus:outline-none"
                     />
                   </div>
 
@@ -143,7 +147,7 @@ export default function ContactPage() {
                         placeholder="+91 90XXX XXXXX"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full min-h-[48px] px-4 bg-[#161616] border border-white/10 rounded-xl text-white text-sm focus:border-[#e05a2b] focus:outline-none"
+                        className="w-full min-h-[48px] px-4 bg-[#161616] border border-white/10 rounded-xl text-white text-base sm:text-sm focus:border-[#e05a2b] focus:outline-none"
                       />
                     </div>
 
@@ -155,7 +159,7 @@ export default function ContactPage() {
                         placeholder="e.g. Landmark Luxury Services"
                         value={formData.companyName}
                         onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
-                        className="w-full min-h-[48px] px-4 bg-[#161616] border border-white/10 rounded-xl text-white text-sm focus:border-[#e05a2b] focus:outline-none"
+                        className="w-full min-h-[48px] px-4 bg-[#161616] border border-white/10 rounded-xl text-white text-base sm:text-sm focus:border-[#e05a2b] focus:outline-none"
                       />
                     </div>
                   </div>
@@ -167,13 +171,13 @@ export default function ContactPage() {
                       placeholder="e.g. We want to build a custom luxury website for our service company to increase high-paying client inquiries & bookings."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full p-3 bg-[#161616] border border-white/10 rounded-xl text-white text-sm focus:border-[#e05a2b] focus:outline-none resize-none"
+                      className="w-full p-3 bg-[#161616] border border-white/10 rounded-xl text-white text-base sm:text-sm focus:border-[#e05a2b] focus:outline-none resize-none"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full min-h-[48px] rounded-full bg-[#e05a2b] text-white font-sans font-semibold text-sm hover:bg-white hover:text-black transition-all flex items-center justify-center gap-2 mt-2"
+                    className="w-full min-h-[48px] rounded-full bg-[#e05a2b] text-white font-sans font-semibold text-sm hover:bg-white hover:text-black transition-all flex items-center justify-center gap-2 mt-2 touch-manipulation cursor-pointer"
                   >
                     <span>Request Project Proposal</span>
                     <ArrowRight className="w-4 h-4" />
@@ -186,10 +190,16 @@ export default function ContactPage() {
       </section>
 
       {/* Footer */}
-      <Footer onOpenContact={() => {}} />
+      <Footer onOpenContact={() => setContactOpen(true)} />
 
       {/* Mobile Floating Bar */}
-      <MobileFloatingBar onOpenContact={() => {}} />
+      <MobileFloatingBar onOpenContact={() => setContactOpen(true)} />
+
+      {/* Modal */}
+      <ContactModal
+        isOpen={contactOpen}
+        onClose={() => setContactOpen(false)}
+      />
     </main>
   );
 }

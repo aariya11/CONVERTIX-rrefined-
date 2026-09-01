@@ -47,21 +47,27 @@
     line-height: 1.6;
   }
 
+  /* Instant responsive mobile touch interactions */
+  button, a, input, select, textarea, [role="button"], label {
+    touch-action: manipulation;
+  }
+
   ::selection {
     background: #e05a2b;
     color: #ffffff;
   }
 }
 
-/* Atmospheric Subtle Grain */
+/* Atmospheric Subtle Grain - Guaranteed 0 pointer interference */
 .editorial-grain {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  pointer-events: none;
-  z-index: 999;
+  pointer-events: none !important;
+  user-select: none !important;
+  z-index: 1;
   opacity: 0.024;
   will-change: opacity;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
@@ -100,29 +106,29 @@
 /* Responsive Fluid Typography Utilities */
 .h1-editorial {
   font-family: var(--font-manrope), sans-serif;
-  font-size: clamp(2.5rem, 7.5vw, 6.8rem);
-  line-height: 0.92;
+  font-size: clamp(2.3rem, 7.5vw, 6.8rem);
+  line-height: 0.94;
   letter-spacing: -0.035em;
   font-weight: 700;
 }
 
 .h2-editorial {
   font-family: var(--font-manrope), sans-serif;
-  font-size: clamp(2rem, 4.5vw, 4.2rem);
-  line-height: 0.98;
+  font-size: clamp(1.85rem, 4.5vw, 4.2rem);
+  line-height: 1.02;
   letter-spacing: -0.025em;
   font-weight: 700;
 }
 
 .body-lead {
-  font-size: clamp(1rem, 1.3vw, 1.2rem);
+  font-size: clamp(0.9375rem, 1.25vw, 1.2rem);
   line-height: 1.65;
   color: var(--text-secondary);
   font-weight: 400;
 }
 
 .body-standard {
-  font-size: clamp(0.9375rem, 1.05vw, 1.0625rem);
+  font-size: clamp(0.875rem, 1.05vw, 1.0625rem);
   line-height: 1.6;
   color: var(--text-secondary);
   font-weight: 400;
@@ -137,7 +143,7 @@
 
 /* Mobile Safe Bottom Padding on Page Main Wrapper */
 .mobile-safe-bottom {
-  padding-bottom: calc(var(--mobile-nav-height) + env(safe-area-inset-bottom, 0px) + 24px);
+  padding-bottom: calc(var(--mobile-nav-height) + env(safe-area-inset-bottom, 0px) + 28px);
 }
 
 @media (min-width: 768px) {

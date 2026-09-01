@@ -21,7 +21,7 @@ export function DealershipRoiCalculator({ onOpenContact }: DealershipRoiCalculat
   const annualLift = recoveredMonthlyProfit * 12;
 
   return (
-    <section id="roi" className="relative py-24 sm:py-36 bg-[#0a0a0a] border-t border-white/10 overflow-hidden defer-render">
+    <section id="roi" className="relative py-20 sm:py-36 bg-[#0a0a0a] border-t border-white/10 overflow-hidden defer-render">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         {/* Eyebrow */}
         <div className="flex items-center gap-2 mb-6">
@@ -32,7 +32,7 @@ export function DealershipRoiCalculator({ onOpenContact }: DealershipRoiCalculat
         </div>
 
         {/* Headline */}
-        <div className="mb-16 sm:mb-24">
+        <div className="mb-12 sm:mb-24">
           <h2 className="h2-editorial text-[#f3f1ec]">
             What is a slow website
             <br />
@@ -45,15 +45,15 @@ export function DealershipRoiCalculator({ onOpenContact }: DealershipRoiCalculat
         </div>
 
         {/* Calculator */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-16 items-start">
           {/* Inputs (6 cols) */}
-          <div className="lg:col-span-6 space-y-8">
+          <div className="lg:col-span-6 space-y-6 sm:space-y-8">
             {/* Visitors */}
-            <div className="border-b border-white/10 pb-6 space-y-2">
+            <div className="border-b border-white/10 pb-5 space-y-2">
               <span className="text-xs font-sans text-[#b8b5af] uppercase tracking-wider block">
                 Monthly Website Visitors
               </span>
-              <div className="text-4xl sm:text-5xl font-sans font-bold text-white">
+              <div className="text-3xl sm:text-5xl font-sans font-bold text-white">
                 {monthlyVisitors.toLocaleString()}
               </div>
               <input
@@ -66,16 +66,16 @@ export function DealershipRoiCalculator({ onOpenContact }: DealershipRoiCalculat
                   setMonthlyVisitors(Number(e.target.value));
                   soundManager.playClick();
                 }}
-                className="w-full accent-[#e05a2b] cursor-pointer h-2 bg-[#222] rounded-lg mt-2"
+                className="w-full accent-[#e05a2b] cursor-pointer h-2 bg-[#222] rounded-lg mt-2 touch-manipulation"
               />
             </div>
 
             {/* Conversion */}
-            <div className="border-b border-white/10 pb-6 space-y-2">
+            <div className="border-b border-white/10 pb-5 space-y-2">
               <span className="text-xs font-sans text-[#b8b5af] uppercase tracking-wider block">
                 Current Inquiry Conversion Rate
               </span>
-              <div className="text-4xl sm:text-5xl font-sans font-bold text-white">
+              <div className="text-3xl sm:text-5xl font-sans font-bold text-white">
                 {currentConversion}%
               </div>
               <input
@@ -88,7 +88,7 @@ export function DealershipRoiCalculator({ onOpenContact }: DealershipRoiCalculat
                   setCurrentConversion(Number(e.target.value));
                   soundManager.playClick();
                 }}
-                className="w-full accent-[#e05a2b] cursor-pointer h-2 bg-[#222] rounded-lg mt-2"
+                className="w-full accent-[#e05a2b] cursor-pointer h-2 bg-[#222] rounded-lg mt-2 touch-manipulation"
               />
             </div>
 
@@ -97,7 +97,7 @@ export function DealershipRoiCalculator({ onOpenContact }: DealershipRoiCalculat
               <span className="text-xs font-sans text-[#b8b5af] uppercase tracking-wider block">
                 Average Value per Client / Contract
               </span>
-              <div className="text-4xl sm:text-5xl font-sans font-bold text-white">
+              <div className="text-3xl sm:text-5xl font-sans font-bold text-white">
                 {formatINR(avgClientValue)}
               </div>
               <input
@@ -110,20 +110,20 @@ export function DealershipRoiCalculator({ onOpenContact }: DealershipRoiCalculat
                   setAvgClientValue(Number(e.target.value));
                   soundManager.playClick();
                 }}
-                className="w-full accent-[#e05a2b] cursor-pointer h-2 bg-[#222] rounded-lg mt-2"
+                className="w-full accent-[#e05a2b] cursor-pointer h-2 bg-[#222] rounded-lg mt-2 touch-manipulation"
               />
             </div>
           </div>
 
           {/* Output Card (6 cols) */}
-          <div className="lg:col-span-6 border border-white/12 rounded-3xl p-6 sm:p-12 bg-[#121212] space-y-8 shadow-xl flex flex-col justify-between">
+          <div className="lg:col-span-6 border border-white/12 rounded-3xl p-6 sm:p-12 bg-[#121212] space-y-6 sm:space-y-8 shadow-xl flex flex-col justify-between">
             <div>
               <span className="text-xs font-sans font-semibold uppercase tracking-wider text-[#e05a2b] block mb-2">
                 Projected Monthly Revenue Lift
               </span>
-              <div className="text-4xl sm:text-6xl font-sans font-bold text-[#f3f1ec] tracking-tight leading-none mb-3">
+              <div className="text-3xl sm:text-6xl font-sans font-bold text-[#f3f1ec] tracking-tight leading-none mb-3">
                 {formatINR(recoveredMonthlyProfit)}
-                <span className="text-sm font-sans text-[#b8b5af] block mt-2 font-normal">
+                <span className="text-xs sm:text-sm font-sans text-[#b8b5af] block mt-2 font-normal">
                   ≈ {formatINR(annualLift)} Projected Annual Business Growth
                 </span>
               </div>
@@ -148,7 +148,7 @@ export function DealershipRoiCalculator({ onOpenContact }: DealershipRoiCalculat
                   onOpenContact?.();
                 }}
                 data-cursor="START"
-                className="w-full min-h-[48px] py-3.5 px-6 rounded-full bg-[#f3f1ec] text-black font-sans font-semibold text-sm hover:bg-[#e05a2b] hover:text-white transition-all flex items-center justify-center gap-2"
+                className="w-full min-h-[50px] py-3.5 px-6 rounded-full bg-[#f3f1ec] text-black font-sans font-semibold text-sm hover:bg-[#e05a2b] hover:text-white active:scale-95 transition-all flex items-center justify-center gap-2 touch-manipulation cursor-pointer"
               >
                 <span>Build Your High-Converting Website</span>
                 <ArrowRight className="w-4 h-4" />

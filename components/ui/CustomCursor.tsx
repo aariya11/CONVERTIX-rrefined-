@@ -7,7 +7,7 @@ export function CustomCursor() {
   const [visible, setVisible] = useState(false);
   const [label, setLabel] = useState<string | null>(null);
   const [isHovered, setIsHovered] = useState(false);
-  const [isTouch, setIsTouch] = useState(false);
+  const [isTouch, setIsTouch] = useState(true); // Default to touch/hidden to prevent mobile interception
 
   const mouseX = useMotionValue(-100);
   const mouseY = useMotionValue(-100);
@@ -16,10 +16,15 @@ export function CustomCursor() {
   const springY = useSpring(mouseY, { stiffness: 600, damping: 30 });
 
   useEffect(() => {
-    if (window.matchMedia("(pointer: coarse)").matches || "ontouchstart" in window) {
+    // Only enable on desktop pointer devices
+    if (typeof window === "undefined") return;
+
+    const isFinePointer = window.matchMedia("(pointer: fine)").matches && !("ontouchstart" in window);
+    if (!isFinePointer) {
       setIsTouch(true);
       return;
     }
+    setIsTouch(false);
 
     const handleMouseMove = (e: MouseEvent) => {
       mouseX.set(e.clientX);
@@ -58,7 +63,8 @@ export function CustomCursor() {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 pointer-events-none z-[9999] flex items-center justify-center -translate-x-1/2 -translate-y-1/2"
+      aria-hidden="true"
+      className="hidden md:flex fixed top-0 left-0 pointer-events-none z-[9999] items-center justify-center -translate-x-1/2 -translate-y-1/2 select-none"
       style={{
         x: springX,
         y: springY,
@@ -75,10 +81,10 @@ export function CustomCursor() {
           borderColor: isHovered ? "rgba(243, 241, 236, 0.6)" : "transparent",
         }}
         transition={{ type: "spring", stiffness: 450, damping: 25 }}
-        className="w-2.5 h-2.5 rounded-full border border-transparent flex items-center justify-center transition-colors"
+        className="w-2.5 h-2.5 rounded-full border border-transparent flex items-center justify-center transition-colors pointer-events-none"
       >
         {label && (
-          <span className="text-[6px] font-mono font-bold tracking-widest text-white uppercase scale-90 select-none">
+          <span className="text-[6px] font-mono font-bold tracking-widest text-white uppercase scale-90 select-none pointer-events-none">
             {label}
           </span>
         )}

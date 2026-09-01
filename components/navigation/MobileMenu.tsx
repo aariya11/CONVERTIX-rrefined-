@@ -23,18 +23,18 @@ export function MobileMenu({ isOpen, onClose, onOpenContact }: MobileMenuProps) 
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: -15 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
+          exit={{ opacity: 0, y: -15 }}
           transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-          className="fixed inset-0 z-[10000] bg-[#0a0a0a] flex flex-col justify-between p-6 sm:p-8 overflow-y-auto"
+          className="fixed inset-0 z-[10000] bg-[#0a0a0a]/98 backdrop-blur-2xl flex flex-col justify-between p-6 sm:p-8 overflow-y-auto"
         >
           {/* Header */}
           <div className="flex items-center justify-between border-b border-white/10 pb-4">
             <Link
               href="/"
               onClick={handleLinkClick}
-              className="font-sans font-extrabold text-xl tracking-tight text-[#f3f1ec]"
+              className="font-sans font-extrabold text-xl tracking-tight text-[#f3f1ec] min-h-[44px] flex items-center touch-manipulation"
             >
               Convertix<span className="text-[#e05a2b]">.</span>
             </Link>
@@ -45,60 +45,67 @@ export function MobileMenu({ isOpen, onClose, onOpenContact }: MobileMenuProps) 
                 onClose();
               }}
               aria-label="Close menu"
-              className="p-2.5 text-white/60 hover:text-white"
+              className="min-w-[48px] min-h-[48px] flex items-center justify-center p-2.5 text-white/70 hover:text-white active:scale-95 transition-all touch-manipulation cursor-pointer rounded-xl bg-white/[0.05]"
             >
               <X className="w-6 h-6" />
             </button>
           </div>
 
           {/* Navigation Links */}
-          <div className="py-8 space-y-6">
-            <span className="text-xs font-sans font-semibold uppercase tracking-wider text-[#e05a2b]">
+          <div className="py-8 space-y-4">
+            <span className="text-xs font-sans font-semibold uppercase tracking-wider text-[#e05a2b] block mb-2">
               Studio Navigation
             </span>
 
-            <div className="space-y-4 font-sans text-2xl sm:text-3xl font-bold tracking-tight text-white/90">
-              <a
-                href="#services"
+            <div className="space-y-1 font-sans text-2xl sm:text-3xl font-bold tracking-tight text-white/90">
+              <Link
+                href="/#services"
                 onClick={handleLinkClick}
-                className="block hover:text-[#e05a2b] transition-colors py-1"
+                className="flex items-center min-h-[48px] hover:text-[#e05a2b] active:text-[#e05a2b] transition-colors py-2 touch-manipulation"
               >
                 Web Design
-              </a>
-              <a
-                href="#capabilities"
+              </Link>
+              <Link
+                href="/#capabilities"
                 onClick={handleLinkClick}
-                className="block hover:text-[#e05a2b] transition-colors py-1"
+                className="flex items-center min-h-[48px] hover:text-[#e05a2b] active:text-[#e05a2b] transition-colors py-2 touch-manipulation"
               >
                 Capabilities
-              </a>
-              <a
-                href="#ecosystem"
+              </Link>
+              <Link
+                href="/#ecosystem"
                 onClick={handleLinkClick}
-                className="block hover:text-[#e05a2b] transition-colors py-1"
+                className="flex items-center min-h-[48px] hover:text-[#e05a2b] active:text-[#e05a2b] transition-colors py-2 touch-manipulation"
               >
                 Ecosystem
-              </a>
-              <a
-                href="#roi"
+              </Link>
+              <Link
+                href="/#roi"
                 onClick={handleLinkClick}
-                className="block hover:text-[#e05a2b] transition-colors py-1"
+                className="flex items-center min-h-[48px] hover:text-[#e05a2b] active:text-[#e05a2b] transition-colors py-2 touch-manipulation"
               >
                 ROI Impact
-              </a>
+              </Link>
               <Link
                 href="/pricing"
                 onClick={handleLinkClick}
-                className="block hover:text-[#e05a2b] transition-colors py-1"
+                className="flex items-center min-h-[48px] hover:text-[#e05a2b] active:text-[#e05a2b] transition-colors py-2 touch-manipulation"
               >
                 Packages
               </Link>
               <Link
                 href="/about"
                 onClick={handleLinkClick}
-                className="block hover:text-[#e05a2b] transition-colors py-1"
+                className="flex items-center min-h-[48px] hover:text-[#e05a2b] active:text-[#e05a2b] transition-colors py-2 touch-manipulation"
               >
                 About Studio
+              </Link>
+              <Link
+                href="/contact"
+                onClick={handleLinkClick}
+                className="flex items-center min-h-[48px] hover:text-[#e05a2b] active:text-[#e05a2b] transition-colors py-2 touch-manipulation"
+              >
+                Contact
               </Link>
             </div>
           </div>
@@ -108,7 +115,8 @@ export function MobileMenu({ isOpen, onClose, onOpenContact }: MobileMenuProps) 
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-sans">
               <a
                 href="tel:+919078019472"
-                className="flex items-center gap-2 text-[#b8b5af] hover:text-white transition-colors py-1"
+                onClick={() => soundManager.playClick()}
+                className="flex items-center gap-2 text-[#b8b5af] hover:text-white transition-colors py-2 min-h-[44px] touch-manipulation"
               >
                 <Phone className="w-4 h-4 text-[#e05a2b]" />
                 <span>+91 9078 019 472</span>
@@ -118,7 +126,8 @@ export function MobileMenu({ isOpen, onClose, onOpenContact }: MobileMenuProps) 
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-[#25D366] hover:text-white transition-colors py-1"
+                onClick={() => soundManager.playChirp()}
+                className="flex items-center gap-1.5 text-[#25D366] hover:text-white transition-colors py-2 min-h-[44px] touch-manipulation"
               >
                 <MessageCircle className="w-4 h-4" />
                 <span>WhatsApp Chat →</span>
@@ -128,10 +137,11 @@ export function MobileMenu({ isOpen, onClose, onOpenContact }: MobileMenuProps) 
             <button
               type="button"
               onClick={() => {
+                soundManager.playChirp();
                 onClose();
                 onOpenContact();
               }}
-              className="w-full min-h-[48px] rounded-full bg-[#f3f1ec] text-black font-sans font-semibold text-sm flex items-center justify-center gap-2 hover:bg-[#e05a2b] hover:text-white transition-colors"
+              className="w-full min-h-[50px] rounded-full bg-[#e05a2b] text-white font-sans font-semibold text-sm flex items-center justify-center gap-2 hover:bg-white hover:text-black active:scale-95 transition-all shadow-xl shadow-[#e05a2b]/20 touch-manipulation cursor-pointer"
             >
               <span>Start a Project</span>
               <ArrowUpRight className="w-4 h-4" />
