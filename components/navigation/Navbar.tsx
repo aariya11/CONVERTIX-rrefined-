@@ -48,7 +48,7 @@ export function Navbar({ onOpenContact, onOpenMobileMenu }: NavbarProps) {
           </Link>
 
           {/* Center Links (Desktop) */}
-          <div className="hidden md:flex items-center gap-7 text-[13px] font-sans font-medium text-[#b8b5af]">
+          <div className="hidden md:flex items-center gap-6 lg:gap-7 text-[13px] font-sans font-medium text-[#b8b5af]">
             <Link
               href="/#services"
               className="hover:text-white transition-colors py-1"
@@ -76,6 +76,13 @@ export function Navbar({ onOpenContact, onOpenMobileMenu }: NavbarProps) {
               onClick={() => soundManager.playClick()}
             >
               ROI Impact
+            </Link>
+            <Link
+              href="/#faq"
+              className="hover:text-white transition-colors py-1"
+              onClick={() => soundManager.playClick()}
+            >
+              FAQ
             </Link>
             <Link
               href="/pricing"

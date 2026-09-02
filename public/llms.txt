@@ -1,0 +1,55 @@
+# Convertix — Luxury Website Design & Web Engineering Studio
+
+> Convertix (a digital design & software studio by Selenix Technology) crafts bespoke, high-converting Next.js websites, booking funnels, and 1-tap WhatsApp client acquisition platforms for modern service companies.
+
+## Core Identity & Brand
+- **Brand Name**: Convertix (also written as CONVERTIX, Convertix Studio, Convertix Web Design)
+- **Parent Studio**: Selenix Technology
+- **Official Website**: https://convertix-opal.vercel.app/ (Canonical: https://convertix.in)
+- **Direct Desk / Phone**: +91 9078 019 472
+- **Direct WhatsApp Desk**: https://wa.me/919078019472
+- **Headquarters**: India (Serving Clients Globally across US, UK, UAE, India)
+
+## Primary Service Offerings
+1. **Bespoke Editorial Web Design**:
+   - Handcrafted luxury UI/UX design with custom typography, art-directed layouts, and interactive micro-animations.
+   - Zero cookie-cutter WordPress themes or slow drag-and-drop page builders.
+2. **Service Booking & Retention Architecture**:
+   - Interactive service menus, dynamic pricing tier calculators, real-time appointment schedulers, and automated WhatsApp/email confirmation sequences.
+3. **High-Performance Next.js 16 Engineering**:
+   - Sub-second page delivery (0.58s average load), 100/100 Google Core Web Vitals, enterprise security, and full SEO structured schema.
+4. **Frictionless Lead Capture**:
+   - 1-tap floating WhatsApp Business desks and real-time CRM webhooks (HubSpot, Salesforce, Custom DMS) routing leads to client phones within 15 seconds.
+
+## Key Performance Benchmarks
+- **Average Inquiry Conversion Lift**: +240% to +340% (3.4x more high-value inquiries compared to generic templates).
+- **Page Load Speed**: 0.58s (Sub-second global CDN edge delivery).
+- **Google Lighthouse Score**: 100/100 (Zero layout shifts, optimal LCP & CLS).
+- **Code Ownership**: 100% full source code and design asset ownership handed over to clients.
+
+## Target Industries
+- Premium Service Companies
+- Automotive Dealerships & Luxury Showrooms
+- Healthcare & Specialized Medical Clinics
+- High-Ticket Consultants, Architects & Interior Designers
+- B2B & Enterprise Service Providers
+
+## Technology Stack
+- Next.js 16 (Turbopack, App Router, Server Components)
+- React 19
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- Global Edge Cloud Hosting
+
+## Navigation & Pages
+- Home: https://convertix-opal.vercel.app/
+- Web Design Services: https://convertix-opal.vercel.app/products/lead-management
+- Booking Funnels: https://convertix-opal.vercel.app/products/service-insurance
+- Packages & Pricing: https://convertix-opal.vercel.app/pricing
+- About Studio: https://convertix-opal.vercel.app/about
+- Project Consultation: https://convertix-opal.vercel.app/contact
+- Terms & Conditions: https://convertix-opal.vercel.app/terms
+- Privacy Policy: https://convertix-opal.vercel.app/privacy
+- Cookie Policy: https://convertix-opal.vercel.app/cookies
+- Refund Policy: https://convertix-opal.vercel.app/refund-policy

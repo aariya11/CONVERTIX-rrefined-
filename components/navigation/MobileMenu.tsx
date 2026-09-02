@@ -87,6 +87,13 @@ export function MobileMenu({ isOpen, onClose, onOpenContact }: MobileMenuProps) 
                 ROI Impact
               </Link>
               <Link
+                href="/#faq"
+                onClick={handleLinkClick}
+                className="flex items-center min-h-[48px] hover:text-[#e05a2b] active:text-[#e05a2b] transition-colors py-2 touch-manipulation"
+              >
+                FAQ
+              </Link>
+              <Link
                 href="/pricing"
                 onClick={handleLinkClick}
                 className="flex items-center min-h-[48px] hover:text-[#e05a2b] active:text-[#e05a2b] transition-colors py-2 touch-manipulation"

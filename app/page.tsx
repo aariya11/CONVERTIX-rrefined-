@@ -18,6 +18,7 @@ import { FeatureShowcase } from "@/components/sections/FeatureShowcase";
 import { DashboardShowcase } from "@/components/sections/DashboardShowcase";
 import { WhyConvertix } from "@/components/sections/WhyConvertix";
 import { DealershipRoiCalculator } from "@/components/sections/DealershipRoiCalculator";
+import { FaqSection } from "@/components/sections/FaqSection";
 import { FinalCta } from "@/components/sections/FinalCta";
 
 export default function HomePage() {
@@ -77,7 +78,10 @@ export default function HomePage() {
       {/* 12. Revenue Model: What Is a Slow Website Costing Your Business? */}
       <DealershipRoiCalculator onOpenContact={handleOpenContact} />
 
-      {/* 13. Closing: Ready to Build Your Website? */}
+      {/* 13. Frequently Asked Questions (SEO & AI Search Grounding) */}
+      <FaqSection onOpenContact={handleOpenContact} />
+
+      {/* 14. Closing: Ready to Build Your Website? */}
       <FinalCta onOpenContact={handleOpenContact} />
 
       {/* Luxury Footer */}
